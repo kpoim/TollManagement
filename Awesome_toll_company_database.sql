@@ -1,7 +1,7 @@
-create database if not exists Awesome_Toll_Company
+create database if not exists awesome_toll_company
 default character set utf8mb4;
 
-use Awesome_Toll_Company;
+use awesome_toll_company;
 
 create table card (
 cardid int unsigned primary key auto_increment
@@ -73,7 +73,7 @@ constraint gateFK foreign key (entrygateid) references gate (gateid)
 );
 
 create table history_logs (
-historyid int unsigned auto_increment primary key,
+historyid int unsigned primary key,
 cardid int unsigned,
 entrytime timestamp not null,
 exittime timestamp,
@@ -90,7 +90,8 @@ on ongoing_logs
 for each row
 BEGIN
 	insert into history_logs 
-    set 
+    set
+    historyid = new.ongoingid,
     cardid = new.cardid,
     entrytime = new.entrytime,
     entrygateid = new.entrygateid;
