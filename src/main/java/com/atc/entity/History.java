@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "history_logs")
+@Table(name = "history")
 public class History implements Serializable {
   
   @Id

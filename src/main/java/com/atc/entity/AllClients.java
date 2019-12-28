@@ -5,29 +5,38 @@ import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "all_clients")
+@Table(name = "all_client")
 public class AllClients implements Serializable{
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "clientid")
     private Integer id;
+    @OneToMany(mappedBy = "cardid")
     @Column(name = "cardid")
-    private Integer cardid;
+    private Card card;
+    @ManyToOne(fetch = FetchType.LAZY)
     @Column(name = "retailafm")
-    private Integer rafm;
+    private RetailClient rafm;
+    @ManyToOne(fetch = FetchType.LAZY)
     @Column(name = "proafm")
-    private Integer pafm;
+    private ProClient pafm;
 
     public AllClients() {
     }
 
-    public AllClients(Integer id, Integer cardid, Integer rafm, Integer pafm) {
+    public AllClients(Integer id, Card card, RetailClient rafm, ProClient pafm) {
         this.id = id;
-        this.cardid = cardid;
+        this.card = card;
         this.rafm = rafm;
         this.pafm = pafm;
     }
@@ -40,37 +49,37 @@ public class AllClients implements Serializable{
         this.id = id;
     }
 
-    public Integer getCardid() {
-        return cardid;
+    public Card getCard() {
+        return card;
     }
 
-    public void setCardid(Integer cardid) {
-        this.cardid = cardid;
+    public void setCard(Card card) {
+        this.card = card;
     }
 
-    public Integer getRafm() {
+    public RetailClient getRafm() {
         return rafm;
     }
 
-    public void setRafm(Integer rafm) {
+    public void setRafm(RetailClient rafm) {
         this.rafm = rafm;
     }
 
-    public Integer getPafm() {
+    public ProClient getPafm() {
         return pafm;
     }
 
-    public void setPafm(Integer pafm) {
+    public void setPafm(ProClient pafm) {
         this.pafm = pafm;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.id);
-        hash = 97 * hash + Objects.hashCode(this.cardid);
-        hash = 97 * hash + Objects.hashCode(this.rafm);
-        hash = 97 * hash + Objects.hashCode(this.pafm);
+        hash = 83 * hash + Objects.hashCode(this.id);
+        hash = 83 * hash + Objects.hashCode(this.card);
+        hash = 83 * hash + Objects.hashCode(this.rafm);
+        hash = 83 * hash + Objects.hashCode(this.pafm);
         return hash;
     }
 
@@ -89,7 +98,7 @@ public class AllClients implements Serializable{
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.cardid, other.cardid)) {
+        if (!Objects.equals(this.card, other.card)) {
             return false;
         }
         if (!Objects.equals(this.rafm, other.rafm)) {
@@ -103,7 +112,9 @@ public class AllClients implements Serializable{
 
     @Override
     public String toString() {
-        return "AllClients{" + "id=" + id + ", cardid=" + cardid + ", rafm=" + rafm + ", pafm=" + pafm + '}';
+        return "AllClients{" + "id=" + id + ", card=" + card + ", rafm=" + rafm + ", pafm=" + pafm + '}';
     }
+
+    
     
 }

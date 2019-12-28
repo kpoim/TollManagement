@@ -5,14 +5,17 @@ import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "pro_clients")
-public class ProClients implements Serializable{
+@Table(name = "pro_client")
+public class ProClient implements Serializable{
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "proafm")
     private Integer pafm;
     @Column(name = "companyname")
@@ -24,10 +27,10 @@ public class ProClients implements Serializable{
     @Column(name = "email")
     private String email;
 
-    public ProClients() {
+    public ProClient() {
     }
 
-    public ProClients(Integer pafm, String companyName, Integer phone, String address, String email) {
+    public ProClient(Integer pafm, String companyName, Integer phone, String address, String email) {
         this.pafm = pafm;
         this.companyName = companyName;
         this.phone = phone;
@@ -97,7 +100,7 @@ public class ProClients implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final ProClients other = (ProClients) obj;
+        final ProClient other = (ProClient) obj;
         if (!Objects.equals(this.companyName, other.companyName)) {
             return false;
         }

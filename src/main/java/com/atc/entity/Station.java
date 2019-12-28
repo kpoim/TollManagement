@@ -5,7 +5,11 @@ import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,23 +17,25 @@ import javax.persistence.Table;
 public class Station implements Serializable{
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "stationid")
     private Integer id;
     @Column(name = "stationname")
     private String stationName;
     @Column(name = "distance")
     private Double distance;
+    @ManyToOne(fetch = FetchType.LAZY)
     @Column(name = "roadid")
-    private Integer roadid;
+    private Road road;
 
     public Station() {
     }
 
-    public Station(Integer id, String stationName, Double distance, Integer roadid) {
+    public Station(Integer id, String stationName, Double distance, Road road) {
         this.id = id;
         this.stationName = stationName;
         this.distance = distance;
-        this.roadid = roadid;
+        this.road = road;
     }
 
     public Integer getId() {
@@ -56,21 +62,21 @@ public class Station implements Serializable{
         this.distance = distance;
     }
 
-    public Integer getRoadid() {
-        return roadid;
+    public Road getRoad() {
+        return road;
     }
 
-    public void setRoadid(Integer roadid) {
-        this.roadid = roadid;
+    public void setRoad(Road road) {
+        this.road = road;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 13 * hash + Objects.hashCode(this.id);
-        hash = 13 * hash + Objects.hashCode(this.stationName);
-        hash = 13 * hash + Objects.hashCode(this.distance);
-        hash = 13 * hash + Objects.hashCode(this.roadid);
+        int hash = 3;
+        hash = 59 * hash + Objects.hashCode(this.id);
+        hash = 59 * hash + Objects.hashCode(this.stationName);
+        hash = 59 * hash + Objects.hashCode(this.distance);
+        hash = 59 * hash + Objects.hashCode(this.road);
         return hash;
     }
 
@@ -95,7 +101,7 @@ public class Station implements Serializable{
         if (!Objects.equals(this.distance, other.distance)) {
             return false;
         }
-        if (!Objects.equals(this.roadid, other.roadid)) {
+        if (!Objects.equals(this.road, other.road)) {
             return false;
         }
         return true;
@@ -103,8 +109,7 @@ public class Station implements Serializable{
 
     @Override
     public String toString() {
-        return "Station{" + "id=" + id + ", stationName=" + stationName + ", distance=" + distance + ", roadid=" + roadid + '}';
+        return "Station{" + "id=" + id + ", stationName=" + stationName + ", distance=" + distance + ", road=" + road + '}';
     }
-    
     
 }

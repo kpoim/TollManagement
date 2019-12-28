@@ -5,7 +5,12 @@ import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,23 +18,26 @@ import javax.persistence.Table;
 public class Gate implements Serializable{
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "gateid")
     private Integer id;
     @Column(name = "gateNo")
     private Integer gateNo;
+    @ManyToOne(fetch = FetchType.LAZY)
     @Column(name = "stationid")
-    private Integer stationid;
+    private Station station;
+    @OneToOne(fetch = FetchType.LAZY)
     @Column(name = "employeeid")
-    private Integer employeeid;
+    private Employee employee;
 
     public Gate() {
     }
 
-    public Gate(Integer id, Integer gateNo, Integer stationid, Integer employeeid) {
+    public Gate(Integer id, Integer gateNo, Station station, Employee employee) {
         this.id = id;
         this.gateNo = gateNo;
-        this.stationid = stationid;
-        this.employeeid = employeeid;
+        this.station = station;
+        this.employee = employee;
     }
 
     public Integer getId() {
@@ -48,29 +56,29 @@ public class Gate implements Serializable{
         this.gateNo = gateNo;
     }
 
-    public Integer getStationid() {
-        return stationid;
+    public Station getStation() {
+        return station;
     }
 
-    public void setStationid(Integer stationid) {
-        this.stationid = stationid;
+    public void setStation(Station station) {
+        this.station = station;
     }
 
-    public Integer getEmployeeid() {
-        return employeeid;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setEmployeeid(Integer employeeid) {
-        this.employeeid = employeeid;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.id);
-        hash = 79 * hash + Objects.hashCode(this.gateNo);
-        hash = 79 * hash + Objects.hashCode(this.stationid);
-        hash = 79 * hash + Objects.hashCode(this.employeeid);
+        int hash = 3;
+        hash = 61 * hash + Objects.hashCode(this.id);
+        hash = 61 * hash + Objects.hashCode(this.gateNo);
+        hash = 61 * hash + Objects.hashCode(this.station);
+        hash = 61 * hash + Objects.hashCode(this.employee);
         return hash;
     }
 
@@ -92,10 +100,10 @@ public class Gate implements Serializable{
         if (!Objects.equals(this.gateNo, other.gateNo)) {
             return false;
         }
-        if (!Objects.equals(this.stationid, other.stationid)) {
+        if (!Objects.equals(this.station, other.station)) {
             return false;
         }
-        if (!Objects.equals(this.employeeid, other.employeeid)) {
+        if (!Objects.equals(this.employee, other.employee)) {
             return false;
         }
         return true;
@@ -103,8 +111,10 @@ public class Gate implements Serializable{
 
     @Override
     public String toString() {
-        return "Gate{" + "id=" + id + ", gateNo=" + gateNo + ", stationid=" + stationid + ", employeeid=" + employeeid + '}';
+        return "Gate{" + "id=" + id + ", gateNo=" + gateNo + ", station=" + station + ", employee=" + employee + '}';
     }
+
+    
     
     
 }
