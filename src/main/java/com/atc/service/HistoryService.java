@@ -5,6 +5,6 @@ import com.atc.entity.Ongoing;
 
 public interface HistoryService {
 
-  History addToHistory(Ongoing ongoing);
+  History addToHistory(Ongoing ongoing, String exitGateId);
 
 }
