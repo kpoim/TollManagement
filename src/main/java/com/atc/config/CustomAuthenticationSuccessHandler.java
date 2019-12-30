@@ -25,7 +25,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 	
 	Collection<? extends GrantedAuthority> collection = a.getAuthorities();
 	collection.forEach(auth -> {
-	  String url = "404";
+	  String url = "/access-denied";
 	  switch(auth.getAuthority()){
 		case "ROLE_ADMIN":
 		  url = "/admin";

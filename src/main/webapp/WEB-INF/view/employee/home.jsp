@@ -99,6 +99,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <div id="data"></div>
                         </fieldset>
                         <script>
                             function myFunction() {
@@ -117,7 +118,25 @@
         </div>
     </div>
     <script>
-
+        function initialize() {
+            const eventSource = new EventSource('http://localhost:8080/AwesomeTollCompany/notification/100');
+            eventSource.onmessage = e => {
+                const msg = e.data;
+                document.getElementById("data").innerHTML = msg;
+            };
+            eventSource.onopen = e => console.log('open');
+            eventSource.onerror = e => {
+                if (e.readyState == EventSource.CLOSED) {
+                    console.log('close');
+                } else {
+                    console.log(e);
+                }
+            };
+            eventSource.addEventListener('second', function (e) {
+                console.log('second', e.data);
+            }, false);
+        }
+        window.onload = initialize;
 
 
     </script>

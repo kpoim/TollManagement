@@ -2,7 +2,7 @@ package com.atc.service;
 
 import com.atc.entity.History;
 import com.atc.entity.Ongoing;
-import com.atc.utilities.AuthenticationFacade;
+import com.atc.components.AuthenticationFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;

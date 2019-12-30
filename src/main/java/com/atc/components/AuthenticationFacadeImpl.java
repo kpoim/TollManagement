@@ -1,4 +1,4 @@
-package com.atc.utilities;
+package com.atc.components;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
