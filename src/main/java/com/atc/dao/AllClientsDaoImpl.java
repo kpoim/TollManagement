@@ -3,6 +3,7 @@ package com.atc.dao;
 
 import com.atc.entity.AllClients;
 import java.util.List;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -10,22 +11,25 @@ public class AllClientsDaoImpl extends SuperDao implements AllClientsDao{
 
     @Override
     public List<AllClients> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Query q = getSession().createQuery("SELECT ac FROM AllClients ac");
+        List<AllClients> list = q.getResultList();
+        return list;
     }
 
     @Override
     public void addOrUpdate(AllClients ac) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        getSession().saveOrUpdate(ac);
     }
 
     @Override
     public void delete(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        AllClients ac = getSession().getReference(AllClients.class, id);
+        getSession().delete(ac);
     }
 
     @Override
     public AllClients findById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (AllClients)getSession().get(AllClients.class, id);
     }
     
 }
