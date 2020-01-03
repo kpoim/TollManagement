@@ -12,13 +12,17 @@ values (101),
 insert into retail_clients (retailafm, firstname, lastname, phone, email)
 values (0000111123, 'Dimitris', 'Kokoras', 6991234321, 'koko@gmail.gr'),
 (1234111124, 'Vasilis', 'Iakovopoulos', 6988966987, 'iako@gmail.gr'),
-(4321432112, 'Sotiris', 'Kalampokakis', 6976976977, 'kala@email.gr');
+(4321432112, 'Sotiris', 'Kalampokakis', 6976976977, 'kala@email.gr'),
+(1245789638, 'Eulampios', 'Giannopoulos, 6937989462', 'eugiann@email.com'),
+(3695814725, 'Georgios', 'Karagiannakis', 6964589951, 'karagerg@hotmail.com');
 
 
 insert into pro_clients (proafm, companyname, phone, address, email)
 values (1111222233, 'Coscote', 6999999986, 'Kolokotroni 27', 'email@coscote.gr'),
 (1111222233, 'Xaplopoulos', 6988877766, 'Ath. DIakou 02', 'email@xaplo.gr'),
-(3335557779, 'Byte', 6945678923, 'Kavalas 18', 'email@byte.gr');
+(3335557779, 'Byte', 6945678923, 'Kavalas 18', 'email@byte.gr'),
+(5555588888, 'Leroy Jenkins', 6944588811, 'Damareos 35', 'email@leroyjenkins.com'),
+(6666677777, 'Metal Gear', 6977964889, 'Efranoros 13', 'kojima@metalgear.com');
 
 
 insert into road (name) values ('Egnatia'),
