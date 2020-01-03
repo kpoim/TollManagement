@@ -15,21 +15,18 @@ public class Gate implements Serializable{
     @Id
     @Column(name = "gateid")
     private Integer id;
-    @Column(name = "gateNo")
+    @Column(name = "gateno")
     private Integer gateNo;
     @Column(name = "stationid")
     private Integer stationid;
-    @Column(name = "employeeid")
-    private Integer employeeid;
 
     public Gate() {
     }
 
-    public Gate(Integer id, Integer gateNo, Integer stationid, Integer employeeid) {
+    public Gate(Integer id, Integer gateNo, Integer stationid) {
         this.id = id;
         this.gateNo = gateNo;
         this.stationid = stationid;
-        this.employeeid = employeeid;
     }
 
     public Integer getId() {
@@ -56,21 +53,12 @@ public class Gate implements Serializable{
         this.stationid = stationid;
     }
 
-    public Integer getEmployeeid() {
-        return employeeid;
-    }
-
-    public void setEmployeeid(Integer employeeid) {
-        this.employeeid = employeeid;
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 79 * hash + Objects.hashCode(this.id);
         hash = 79 * hash + Objects.hashCode(this.gateNo);
         hash = 79 * hash + Objects.hashCode(this.stationid);
-        hash = 79 * hash + Objects.hashCode(this.employeeid);
         return hash;
     }
 
@@ -95,15 +83,12 @@ public class Gate implements Serializable{
         if (!Objects.equals(this.stationid, other.stationid)) {
             return false;
         }
-        if (!Objects.equals(this.employeeid, other.employeeid)) {
-            return false;
-        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Gate{" + "id=" + id + ", gateNo=" + gateNo + ", stationid=" + stationid + ", employeeid=" + employeeid + '}';
+        return "Gate{" + "id=" + id + ", gateNo=" + gateNo + ", stationid=" + stationid + '}';
     }
     
     
