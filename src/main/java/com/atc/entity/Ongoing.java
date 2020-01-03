@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "ongoing")
+@Table(name = "ongoing_logs")
 public class Ongoing implements Serializable {
   
   @Id

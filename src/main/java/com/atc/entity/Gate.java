@@ -26,18 +26,14 @@ public class Gate implements Serializable{
     @ManyToOne(fetch = FetchType.LAZY)
     @Column(name = "stationid")
     private Station station;
-    @OneToOne(fetch = FetchType.LAZY)
-    @Column(name = "employeeid")
-    private Employee employee;
 
     public Gate() {
     }
 
-    public Gate(Integer id, Integer gateNo, Station station, Employee employee) {
+    public Gate(Integer id, Integer gateNo, Station station) {
         this.id = id;
         this.gateNo = gateNo;
         this.station = station;
-        this.employee = employee;
     }
 
     public Integer getId() {
@@ -64,21 +60,12 @@ public class Gate implements Serializable{
         this.station = station;
     }
 
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
     @Override
     public int hashCode() {
         int hash = 3;
         hash = 61 * hash + Objects.hashCode(this.id);
         hash = 61 * hash + Objects.hashCode(this.gateNo);
         hash = 61 * hash + Objects.hashCode(this.station);
-        hash = 61 * hash + Objects.hashCode(this.employee);
         return hash;
     }
 
@@ -103,15 +90,12 @@ public class Gate implements Serializable{
         if (!Objects.equals(this.station, other.station)) {
             return false;
         }
-        if (!Objects.equals(this.employee, other.employee)) {
-            return false;
-        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Gate{" + "id=" + id + ", gateNo=" + gateNo + ", station=" + station + ", employee=" + employee + '}';
+        return "Gate{" + "id=" + id + ", gateNo=" + gateNo + ", station=" + station + '}';
     }
 
     
