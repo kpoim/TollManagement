@@ -37,7 +37,7 @@ function fetchStations() {
 function fetchGatesByStationId(e) {
     const value = e.target.value;
     if(value === "") return;
-    const url = `${contextPath}/employee-api/get-gates/by-station/${value}`;
+    const url = `${contextPath}/employee-api/get-gates/entry/by-station/${value}`;
     fetch(url, {cors: 'no-cors'})
             .then(res => res.json())
             .then(res => {
