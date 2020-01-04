@@ -1,126 +1,147 @@
-
 package com.atc.entity;
 
-import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "retail_client")
-public class RetailClient implements Serializable{
-    
-    @Id
+@Table(name = "retail_clients")
+public class RetailClient extends Client {
+
     @Column(name = "retailafm")
-    private Integer rafm;
+    private int retailAfm;
     @Column(name = "firstname")
-    private String fname;
+    private String firstname;
     @Column(name = "lastname")
-    private String lname;
+    private String lastname;
     @Column(name = "phone")
-    private Integer phone;
+    private String phone;
+    @Column(name = "address")
+    private String address;
     @Column(name = "email")
     private String email;
 
-    public RetailClient() {
-    }
+  public RetailClient() {
+  }
+  
 
-    public RetailClient(Integer rafm, String fname, String lname, Integer phone, String email) {
-        this.rafm = rafm;
-        this.fname = fname;
-        this.lname = lname;
-        this.phone = phone;
-        this.email = email;
-    }
+  public RetailClient(int retailAfm, String firstname, String lastname, String phone, String address, String email, Integer clientId, String username, String password, Role role) {
+	super(clientId, username, password, role);
+	this.retailAfm = retailAfm;
+	this.firstname = firstname;
+	this.lastname = lastname;
+	this.phone = phone;
+	this.address = address;
+	this.email = email;
+  }
 
-    public Integer getRafm() {
-        return rafm;
-    }
+  public RetailClient(int retailAfm, String firstname, String lastname, String phone, String address, String email, Integer clientId, Integer id, String username, String password, Role role) {
+	super(clientId, id, username, password, role);
+	this.retailAfm = retailAfm;
+	this.firstname = firstname;
+	this.lastname = lastname;
+	this.phone = phone;
+	this.address = address;
+	this.email = email;
+  }
 
-    public void setRafm(Integer rafm) {
-        this.rafm = rafm;
-    }
+  public int getRetailAfm() {
+	return retailAfm;
+  }
 
-    public String getFname() {
-        return fname;
-    }
+  public void setRetailAfm(int retailAfm) {
+	this.retailAfm = retailAfm;
+  }
 
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
+  public String getFirstname() {
+	return firstname;
+  }
 
-    public String getLname() {
-        return lname;
-    }
+  public void setFirstname(String firstname) {
+	this.firstname = firstname;
+  }
 
-    public void setLname(String lname) {
-        this.lname = lname;
-    }
+  public String getLastname() {
+	return lastname;
+  }
 
-    public Integer getPhone() {
-        return phone;
-    }
+  public void setLastname(String lastname) {
+	this.lastname = lastname;
+  }
 
-    public void setPhone(Integer phone) {
-        this.phone = phone;
-    }
+  public String getPhone() {
+	return phone;
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public void setPhone(String phone) {
+	this.phone = phone;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public String getAddress() {
+	return address;
+  }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.rafm);
-        hash = 23 * hash + Objects.hashCode(this.fname);
-        hash = 23 * hash + Objects.hashCode(this.lname);
-        hash = 23 * hash + Objects.hashCode(this.phone);
-        hash = 23 * hash + Objects.hashCode(this.email);
-        return hash;
-    }
+  public void setAddress(String address) {
+	this.address = address;
+  }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final RetailClient other = (RetailClient) obj;
-        if (!Objects.equals(this.fname, other.fname)) {
-            return false;
-        }
-        if (!Objects.equals(this.lname, other.lname)) {
-            return false;
-        }
-        if (!Objects.equals(this.email, other.email)) {
-            return false;
-        }
-        if (!Objects.equals(this.rafm, other.rafm)) {
-            return false;
-        }
-        if (!Objects.equals(this.phone, other.phone)) {
-            return false;
-        }
-        return true;
-    }
+  public String getEmail() {
+	return email;
+  }
 
-    @Override
-    public String toString() {
-        return "RetailClient{" + "rafm=" + rafm + ", fname=" + fname + ", lname=" + lname + ", phone=" + phone + ", email=" + email + '}';
-    }
-    
-    
-    
+  public void setEmail(String email) {
+	this.email = email;
+  }
+
+  @Override
+  public int hashCode() {
+	int hash = 7;
+	hash = 59 * hash + this.retailAfm;
+	hash = 59 * hash + Objects.hashCode(this.firstname);
+	hash = 59 * hash + Objects.hashCode(this.lastname);
+	hash = 59 * hash + Objects.hashCode(this.phone);
+	hash = 59 * hash + Objects.hashCode(this.address);
+	hash = 59 * hash + Objects.hashCode(this.email);
+	return hash;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+	if (this == obj) {
+	  return true;
+	}
+	if (obj == null) {
+	  return false;
+	}
+	if (getClass() != obj.getClass()) {
+	  return false;
+	}
+	final RetailClient other = (RetailClient) obj;
+	if (this.retailAfm != other.retailAfm) {
+	  return false;
+	}
+	if (!Objects.equals(this.firstname, other.firstname)) {
+	  return false;
+	}
+	if (!Objects.equals(this.lastname, other.lastname)) {
+	  return false;
+	}
+	if (!Objects.equals(this.phone, other.phone)) {
+	  return false;
+	}
+	if (!Objects.equals(this.address, other.address)) {
+	  return false;
+	}
+	if (!Objects.equals(this.email, other.email)) {
+	  return false;
+	}
+	return true;
+  }
+
+  @Override
+  public String toString() {
+	return "RetailClient{" + "id=" + super.getId() + ", retailAfm=" + retailAfm + ", firstname=" + firstname + ", lastname=" + lastname + ", phone=" + phone + ", address=" + address + ", email=" + email + '}';
+  }
+
 }

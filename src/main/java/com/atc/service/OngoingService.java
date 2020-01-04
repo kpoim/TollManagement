@@ -6,7 +6,7 @@ public interface OngoingService {
 
   Ongoing findOngoingByCardId(String cardid);
 
-  public Ongoing newEntry(String id);
+  public Ongoing newEntry(String cardId, String gateId);
 
   public void delete(Ongoing ongoing);
 

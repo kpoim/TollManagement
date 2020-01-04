@@ -1,16 +1,18 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
+        <c:set var="path" value="${pageContext.request.contextPath}"/>
+        <script>const contextPath = "${pageContext.request.contextPath}";</script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="${path}/static/css/emp-style.css">
         <title>Document</title>
     </head>
-
     <body>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -41,7 +43,15 @@
 
             </div>
         </nav>
-        <div class="">
+        <div class="stationGate container" style="margin-top: 100px;">
+            <!--        <h3>
+                        Choose the gate:
+                    </h3>-->
+
+            <div class="station-option"></div>
+            <div class="gate-option"></div>
+        </div>
+        <div class="emp-container">
             <section style="margin-top: 100px;">
                 <div class="container  pt-3 pb-3 pl-5 pr-5 shadow extra-margin" style="box-sizing: border-box;">
                     <div class="row">
@@ -100,6 +110,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div id="data"></div>
                             </fieldset>
                             <script>
                                 function myFunction() {
@@ -117,11 +128,7 @@
                 </div>
             </div>
         </div>
-        <script>
-
-
-
-        </script>
+        <script src="${path}/static/js/employee-home.js"></script>
     </body>
 
 </html>
