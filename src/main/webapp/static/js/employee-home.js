@@ -1,29 +1,12 @@
 
 function initialize(e) {
-    const stationGatePicker = document.querySelector(".stationGate");
-    stationGatePicker.remove();
-    const mainContainer = document.querySelector(".emp-container");
-    mainContainer.style.display = "block";
-    const eventSource = new EventSource(`http://localhost:8080/AwesomeTollCompany/notification/${e.target.value}`);
-    eventSource.onmessage = e => {
-        const msg = e.data;
-        document.getElementById("data").innerHTML = msg;
-    };
-    eventSource.onopen = e => console.log('open');
-    eventSource.onerror = e => {
-        if (e.readyState == EventSource.CLOSED) {
-            console.log('close');
-        } else {
-            console.log(e);
-        }
-    };
-    eventSource.addEventListener('second', function (e) {
-        console.log('second', e.data);
-    }, false);
+    const gateId = e.target.value;
+    showMainContainer();
+    startEmployeeShift(gateId);
 }
 
 function fetchStations() {
-    const url = "http://localhost:8080/AwesomeTollCompany/api/get-stations";
+    const url = `${contextPath}/employee-api/get-stations`;
     fetch(url, {cors: 'no-cors'})
             .then(res => res.json())
             .then(res => {
@@ -53,7 +36,8 @@ function fetchStations() {
 
 function fetchGatesByStationId(e) {
     const value = e.target.value;
-    const url = `http://localhost:8080/AwesomeTollCompany/api/get-gates/by-station/${value}`;
+    if(value === "") return;
+    const url = `${contextPath}/employee-api/get-gates/by-station/${value}`;
     fetch(url, {cors: 'no-cors'})
             .then(res => res.json())
             .then(res => {
@@ -67,11 +51,12 @@ function fetchGatesByStationId(e) {
                     gates = document.createElement("select");
                     gates.setAttribute("name", "gates");
                     gates.setAttribute("id", "gates");
+                    gates.addEventListener("change", initialize);
                     gatesDiv.appendChild(label);
                     gatesDiv.appendChild(gates);
                 }
-                while (gates.lastChild) gates.lastChild.remove();
-                gates.addEventListener("change", initialize);
+                while (gates.lastChild)
+                    gates.lastChild.remove();
                 let option = document.createElement("option");
                 option.setAttribute("value", "");
                 option.innerText = "choose a gate...";
@@ -85,5 +70,37 @@ function fetchGatesByStationId(e) {
             });
 }
 
+function showMainContainer() {
+    const stationGatePicker = document.querySelector(".stationGate");
+    stationGatePicker.remove();
+    const mainContainer = document.querySelector(".emp-container");
+    mainContainer.style.display = "block";
+}
+
+function listenForSSE(gateId) {
+    const eventSource = new EventSource(`${contextPath}/notification/${gateId}`);
+    eventSource.onmessage = e => {
+        const msg = e.data;
+        document.getElementById("data").innerHTML = msg;
+    };
+    eventSource.onopen = e => console.log('open');
+    eventSource.onerror = e => {
+        if (e.readyState == EventSource.CLOSED) {
+            console.log('close');
+        } else {
+            console.log(e);
+        }
+    };
+    eventSource.addEventListener('second', function (e) {
+        console.log('second', e.data);
+    }, false);
+}
+
+function startEmployeeShift(gateId){
+    const url = `${contextPath}/employee-api/add-to-gate/${gateId}`;
+    fetch(url,{cors:'no-cors'})
+            .then(res => res.text())
+            .then(res => res && listenForSSE(gateId));
+}
+
 window.onload = fetchStations;
-//        window.onload = initialize;

@@ -7,6 +7,8 @@ public interface GateDao {
   
   List<Gate> findAll();
   
-  List<Gate> findByStationId(Integer id);
+  List<Gate> findEntryGatesByStationId(Integer id);
+
+  Gate findById(Integer id);
   
 }

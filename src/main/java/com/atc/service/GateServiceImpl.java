@@ -1,6 +1,7 @@
 package com.atc.service;
 
 import com.atc.dao.GateDao;
+import com.atc.entity.Employee;
 import com.atc.entity.Gate;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,16 +22,27 @@ public class GateServiceImpl implements GateService {
   }
 
   @Override
-  public List<Gate> findByStationId(String index) {
+  public Gate findById(String id) {
+	return dao.findById(Integer.parseInt(id));
+  }
+
+  @Override
+  public List<Gate> findEntryGatesByStationId(String index) {
 	Integer id;
 	try {
 	  id = Integer.parseInt(index);
 	} catch (NumberFormatException e) {
 	  return new ArrayList<>();
 	}
-	return dao.findByStationId(id);
+	return dao.findEntryGatesByStationId(id);
   }
-  
-  
-  
+
+  @Override
+  public boolean addEmployee(String gateIndex, Employee employee) {
+	Gate gate = findById(gateIndex);
+	if(gate == null) return false;
+	gate.setEmployee(employee);
+	return true;
+  }
+
 }

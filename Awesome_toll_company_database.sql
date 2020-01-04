@@ -1,37 +1,38 @@
 create database if not exists awesome_toll_company
 default character set utf8mb4;
 
+-- DROP SCHEMA awesome_toll_company;
+
 use awesome_toll_company;
 
 create table card (
 cardid int unsigned primary key auto_increment
 );
 
-create table retail_clients (
-retailafm int unsigned primary key,
-firstname varchar(40),
-lastname varchar(40),
-phone bigint unsigned,
-email varchar(50)
+CREATE TABLE client (
+	id INT UNSIGNED PRIMARY KEY,
+    clientid INT UNSIGNED NOT NULL
 );
 
-create table pro_clients (
-proafm int unsigned primary key,
-companyname varchar(100),
-phone bigint unsigned,
+create table retail_clients (
+id INT UNSIGNED NOT NULL  primary key ,
+retailafm bigint unsigned,
+firstname varchar(100),
+lastname varchar(100),
+phone VARCHAR(15),
 address varchar(100),
 email varchar(50)
 );
 
-create table all_clients (
-clientid int unsigned primary key auto_increment,
-cardid int unsigned,
-retailafm int unsigned,
-proafm int unsigned,
-constraint cardFK foreign key (cardid) references card (cardid),
-constraint retailFK foreign key (retailafm) references retail_clients (retailafm),
-constraint profFK foreign key (proafm) references pro_clients (proafm)
+create table pro_clients (
+id INT UNSIGNED NOT NULL primary key,
+proafm bigint unsigned ,
+companyname varchar(100),
+phone VARCHAR(15),
+address varchar(100),
+email varchar(50)
 );
+
 
 create table road (
 roadid int unsigned auto_increment primary key,
@@ -41,16 +42,16 @@ name varchar(70)
 create table station (
 stationid int unsigned auto_increment primary key,
 stationname varchar(70),
-distance decimal(8,3) unsigned,
+distance decimal(8,3),
 roadid int unsigned,
 constraint roadFK foreign key (roadid) references road (roadid)
 );
 
 create table employee (
-employeeid int unsigned auto_increment primary key,
+id int unsigned primary key,
 firstname varchar (50),
 lastname varchar (50),
-phone bigint unsigned,
+phone VARCHAR(15),
 email varchar (50)
 );
 
@@ -59,17 +60,18 @@ gateid int unsigned auto_increment primary key,
 gateNo int unsigned,
 stationid int unsigned,
 employeeid int unsigned,
-constraint stationFK foreign key (stationid) references station (stationid),
-constraint employeeFK foreign key (employeeid) references employee (employeeid)
+isentry TINYINT(1) DEFAULT 0,
+constraint gate_stationFK foreign key (stationid) references station (stationid),
+constraint gate_employeeFK foreign key (employeeid) references employee (id)
 );
 
 create table ongoing_logs (
 ongoingid int unsigned auto_increment primary key,
 cardid int unsigned,
-entrygateid int unsigned,
+gateid int unsigned,
 entrytime timestamp not null,
-constraint cardFK1 foreign key (cardid) references card (cardid),
-constraint gateFK foreign key (entrygateid) references gate (gateid)
+constraint ol_cardFK1 foreign key (cardid) references card (cardid),
+constraint ol_gateFK foreign key (gateid) references gate (gateid)
 );
 
 create table history_logs (
@@ -83,19 +85,33 @@ constraint gateFK1 foreign key (entrygateid) references gate (gateid),
 constraint gateFK2 foreign key (exitgateid) references gate (gateid)
 );
 
-DELIMITER $
-create trigger copy_history
-before insert 
-on ongoing_logs
-for each row
-BEGIN
-	insert into history_logs 
-    set
-    historyid = new.ongoingid,
-    cardid = new.cardid,
-    entrytime = new.entrytime,
-    entrygateid = new.entrygateid;
-END;
-$
-DELIMITER ;
+CREATE TABLE role(
+    rid INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    rname VARCHAR(30),
+    UNIQUE(rname)
+);
+
+CREATE TABLE user (
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50),
+    password VARCHAR(68),
+    rid INT UNSIGNED,
+    CONSTRAINT roleFK FOREIGN KEY (rid) REFERENCES role(rid)
+);
+
+-- DELIMITER $
+-- create trigger copy_history
+-- before insert 
+-- on ongoing_logs
+-- for each row
+-- BEGIN
+-- 	insert into history_logs 
+--     set
+--     historyid = new.ongoingid,
+--     cardid = new.cardid,
+--     entrytime = new.entrytime,
+--     entrygateid = new.entrygateid;
+-- END;
+-- $
+-- DELIMITER ;
 
