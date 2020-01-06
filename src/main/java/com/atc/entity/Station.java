@@ -2,17 +2,21 @@
 package com.atc.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name= "Station")
 @Table(name = "station")
 public class Station implements Serializable{
     
@@ -24,9 +28,11 @@ public class Station implements Serializable{
     private String stationName;
     @Column(name = "distance")
     private Double distance;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "roadid")
+    @JoinColumn(name = "roadid", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Road road;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "station")
+    private List<Gate> gates;
 
     public Station() {
     }
@@ -69,6 +75,15 @@ public class Station implements Serializable{
     public void setRoad(Road road) {
         this.road = road;
     }
+
+    public List<Gate> getGates() {
+        return gates;
+    }
+
+    public void setGates(List<Gate> gates) {
+        this.gates = gates;
+    }
+    
 
     @Override
     public int hashCode() {

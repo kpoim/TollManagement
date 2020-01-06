@@ -3,17 +3,18 @@ package com.atc.entity;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name="Gate")
 @Table(name = "gate")
 public class Gate implements Serializable{
     
@@ -23,9 +24,10 @@ public class Gate implements Serializable{
     private Integer id;
     @Column(name = "gateNo")
     private Integer gateNo;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "stationid")
+    @JoinColumn(name = "stationid", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Station station;
+    private boolean isEntry;
 
     public Gate() {
     }
@@ -58,6 +60,14 @@ public class Gate implements Serializable{
 
     public void setStation(Station station) {
         this.station = station;
+    }
+
+    public boolean isIsEntry() {
+        return isEntry;
+    }
+
+    public void setIsEntry(boolean isEntry) {
+        this.isEntry = isEntry;
     }
 
     @Override
