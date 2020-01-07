@@ -1,9 +1,9 @@
-package com.atc.dao;
+package com.atc.service;
 
 import com.atc.entity.Station;
 import java.util.List;
 
-public interface StationDao {
+public interface StationService {
   
   List<Station> findAll();
   

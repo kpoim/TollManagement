@@ -20,8 +20,8 @@ public class OngoingServiceImpl implements OngoingService {
   }
 
   @Override
-  public Ongoing newEntry(String id) {
-	Ongoing ongoing = new Ongoing(Integer.parseInt(id), 10, java.sql.Timestamp.valueOf(LocalDateTime.now()));
+  public Ongoing newEntry(String cardId, String gateId) {
+	Ongoing ongoing = new Ongoing(Integer.parseInt(cardId), Integer.parseInt(gateId), java.sql.Timestamp.valueOf(LocalDateTime.now()));
 	return dao.newEntry(ongoing) ? ongoing : null;
   }
 
