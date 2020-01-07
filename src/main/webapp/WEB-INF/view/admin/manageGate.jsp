@@ -1,6 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,22 +38,25 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home
-                                <span class="sr-only">(current)</span>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/ATR/admin/admin.html">Home
+
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ">
                             <a class="nav-link" href="/ATR/admin/manageEmployee.html">Manage Employee</a>
+
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ">
                             <a class="nav-link" href="/ATR/admin/manageStation.html">Manage Station</a>
+
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/ATR/admin/manageRoad.html">Manage Road</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="${path}/admin/manageGate">Manage Gate</a>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Manage Gate</a>
+                            <span class="sr-only">(current)</span>
                         </li>
 
 
@@ -66,15 +68,48 @@
             <div class="container  pt-3 pb-3 pl-5 pr-5 shadow extra-margin" style="box-sizing: border-box;">
                 <div class="row">
                     <div class="col-12 border border-dark bg-light shadow">
-                        <h2>Admin Panel</h2>
-                        <p>Admin name :</p>
-                        <div class="mt-3">
-                            <p><a href="/ATR/admin/manageEmployee.html">Manage Employee</a> | <a href="/ATR/admin/manageStation.html">Manage Station</a> | <a href="/ATR/admin/manageRoad.html">Manage Road</a> | <a href="/ATR/admin/manageGate.html">Manage Gate</a></p>
+                        <h2>Gate data</h2>
+                        <p><a href="">Create new Gate</a></p>
+                        <table class="table  table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Gate No</th>
+                                    <th scope="col">Station</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>2</td>
+                                    <td>Athens</td>
+                                    <td><a href="">Update</a> </td>
+                                    <td><a href="">Delete</a> </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>6</td>
+                                    <td>Patra</td>
+                                    <td><a href="">Update</a> </td>
+                                    <td><a href="">Delete</a> </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>4</td>
+                                    <td>Ioannina</td>
+                                    <td><a href="">Update</a> </td>
+                                    <td><a href="">Delete</a> </td>
+                                </tr>
 
-                        </div>
+                            </tbody>
+                        </table>
 
                     </div>
-
+                    <div class="mt-3">
+                        <p> <a href="/ATR/admin/manageEmployee.html">Manage Employee</a> | <a href="/ATR/admin/manageRoad.html">Manage Road</a> | <a href="/ATR/admin/manageStation.html">Manage Station</a></p>
+                    </div>
                 </div>
             </div>
         </section>

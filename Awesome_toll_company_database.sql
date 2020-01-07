@@ -14,6 +14,18 @@ CREATE TABLE client (
     clientid INT UNSIGNED NOT NULL
 );
 
+CREATE TABLE terminal (
+	id INT UNSIGNED PRIMARY KEY,
+    gateid INT UNSIGNED,
+    UNIQUE(gateid),
+    CONSTRAINT terminal_gateidFK
+    FOREIGN KEY (gateid)
+    REFEReNCES gate(gateid)
+);
+
+
+
+
 create table retail_clients (
 id INT UNSIGNED NOT NULL  primary key ,
 retailafm bigint unsigned,
@@ -115,3 +127,5 @@ CREATE TABLE user (
 -- $
 -- DELIMITER ;
 
+select * from client;
+select * from retail_clients;

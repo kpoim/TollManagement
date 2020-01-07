@@ -27,10 +27,7 @@ public class SsePushNotificationRestController {
   @GetMapping("/{id}")
   public ResponseEntity<SseEmitter> doNotify(@PathVariable("id") Integer id){// throws InterruptedException, IOException {
 	final SseEmitter emitter = new SseEmitter(36000000L);
-	System.out.println("------> REGISTERING EMITTER");
 	service.addEmitter(id, emitter);
-	System.out.println("------> EMITTER REGISTERED");
-//	service.doNotify();
 	emitter.onCompletion(() -> service.removeEmitter(id));
 	emitter.onTimeout(() -> service.removeEmitter(id));
 	return new ResponseEntity<>(emitter, HttpStatus.OK);

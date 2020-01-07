@@ -3,11 +3,15 @@ package com.atc.entity;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -22,32 +26,26 @@ public class Ongoing implements Serializable {
   
   private Integer cardid;
   
-  private Integer gateid;
+  @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+  @JoinColumn(name = "gateid")
+  private Gate gate;
   
   private Timestamp entrytime;
 
   public Ongoing() {
   }
 
-  public Ongoing(Integer cardid, Integer gateid, Timestamp entrytime) {
+  public Ongoing(Integer cardid, Gate gate, Timestamp entrytime) {
 	this.cardid = cardid;
-	this.gateid = gateid;
+	this.gate = gate;
 	this.entrytime = entrytime;
   }
 
-  public Ongoing(Integer id, Integer cardid, Integer gateid, Timestamp entrytime) {
+  public Ongoing(Integer id, Integer cardid, Gate gate, Timestamp entrytime) {
 	this.id = id;
 	this.cardid = cardid;
-	this.gateid = gateid;
+	this.gate = gate;
 	this.entrytime = entrytime;
-  }
-
-  public Integer getGateid() {
-	return gateid;
-  }
-
-  public void setGateid(Integer gateid) {
-	this.gateid = gateid;
   }
 
   public Integer getId() {
@@ -66,6 +64,14 @@ public class Ongoing implements Serializable {
 	this.cardid = cardid;
   }
 
+  public Gate getGate() {
+	return gate;
+  }
+
+  public void setGate(Gate gate) {
+	this.gate = gate;
+  }
+
   public Timestamp getEntrytime() {
 	return entrytime;
   }
@@ -76,10 +82,10 @@ public class Ongoing implements Serializable {
 
   @Override
   public int hashCode() {
-	int hash = 7;
+	int hash = 3;
 	hash = 59 * hash + Objects.hashCode(this.id);
 	hash = 59 * hash + Objects.hashCode(this.cardid);
-	hash = 59 * hash + Objects.hashCode(this.gateid);
+	hash = 59 * hash + Objects.hashCode(this.gate);
 	hash = 59 * hash + Objects.hashCode(this.entrytime);
 	return hash;
   }
@@ -102,7 +108,7 @@ public class Ongoing implements Serializable {
 	if (!Objects.equals(this.cardid, other.cardid)) {
 	  return false;
 	}
-	if (!Objects.equals(this.gateid, other.gateid)) {
+	if (!Objects.equals(this.gate, other.gate)) {
 	  return false;
 	}
 	if (!Objects.equals(this.entrytime, other.entrytime)) {
@@ -113,6 +119,7 @@ public class Ongoing implements Serializable {
 
   @Override
   public String toString() {
-	return "Ongoing{" + "id=" + id + ", cardid=" + cardid +  ", gateid=" + gateid + ", entrytime=" + entrytime + '}';
+	return "Ongoing{" + "id=" + id + ", cardid=" + cardid + ", gate=" + gate + ", entrytime=" + entrytime + '}';
   }
+  
 }

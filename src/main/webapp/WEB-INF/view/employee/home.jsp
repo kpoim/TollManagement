@@ -44,10 +44,6 @@
             </div>
         </nav>
         <div class="stationGate container" style="margin-top: 100px;">
-            <!--        <h3>
-                        Choose the gate:
-                    </h3>-->
-
             <div class="station-option"></div>
             <div class="gate-option"></div>
         </div>

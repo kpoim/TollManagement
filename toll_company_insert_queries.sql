@@ -97,12 +97,12 @@ values (1, 'Nick', 'Nickolson', 6996996999, 'nickolson@atc.gr'),
 
 insert into gate (gateNo, stationid, isentry) values
 (1001, 1, 0),
-(1002, 1, 1),
+(1002, 1, 1), #ENTRY
 (1003, 1, 0),
 (1004, 1, 1),
 (2001, 2, 0),
 (2002, 2, 0),
-(2003, 2, 0),
+(2003, 2, 0), #EXIT
 (2004, 2, 1),
 (2005, 2, 1),
 (2006, 2, 1),
@@ -115,7 +115,19 @@ insert into gate (gateNo, stationid, isentry) values
 (6001, 6, 0),
 (6002, 6, 1);
 
+
+
 -- insert into ongoing_logs (cardid, entrygateid, entrytime)
 -- values (101, 1, "2020-01-01 00:30:31");
 
-SELECT * FROM gate;
+
+INSERT INTO user(username, password, rid) VALUES
+('terminal2', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
+('terminal7', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4);
+
+INSERT INTO terminal VALUES (16),(17);
+
+DROP TABLE terminal;
+SELECT * FROM user;
+
+SELECT * FROM ongoing_logs;
