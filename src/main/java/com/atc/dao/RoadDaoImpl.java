@@ -12,6 +12,13 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class RoadDaoImpl extends SuperDao implements RoadDao{
 
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    protected Session getSession() {
+        return sessionFactory.getCurrentSession();
+    }
+
     @Override
     public List<Road> findAll() {
         Query q = getSession().createQuery("SELECT r FROM Road r");
@@ -20,19 +27,18 @@ public class RoadDaoImpl extends SuperDao implements RoadDao{
     }
 
     @Override
-    public void addOrUpdate(Road r) {
+    public void createOrUpdate(Road r) {
         getSession().saveOrUpdate(r);
-    }
-
-    @Override
-    public void delete(Integer id) {
-        Road r = getSession().getReference(Road.class, id);
-        getSession().delete(r);
     }
 
     @Override
     public Road findById(Integer id) {
         return (Road)getSession().get(Road.class, id);
     }
-    
+
+    @Override
+    public void delete(int id) {
+        Road r = getSession().getReference(Road.class, id);
+        getSession().delete(r);
+    }
 }

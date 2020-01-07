@@ -8,10 +8,10 @@ import java.util.List;
 public interface RoadDao {
     
     List<Road> findAll();
-    
-    public void addOrUpdate(Road r);
-    
-    public void delete(Integer id);
-    
+
+    public void createOrUpdate(Road r);
+
     public Road findById(Integer id);
+
+    public void delete(int id);
 }
