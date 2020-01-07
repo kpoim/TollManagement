@@ -29,7 +29,7 @@ public class Station implements Serializable{
     @Column(name = "distance")
     private Double distance;
     @JoinColumn(name = "roadid", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Road road;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "station")
     private List<Gate> gates;
