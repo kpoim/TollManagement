@@ -7,13 +7,14 @@ import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity(name = "Road")
+@Entity
 @Table(name = "road")
 public class Road implements Serializable{
     
@@ -23,7 +24,7 @@ public class Road implements Serializable{
     private Integer id;
     @Column(name = "name")
     private String roadName;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "road")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "road",fetch = FetchType.LAZY)
     private List<Station> stations;
 
     public Road() {

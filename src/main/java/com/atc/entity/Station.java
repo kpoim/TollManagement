@@ -28,10 +28,10 @@ public class Station implements Serializable{
     private String stationName;
     @Column(name = "distance")
     private Double distance;
-    @JoinColumn(name = "roadid", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "roadid", referencedColumnName = "roadid")
     private Road road;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "station")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
     private List<Gate> gates;
 
     public Station() {

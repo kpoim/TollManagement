@@ -44,11 +44,11 @@ public class HistoryInsertEventListener implements PostInsertEventListener {
 	  System.out.println("\n\n");
 	  try {
 		System.out.println("---> TRYING TO SEND");
-		SseService.doNotify(history.getExitgateid(), history);
+		SseService.doNotify(history.getExitgateid().getId(), history);
 		System.out.println("---> SENT");
 	  } catch (IOException ex) {
 		System.out.println("---> COULDNT SEND");
-		SseService.removeEmitter(history.getExitgateid());
+		SseService.removeEmitter(history.getExitgateid().getId());
 		Logger.getLogger(HistoryInsertEventListener.class.getName()).log(Level.SEVERE, null, ex);
 	  }
 	}

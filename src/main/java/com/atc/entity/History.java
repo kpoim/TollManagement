@@ -10,149 +10,139 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name = "History")
 @Table(name = "history")
 public class History implements Serializable {
 
-    @Id
-    @Column(name = "historyid")
-    private Integer id;
-    @JoinColumn(name = "cardid", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Integer cardid;
-    private Timestamp entrytime;
-    private Integer entrygateid;
-    private Timestamp exittime;
-    private Integer exitgateid;
+  
+  @Id
+  @Column(name = "historyid")
+  private Integer id;
+  private Integer cardid;
+  private Timestamp entrytime;
+  @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+  @JoinColumn(name = "entrygateid")
+  private Gate entrygateid;
+  private Timestamp exittime;
+  @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+  @JoinColumn(name = "exitgateid")
+  private Gate exitgateid;
+  
+  public History() {
+  }
 
-    public History() {
-    }
+  public History(Integer id, Integer cardid, Timestamp entrytime, Gate entrygateid, Timestamp exittime, Gate exitgateid) {
+	this.id = id;
+	this.cardid = cardid;
+	this.entrytime = entrytime;
+	System.out.println("HISTORY1111");
+	this.entrygateid = entrygateid;
+	System.out.println("HISTORY2222");
+	this.exittime = exittime;
+	this.exitgateid = exitgateid;
+	System.out.println("HISTORY3333");
+  }
 
-    public History(Ongoing ongoing) {
-        this.id = ongoing.getId();
-        this.cardid = ongoing.getCardid();
-        this.entrytime = ongoing.getEntrytime();
-        this.exittime = Timestamp.valueOf(LocalDateTime.now());
-        this.entrygateid = ongoing.getGateid();
-        this.exitgateid = 100;
-    }
+  public Integer getId() {
+	return id;
+  }
 
-    public History(Integer cardid, Timestamp entrytime, Integer entrygateid, Timestamp exittime, Integer exitgateid) {
-        this.cardid = cardid;
-        this.entrytime = entrytime;
-        this.entrygateid = entrygateid;
-        this.exittime = exittime;
-        this.exitgateid = exitgateid;
-    }
+  public void setId(Integer id) {
+	this.id = id;
+  }
 
-    public History(Integer id, Integer cardid, Timestamp entrytime, Integer entrygateid, Timestamp exittime, Integer exitgateid) {
-        this.id = id;
-        this.cardid = cardid;
-        this.entrytime = entrytime;
-        this.entrygateid = entrygateid;
-        this.exittime = exittime;
-        this.exitgateid = exitgateid;
-    }
+  public Integer getCardid() {
+	return cardid;
+  }
 
-    public Integer getId() {
-        return id;
-    }
+  public void setCardid(Integer cardid) {
+	this.cardid = cardid;
+  }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  public Timestamp getEntrytime() {
+	return entrytime;
+  }
 
-    public Integer getCardid() {
-        return cardid;
-    }
+  public void setEntrytime(Timestamp entrytime) {
+	this.entrytime = entrytime;
+  }
 
-    public void setCardid(Integer cardid) {
-        this.cardid = cardid;
-    }
+  public Gate getEntrygateid() {
+	return entrygateid;
+  }
 
-    public Timestamp getEntrytime() {
-        return entrytime;
-    }
+  public void setEntrygateid(Gate entrygateid) {
+	this.entrygateid = entrygateid;
+  }
 
-    public void setEntrytime(Timestamp entrytime) {
-        this.entrytime = entrytime;
-    }
+  public Timestamp getExittime() {
+	return exittime;
+  }
 
-    public Integer getEntrygateid() {
-        return entrygateid;
-    }
+  public void setExittime(Timestamp exittime) {
+	this.exittime = exittime;
+  }
 
-    public void setEntrygateid(Integer entrygateid) {
-        this.entrygateid = entrygateid;
-    }
+  public Gate getExitgateid() {
+	return exitgateid;
+  }
 
-    public Timestamp getExittime() {
-        return exittime;
-    }
+  public void setExitgateid(Gate exitgateid) {
+	this.exitgateid = exitgateid;
+  }
 
-    public void setExittime(Timestamp exittime) {
-        this.exittime = exittime;
-    }
+  @Override
+  public int hashCode() {
+	int hash = 3;
+	hash = 97 * hash + Objects.hashCode(this.id);
+	hash = 97 * hash + Objects.hashCode(this.cardid);
+	hash = 97 * hash + Objects.hashCode(this.entrytime);
+	hash = 97 * hash + Objects.hashCode(this.entrygateid);
+	hash = 97 * hash + Objects.hashCode(this.exittime);
+	hash = 97 * hash + Objects.hashCode(this.exitgateid);
+	return hash;
+  }
 
-    public Integer getExitgateid() {
-        return exitgateid;
-    }
+  @Override
+  public boolean equals(Object obj) {
+	if (this == obj) {
+	  return true;
+	}
+	if (obj == null) {
+	  return false;
+	}
+	if (getClass() != obj.getClass()) {
+	  return false;
+	}
+	final History other = (History) obj;
+	if (!Objects.equals(this.id, other.id)) {
+	  return false;
+	}
+	if (!Objects.equals(this.cardid, other.cardid)) {
+	  return false;
+	}
+	if (!Objects.equals(this.entrytime, other.entrytime)) {
+	  return false;
+	}
+	if (!Objects.equals(this.entrygateid, other.entrygateid)) {
+	  return false;
+	}
+	if (!Objects.equals(this.exittime, other.exittime)) {
+	  return false;
+	}
+	if (!Objects.equals(this.exitgateid, other.exitgateid)) {
+	  return false;
+	}
+	return true;
+  }
 
-    public void setExitgateid(Integer exitgateid) {
-        this.exitgateid = exitgateid;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 79 * hash + Objects.hashCode(this.id);
-        hash = 79 * hash + Objects.hashCode(this.cardid);
-        hash = 79 * hash + Objects.hashCode(this.entrytime);
-        hash = 79 * hash + Objects.hashCode(this.entrygateid);
-        hash = 79 * hash + Objects.hashCode(this.exittime);
-        hash = 79 * hash + Objects.hashCode(this.exitgateid);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final History other = (History) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.cardid, other.cardid)) {
-            return false;
-        }
-        if (!Objects.equals(this.entrytime, other.entrytime)) {
-            return false;
-        }
-        if (!Objects.equals(this.entrygateid, other.entrygateid)) {
-            return false;
-        }
-        if (!Objects.equals(this.exittime, other.exittime)) {
-            return false;
-        }
-        if (!Objects.equals(this.exitgateid, other.exitgateid)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "History{" + "id=" + id + ", cardid=" + cardid + ", entrytime=" + entrytime + ", entrygateid=" + entrygateid + ", exittime=" + exittime + ", exitgateid=" + exitgateid + '}';
-    }
-
+  @Override
+  public String toString() {
+	return "History{" + "id=" + id + ", cardid=" + cardid + ", entrytime=" + entrytime + ", entrygateid=" + entrygateid + ", exittime=" + exittime + ", exitgateid=" + exitgateid + '}';
+  }
+  
+  
 }

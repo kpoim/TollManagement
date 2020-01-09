@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.Type;
@@ -22,8 +23,9 @@ public class Gate implements Serializable {
   private Integer id;
   @Column(name = "gateno")
   private Integer gateNo;
-  @Column(name = "stationid")
-  private Integer stationid;
+  @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @JoinColumn(name = "stationid", referencedColumnName = "stationid")
+  private Station station;
   @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "employeeid")
   @JsonIgnore
@@ -35,17 +37,10 @@ public class Gate implements Serializable {
   public Gate() {
   }
 
-  public Gate(Integer gateNo, Integer stationid, Employee employee, boolean isEntry) {
-	this.gateNo = gateNo;
-	this.stationid = stationid;
-	this.employee = employee;
-	this.isEntry = isEntry;
-  }
-
-  public Gate(Integer id, Integer gateNo, Integer stationid, Employee employee, boolean isEntry) {
+  public Gate(Integer id, Integer gateNo, Station station, Employee employee, boolean isEntry) {
 	this.id = id;
 	this.gateNo = gateNo;
-	this.stationid = stationid;
+	this.station = station;
 	this.employee = employee;
 	this.isEntry = isEntry;
   }
@@ -66,12 +61,12 @@ public class Gate implements Serializable {
 	this.gateNo = gateNo;
   }
 
-  public Integer getStationid() {
-	return stationid;
+  public Station getStation() {
+	return station;
   }
 
-  public void setStationid(Integer stationid) {
-	this.stationid = stationid;
+  public void setStation(Station station) {
+	this.station = station;
   }
 
   public Employee getEmployee() {
@@ -92,12 +87,12 @@ public class Gate implements Serializable {
 
   @Override
   public int hashCode() {
-	int hash = 5;
-	hash = 97 * hash + Objects.hashCode(this.id);
-	hash = 97 * hash + Objects.hashCode(this.gateNo);
-	hash = 97 * hash + Objects.hashCode(this.stationid);
-	hash = 97 * hash + Objects.hashCode(this.employee);
-	hash = 97 * hash + (this.isEntry ? 1 : 0);
+	int hash = 7;
+	hash = 41 * hash + Objects.hashCode(this.id);
+	hash = 41 * hash + Objects.hashCode(this.gateNo);
+	hash = 41 * hash + Objects.hashCode(this.station);
+	hash = 41 * hash + Objects.hashCode(this.employee);
+	hash = 41 * hash + (this.isEntry ? 1 : 0);
 	return hash;
   }
 
@@ -122,7 +117,7 @@ public class Gate implements Serializable {
 	if (!Objects.equals(this.gateNo, other.gateNo)) {
 	  return false;
 	}
-	if (!Objects.equals(this.stationid, other.stationid)) {
+	if (!Objects.equals(this.station, other.station)) {
 	  return false;
 	}
 	if (!Objects.equals(this.employee, other.employee)) {
@@ -133,7 +128,8 @@ public class Gate implements Serializable {
 
   @Override
   public String toString() {
-	return "Gate{" + "id=" + id + ", gateNo=" + gateNo + ", stationid=" + stationid + ", employee=" + employee + ", isEntry=" + isEntry + '}';
+	return "Gate{" + "id=" + id + ", gateNo=" + gateNo + ", station=" + station + ", employee=" + employee + ", isEntry=" + isEntry + '}';
   }
   
+
 }

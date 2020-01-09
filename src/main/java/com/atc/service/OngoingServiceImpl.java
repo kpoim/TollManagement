@@ -1,6 +1,7 @@
 package com.atc.service;
 
 import com.atc.dao.OngoingDao;
+import com.atc.entity.Gate;
 import com.atc.entity.Ongoing;
 import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ public class OngoingServiceImpl implements OngoingService {
   }
 
   @Override
-  public Ongoing newEntry(String cardId, String gateId) {
-	Ongoing ongoing = new Ongoing(Integer.parseInt(cardId), Integer.parseInt(gateId), java.sql.Timestamp.valueOf(LocalDateTime.now()));
+  public Ongoing newEntry(String cardId, Gate gate) {
+	Ongoing ongoing = new Ongoing(Integer.parseInt(cardId), gate, java.sql.Timestamp.valueOf(LocalDateTime.now()));
 	return dao.newEntry(ongoing) ? ongoing : null;
   }
 

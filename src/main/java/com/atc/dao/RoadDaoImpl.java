@@ -4,20 +4,10 @@ package com.atc.dao;
 import com.atc.entity.Road;
 import java.util.List;
 import javax.persistence.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class RoadDaoImpl extends SuperDao implements RoadDao{
-
-    @Autowired
-    private SessionFactory sessionFactory;
-
-    protected Session getSession() {
-        return sessionFactory.getCurrentSession();
-    }
 
     @Override
     public List<Road> findAll() {
