@@ -16,7 +16,6 @@ import javax.persistence.Table;
 @Entity(name = "History")
 @Table(name = "history")
 public class History implements Serializable {
-
   
   @Id
   @Column(name = "historyid")

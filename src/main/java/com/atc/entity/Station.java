@@ -1,6 +1,7 @@
 
 package com.atc.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
@@ -32,6 +33,7 @@ public class Station implements Serializable{
     @JoinColumn(name = "roadid", referencedColumnName = "roadid")
     private Road road;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
+	@JsonIgnore
     private List<Gate> gates;
 
     public Station() {
