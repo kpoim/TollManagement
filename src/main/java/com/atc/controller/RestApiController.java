@@ -32,7 +32,7 @@ public class RestApiController {
 	return ResponseEntity.ok().body(stations);
   }
   
-  @GetMapping("/get-gates/by-station/{id}")
+  @GetMapping("/get-gates/entry/by-station/{id}")
   public ResponseEntity<List<Gate>> getEntryGatesByStationId(@PathVariable("id") String id){
 	List<Gate> gates = gateService.findEntryGatesByStationId(id);
 	return ResponseEntity.ok().body(gates);
