@@ -12,13 +12,26 @@ import org.springframework.transaction.annotation.Transactional;
 public class StationServiceImpl implements StationService {
 
   @Autowired
-  StationDao dao;
-  
-  @Override
-  public List<Station> findAll() {
-	return dao.findAll();
-  }
-  
-  
-  
+    StationDao sdao;
+
+    @Override
+    public List<Station> getAllStations() {
+        return sdao.findAll();
+    }
+
+    @Override
+    public void createOrUpdateStation(Station s) {
+        sdao.createOrUpdate(s);
+    }
+
+    @Override
+    public Station findStationById(Integer id) {
+        return sdao.findById(id);
+    }
+
+    @Override
+    public void deleteStation(int id) {
+        sdao.delete(id);
+    }
+    
 }

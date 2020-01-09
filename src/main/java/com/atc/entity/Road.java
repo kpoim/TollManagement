@@ -2,21 +2,29 @@
 package com.atc.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name = "Road")
 @Table(name = "road")
 public class Road implements Serializable{
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "roadid")
     private Integer id;
     @Column(name = "name")
     private String roadName;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "road")
+    private List<Station> stations;
 
     public Road() {
     }
@@ -50,6 +58,14 @@ public class Road implements Serializable{
         return hash;
     }
 
+    public List<Station> getStations() {
+        return stations;
+    }
+
+    public void setStations(List<Station> stations) {
+        this.stations = stations;
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

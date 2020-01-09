@@ -13,9 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
-@Entity
-@Table(name = "history_logs")
+@Entity(name = "History")
+@Table(name = "history")
 public class History implements Serializable {
   
   @Id
