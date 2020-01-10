@@ -1,5 +1,6 @@
 package com.atc.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Objects;
@@ -25,6 +26,7 @@ public class Gate implements Serializable {
   private Integer gateNo;
   @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "stationid", referencedColumnName = "stationid")
+  @JsonBackReference
   private Station station;
   @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "employeeid")

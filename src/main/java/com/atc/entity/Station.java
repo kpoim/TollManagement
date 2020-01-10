@@ -4,6 +4,7 @@ package com.atc.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
@@ -38,6 +39,7 @@ public class Station implements Serializable{
     private Road road;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
     @JsonIgnore
+    @JsonManagedReference
     private List<Gate> gates;
 
     public Station() {
