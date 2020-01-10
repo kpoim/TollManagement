@@ -45,7 +45,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/ATR/admin/manageEmployee.html">Manage Employee</a>
+                            <a class="nav-link" href="${path}/admin/manageEmployee">Manage Employee</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/ATR/admin/manageStation.html">Manage Station</a>
