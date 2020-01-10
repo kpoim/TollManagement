@@ -17,6 +17,9 @@ public class AdminController {
   public String manageGate(){
 	return "admin/manageGate";
   }
-
   
+  @GetMapping("/manageEmployee")
+  public String manageEmployee(){
+      return "admin/manageEmployee";
+  }
 }
