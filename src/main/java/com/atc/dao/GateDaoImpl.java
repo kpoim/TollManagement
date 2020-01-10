@@ -1,6 +1,7 @@
 package com.atc.dao;
 
 import com.atc.entity.Gate;
+import com.atc.entity.Station;
 import java.util.List;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
@@ -21,10 +22,10 @@ public class GateDaoImpl extends SuperDao implements GateDao {
 	System.out.println(gate);
 	return gate;
   }
-
+  
   @Override
-  public List<Gate> findEntryGatesByStationId(Integer id) {
-	return getSession().createQuery("SELECT g FROM Gate g WHERE g.isEntry = 0 AND g.station = :id").setParameter("id", id).getResultList();
+  public List<Gate> findEntryGatesByStationObj(Station station) {
+	return getSession().createQuery("SELECT g FROM Gate g WHERE g.isEntry = 0 AND g.station = :station").setParameter("station", station).getResultList();
   }
   
 }

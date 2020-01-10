@@ -1,8 +1,10 @@
 package com.atc.service;
 
 import com.atc.dao.GateDao;
+import com.atc.dao.StationDao;
 import com.atc.entity.Employee;
 import com.atc.entity.Gate;
+import com.atc.entity.Station;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,10 @@ public class GateServiceImpl implements GateService {
 
   @Autowired
   GateDao dao;
-  
+
+  @Autowired
+  StationDao sdao;
+
   @Override
   public List<Gate> findAll() {
 	return dao.findAll();
@@ -28,19 +33,22 @@ public class GateServiceImpl implements GateService {
 
   @Override
   public List<Gate> findEntryGatesByStationId(String index) {
-	Integer id;
+	Station station = null;
 	try {
-	  id = Integer.parseInt(index);
+	  Integer id = Integer.parseInt(index);
+	  station = sdao.findById(id);
 	} catch (NumberFormatException e) {
 	  return new ArrayList<>();
 	}
-	return dao.findEntryGatesByStationId(id);
+	return dao.findEntryGatesByStationObj(station);
   }
 
   @Override
   public boolean addEmployee(String gateIndex, Employee employee) {
 	Gate gate = findById(gateIndex);
-	if(gate == null) return false;
+	if (gate == null) {
+	  return false;
+	}
 	gate.setEmployee(employee);
 	return true;
   }
