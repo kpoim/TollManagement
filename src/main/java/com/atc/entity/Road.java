@@ -1,13 +1,13 @@
 
 package com.atc.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,7 +24,8 @@ public class Road implements Serializable{
     private Integer id;
     @Column(name = "name")
     private String roadName;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "road",fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "road")
+    @JsonManagedReference
     private List<Station> stations;
 
     public Road() {

@@ -1,7 +1,9 @@
 
 package com.atc.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
@@ -29,11 +31,13 @@ public class Station implements Serializable{
     private String stationName;
     @Column(name = "distance")
     private Double distance;
-    @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "roadid", referencedColumnName = "roadid")
+    @ManyToOne( fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "roadid")
+    //@JsonIgnoreProperties("stations")
+    @JsonBackReference
     private Road road;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
-	@JsonIgnore
+    @JsonIgnore
     private List<Gate> gates;
 
     public Station() {
