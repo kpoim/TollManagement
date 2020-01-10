@@ -1,7 +1,7 @@
 <%-- 
-    Document   : manageEmployee
-    Created on : Jan 9, 2020, 9:16:43 PM
-    Author     : jimmi
+    Document   : home
+    Created on : 10 Ιαν 2020, 5:54:35 μμ
+    Author     : p.chrelias
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Employee Manager</title>
+        <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello from Employee Manager</h1>
+        <h1>Gate</h1>
     </body>
 </html>

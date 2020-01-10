@@ -5,17 +5,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/admin")
-public class AdminController {
+@RequestMapping("/admin/manage-employee")
+public class ManageEmployee {
   
   @GetMapping
   public String adminHome(){
-	return "admin/home";
+	return "admin/manageEmployee/home";
   }
-  
-  @GetMapping("/manageGate")
-  public String manageGate(){
-	return "admin/manageGate";
+  @GetMapping("/create")
+  public String create(){
+	return "admin/manageEmployee/create";
   }
   
   
