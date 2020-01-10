@@ -11,7 +11,7 @@ public class EmployeeDaoImpl extends SuperDao implements EmployeeDao{
 
     @Override
     public List<Employee> findAll() {
-        Query q = getSession().createQuery("SELECT e FROM Employee e");
+        Query q = getSession().createQuery("FROM Employee");
         List<Employee> list = q.getResultList();
         return list;
     }
