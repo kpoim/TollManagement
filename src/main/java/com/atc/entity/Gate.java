@@ -130,7 +130,7 @@ public class Gate implements Serializable {
 
   @Override
   public String toString() {
-	return "Gate{" + "id=" + id + ", gateNo=" + gateNo + ", station=" + station + ", employee=" + employee + ", isEntry=" + isEntry + '}';
+	return "Gate{" + "id=" + id + ", gateNo=" + gateNo + ", isEntry=" + isEntry + '}';
   }
   
 

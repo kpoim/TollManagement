@@ -21,6 +21,7 @@ public class SsePushNotificationService {
   final Map<Integer, SseEmitter> emitters = new HashMap();
 
   public void addEmitter(Integer gateid, final SseEmitter emitter) {
+	System.out.println("EMITTER REGISTERED: "+gateid + "\n" + emitter);
 	emitters.put(gateid, emitter);
   }
 
@@ -33,6 +34,8 @@ public class SsePushNotificationService {
 	System.out.println("SSESERVICE gateid: " + gate);
 	System.out.println(historyObject);
 	SseEmitter emitter = emitters.get(gate);
+	System.out.println("\n\nKEYS:");
+	emitters.keySet().forEach(System.out::println);
 	System.out.println("EMITTER: "+emitter);
 	try {
 	  emitter.send(SseEmitter.event().data(historyObject));

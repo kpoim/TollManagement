@@ -26,7 +26,7 @@ public class Ongoing implements Serializable {
   
   private Integer cardid;
   
-  @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "gateid")
   private Gate gate;
   

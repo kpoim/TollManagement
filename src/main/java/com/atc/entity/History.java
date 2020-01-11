@@ -1,5 +1,6 @@
 package com.atc.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -14,7 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name = "History")
-@Table(name = "history")
+@Table(name = "history_logs")
 public class History implements Serializable {
   
   @Id
@@ -22,13 +23,16 @@ public class History implements Serializable {
   private Integer id;
   private Integer cardid;
   private Timestamp entrytime;
-  @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "entrygateid")
-  private Gate entrygateid;
+  @JsonIgnore
+  private Gate entrygate;
   private Timestamp exittime;
-  @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "exitgateid")
-  private Gate exitgateid;
+  @JsonIgnore
+  private Gate exitgate;
+  
   
   public History() {
   }
@@ -38,10 +42,10 @@ public class History implements Serializable {
 	this.cardid = cardid;
 	this.entrytime = entrytime;
 	System.out.println("HISTORY1111");
-	this.entrygateid = entrygateid;
+	this.entrygate = entrygateid;
 	System.out.println("HISTORY2222");
 	this.exittime = exittime;
-	this.exitgateid = exitgateid;
+	this.exitgate = exitgateid;
 	System.out.println("HISTORY3333");
   }
 
@@ -69,12 +73,12 @@ public class History implements Serializable {
 	this.entrytime = entrytime;
   }
 
-  public Gate getEntrygateid() {
-	return entrygateid;
+  public Gate getEntrygate() {
+	return entrygate;
   }
 
-  public void setEntrygateid(Gate entrygateid) {
-	this.entrygateid = entrygateid;
+  public void setEntrygate(Gate entrygate) {
+	this.entrygate = entrygate;
   }
 
   public Timestamp getExittime() {
@@ -85,12 +89,12 @@ public class History implements Serializable {
 	this.exittime = exittime;
   }
 
-  public Gate getExitgateid() {
-	return exitgateid;
+  public Gate getExitgate() {
+	return exitgate;
   }
 
-  public void setExitgateid(Gate exitgateid) {
-	this.exitgateid = exitgateid;
+  public void setExitgate(Gate exitgate) {
+	this.exitgate = exitgate;
   }
 
   @Override
@@ -99,9 +103,9 @@ public class History implements Serializable {
 	hash = 97 * hash + Objects.hashCode(this.id);
 	hash = 97 * hash + Objects.hashCode(this.cardid);
 	hash = 97 * hash + Objects.hashCode(this.entrytime);
-	hash = 97 * hash + Objects.hashCode(this.entrygateid);
+	hash = 97 * hash + Objects.hashCode(this.entrygate);
 	hash = 97 * hash + Objects.hashCode(this.exittime);
-	hash = 97 * hash + Objects.hashCode(this.exitgateid);
+	hash = 97 * hash + Objects.hashCode(this.exitgate);
 	return hash;
   }
 
@@ -126,13 +130,13 @@ public class History implements Serializable {
 	if (!Objects.equals(this.entrytime, other.entrytime)) {
 	  return false;
 	}
-	if (!Objects.equals(this.entrygateid, other.entrygateid)) {
+	if (!Objects.equals(this.entrygate, other.entrygate)) {
 	  return false;
 	}
 	if (!Objects.equals(this.exittime, other.exittime)) {
 	  return false;
 	}
-	if (!Objects.equals(this.exitgateid, other.exitgateid)) {
+	if (!Objects.equals(this.exitgate, other.exitgate)) {
 	  return false;
 	}
 	return true;
@@ -140,7 +144,7 @@ public class History implements Serializable {
 
   @Override
   public String toString() {
-	return "History{" + "id=" + id + ", cardid=" + cardid + ", entrytime=" + entrytime + ", entrygateid=" + entrygateid + ", exittime=" + exittime + ", exitgateid=" + exitgateid + '}';
+	return "History{" + "id=" + id + ", cardid=" + cardid + ", entrytime=" + entrytime + ", entrygateid=" + entrygate + ", exittime=" + exittime + ", exitgateid=" + exitgate + '}';
   }
   
   

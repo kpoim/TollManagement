@@ -127,7 +127,12 @@ INSERT INTO user(username, password, rid) VALUES
 
 INSERT INTO terminal VALUES (16),(17);
 
-DROP TABLE terminal;
+-- DROP TABLE terminal;
 SELECT * FROM user;
 
 SELECT * FROM ongoing_logs;
+SELECT * FROM terminal;
+select * from gate;
+
+SET SQL_SAFE_UPDATES = 1;
+UPDATE gate SET employeeid = null;

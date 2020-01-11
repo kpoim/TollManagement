@@ -53,8 +53,8 @@ public class PassageServiceImpl implements PassageService {
 //	User terminal = (User)auth.getAuthentication().getPrincipal();
 	MyUserDetails principal = (MyUserDetails)auth.getAuthentication().getPrincipal();
 	Terminal terminal = (Terminal) principal.getUser();
-	System.out.println("PSI TERMINAL: "+terminal);
-	System.out.println("PSI EXIT GATE: " + terminal.getGate());
+//	System.out.println("PSI TERMINAL: "+terminal);
+//	System.out.println("PSI EXIT GATE: " + terminal.getGate());
 //	terminalid must be the same as gateid
 //	Until the logic is implemented, terminal users must have usernames like
 //  "terminal33" or "terminal6", to be able to extract gateid
