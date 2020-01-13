@@ -44,4 +44,10 @@ public class RestApiController {
 	Employee employee = (Employee) principal.getUser();
 	return ResponseEntity.ok().body(gateService.addEmployee(id, employee));
   }
+  
+  @GetMapping("/remove-from-gate/{id}")
+  public ResponseEntity<Boolean> removeEmployeeFromGate(@PathVariable("id") String id){
+	System.out.println("------->  REMOVE EMPLOYEE FROM GATE " + id);
+	return ResponseEntity.ok().body(true);
+  }
 }

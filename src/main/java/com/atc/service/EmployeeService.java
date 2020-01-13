@@ -11,7 +11,7 @@ public interface EmployeeService {
     
     Employee findById(Integer id);
     
-    public void addOrUpdate(Employee e);
+    public void add(Employee e);
     
     public void delete(int id);
 }

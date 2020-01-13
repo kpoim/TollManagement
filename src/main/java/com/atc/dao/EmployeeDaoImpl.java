@@ -17,8 +17,8 @@ public class EmployeeDaoImpl extends SuperDao implements EmployeeDao{
     }
 
     @Override
-    public void addOrUpdate(Employee e) {
-        getSession().saveOrUpdate(e);
+    public void add(Employee e) {
+        getSession().save(e);
     }
 
     @Override

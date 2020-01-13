@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class ProClient extends Client {
 
     @Column(name = "proafm")
-    private int proafm;
+    private Long proafm;
     @Column(name = "companyname")
     private String companyName ;
     private String phone;
@@ -20,7 +20,7 @@ public class ProClient extends Client {
   public ProClient() {
   }
 
-  public ProClient(int proafm, String companyName, String phone, String address, String email, Integer clientId, String username, String password, Role role) {
+  public ProClient(Long proafm, String companyName, String phone, String address, String email, Integer clientId, String username, String password, Role role) {
 	super(clientId, username, password, role);
 	this.proafm = proafm;
 	this.companyName = companyName;
@@ -29,7 +29,7 @@ public class ProClient extends Client {
 	this.email = email;
   }
 
-  public ProClient(int proafm, String companyName, String phone, String address, String email, Integer clientId, Integer id, String username, String password, Role role) {
+  public ProClient(Long proafm, String companyName, String phone, String address, String email, Integer clientId, Integer id, String username, String password, Role role) {
 	super(clientId, id, username, password, role);
 	this.proafm = proafm;
 	this.companyName = companyName;
@@ -38,11 +38,11 @@ public class ProClient extends Client {
 	this.email = email;
   }
 
-  public int getProafm() {
+  public Long getProafm() {
 	return proafm;
   }
 
-  public void setProafm(int proafm) {
+  public void setProafm(Long proafm) {
 	this.proafm = proafm;
   }
 
@@ -81,7 +81,7 @@ public class ProClient extends Client {
   @Override
   public int hashCode() {
 	int hash = 5;
-	hash = 47 * hash + this.proafm;
+	hash = 47 * hash + Objects.hashCode(this.proafm);
 	hash = 47 * hash + Objects.hashCode(this.companyName);
 	hash = 47 * hash + Objects.hashCode(this.phone);
 	hash = 47 * hash + Objects.hashCode(this.address);
@@ -101,7 +101,7 @@ public class ProClient extends Client {
 	  return false;
 	}
 	final ProClient other = (ProClient) obj;
-	if (this.proafm != other.proafm) {
+	if (!Objects.equals(this.proafm, other.proafm)) {
 	  return false;
 	}
 	if (!Objects.equals(this.companyName, other.companyName)) {
