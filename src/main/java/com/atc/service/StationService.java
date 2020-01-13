@@ -5,11 +5,11 @@ import java.util.List;
 
 public interface StationService {
 
-    List<Station> getAllStations();
+    List<Station> findAll();
 
-    public void createOrUpdateStation(Station s);
+    public void addOrUpdate(Station s);
 
-    public Station findStationById(Integer id);
+    public Station findById(Integer id);
 
-    public void deleteStation(int id);
+    public void delete(int id);
 }

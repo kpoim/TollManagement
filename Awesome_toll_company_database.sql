@@ -1,7 +1,7 @@
 create database if not exists awesome_toll_company
 default character set utf8mb4;
 
--- DROP SCHEMA awesome_toll_company;
+DROP SCHEMA awesome_toll_company;
 
 use awesome_toll_company;
 
@@ -23,9 +23,6 @@ CREATE TABLE terminal (
     REFEReNCES gate(gateid)
 );
 
-
-
-
 create table retail_clients (
 id INT UNSIGNED NOT NULL  primary key ,
 retailafm bigint unsigned,
@@ -44,7 +41,6 @@ phone VARCHAR(15),
 address varchar(100),
 email varchar(50)
 );
-
 
 create table road (
 roadid int unsigned auto_increment primary key,

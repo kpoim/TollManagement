@@ -10,7 +10,7 @@ public class GateDaoImpl extends SuperDao implements GateDao {
 
   @Override
   public List<Gate> findAll() {
-	return getSession().createQuery("from Gate").getResultList();
+	return getSession().createQuery("FROM Gate").getResultList();
   }
 
   @Override
@@ -26,5 +26,16 @@ public class GateDaoImpl extends SuperDao implements GateDao {
   public List<Gate> findEntryGatesByStationId(Integer id) {
 	return getSession().createQuery("SELECT g FROM Gate g WHERE g.isEntry = 0 AND g.station = :id").setParameter("id", id).getResultList();
   }
+
+    @Override
+    public void addOrUpdate(Gate g) {
+        getSession().saveOrUpdate(g);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        Gate g = getSession().getReference(Gate.class, id);
+        getSession().delete(g);
+    }
   
 }

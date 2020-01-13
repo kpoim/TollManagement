@@ -9,7 +9,7 @@ public interface RoadDao {
     
     List<Road> findAll();
 
-    public void createOrUpdate(Road r);
+    public void addOrUpdate(Road r);
 
     public Road findById(Integer id);
 

@@ -13,5 +13,9 @@ public interface GateService {
   public List<Gate> findEntryGatesByStationId(String id);
   
   boolean addEmployee(String gateIndex, Employee employee);
+
+    public void addOrUpdate(Gate g);
+
+    public void delete(Integer id);
   
 }

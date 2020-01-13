@@ -7,11 +7,12 @@ import java.util.List;
 
 public interface RoadService {
     
-    List<Road> getAllRoads();
+    List<Road> findAll();
 
-    public void createOrUpdateRoad(Road r);
+    public void addOrUpdate(Road r);
 
-    public Road findRoadById(Integer id);
+    public Road findById(Integer id);
 
-    public void deleteRoad(int id);
+    public void delete(int id);
+    
 }

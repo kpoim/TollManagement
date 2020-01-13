@@ -28,7 +28,7 @@ public class RestApiController {
   
   @GetMapping("/get-stations")
   public ResponseEntity<List<Station>> getStations(){
-	List<Station> stations = stationService.getAllStations();
+	List<Station> stations = stationService.findAll();
 	return ResponseEntity.ok().body(stations);
   }
   

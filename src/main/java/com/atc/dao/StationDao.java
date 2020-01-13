@@ -7,7 +7,7 @@ public interface StationDao {
   
   List<Station> findAll();
 
-    public void createOrUpdate(Station s);
+    public void addOrUpdate(Station s);
 
     public Station findById(Integer id);
 

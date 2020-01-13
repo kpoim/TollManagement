@@ -130,4 +130,7 @@ INSERT INTO terminal VALUES (16),(17);
 DROP TABLE terminal;
 SELECT * FROM user;
 
+SELECT * FROM gate;
+DELETE FROM gate WHERE gateid=19;
+
 SELECT * FROM ongoing_logs;

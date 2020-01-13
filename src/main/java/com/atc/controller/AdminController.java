@@ -13,10 +13,4 @@ public class AdminController {
 	return "admin/home";
   }
   
-  @GetMapping("/manageGate")
-  public String manageGate(){
-	return "admin/manageGate";
-  }
-  
-  
 }

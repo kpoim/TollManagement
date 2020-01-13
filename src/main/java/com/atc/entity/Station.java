@@ -32,7 +32,7 @@ public class Station implements Serializable{
     private String stationName;
     @Column(name = "distance")
     private Double distance;
-    @ManyToOne( fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(optional=false, fetch = FetchType.LAZY)
     @JoinColumn(name = "roadid")
     //@JsonIgnoreProperties("stations")
     @JsonBackReference

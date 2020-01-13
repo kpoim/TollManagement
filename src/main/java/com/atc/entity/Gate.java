@@ -8,6 +8,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,10 +23,11 @@ public class Gate implements Serializable {
 
   @Id
   @Column(name = "gateid")
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Integer id;
   @Column(name = "gateno")
   private Integer gateNo;
-  @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @ManyToOne(optional = false, fetch = FetchType.LAZY)
   @JoinColumn(name = "stationid", referencedColumnName = "stationid")
   @JsonBackReference
   private Station station;

@@ -10,5 +10,9 @@ public interface GateDao {
   List<Gate> findEntryGatesByStationId(Integer id);
 
   Gate findById(Integer id);
+
+    public void addOrUpdate(Gate g);
+
+    public void delete(Integer id);
   
 }

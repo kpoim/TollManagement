@@ -17,7 +17,7 @@ public class RoadDaoImpl extends SuperDao implements RoadDao{
     }
 
     @Override
-    public void createOrUpdate(Road r) {
+    public void addOrUpdate(Road r) {
         getSession().saveOrUpdate(r);
     }
 

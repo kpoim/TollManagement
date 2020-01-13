@@ -15,22 +15,22 @@ public class StationServiceImpl implements StationService {
     StationDao sdao;
 
     @Override
-    public List<Station> getAllStations() {
+    public List<Station> findAll() {
         return sdao.findAll();
     }
 
     @Override
-    public void createOrUpdateStation(Station s) {
-        sdao.createOrUpdate(s);
+    public void addOrUpdate(Station s) {
+        sdao.addOrUpdate(s);
     }
 
     @Override
-    public Station findStationById(Integer id) {
+    public Station findById(Integer id) {
         return sdao.findById(id);
     }
 
     @Override
-    public void deleteStation(int id) {
+    public void delete(int id) {
         sdao.delete(id);
     }
     

@@ -5,29 +5,35 @@ import com.atc.dao.RoadDao;
 import com.atc.entity.Road;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-
+@Service
+@Transactional
 public class RoadServiceImpl implements RoadService{
+    
     @Autowired
     RoadDao rdao;
 
     @Override
-    public List<Road> getAllRoads() {
+    public List<Road> findAll() {
         return rdao.findAll();
     }
 
     @Override
-    public void createOrUpdateRoad(Road r) {
-        rdao.createOrUpdate(r);
+    public void addOrUpdate(Road r) {
+        rdao.addOrUpdate(r);
     }
 
     @Override
-    public Road findRoadById(Integer id) {
+    public Road findById(Integer id) {
         return rdao.findById(id);
     }
 
     @Override
-    public void deleteRoad(int id) {
+    public void delete(int id) {
         rdao.delete(id);
     }
+
+    
 }

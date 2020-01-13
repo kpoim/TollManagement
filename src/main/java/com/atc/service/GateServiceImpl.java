@@ -45,4 +45,14 @@ public class GateServiceImpl implements GateService {
 	return true;
   }
 
+    @Override
+    public void addOrUpdate(Gate g) {
+       dao.addOrUpdate(g);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        dao.delete(id);
+    }
+
 }

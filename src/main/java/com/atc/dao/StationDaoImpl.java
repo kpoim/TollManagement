@@ -10,14 +10,14 @@ public class StationDaoImpl extends SuperDao implements StationDao {
 
   @Override
     public List<Station> findAll() {
-        Query q = getSession().createQuery("from Station");
+        Query q = getSession().createQuery("FROM Station");
         List<Station> list = q.getResultList();
 		System.out.println(list);
         return list;
     }
 
     @Override
-    public void createOrUpdate(Station s) {
+    public void addOrUpdate(Station s) {
         getSession().saveOrUpdate(s);
     }
 
