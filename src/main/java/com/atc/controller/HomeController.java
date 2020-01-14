@@ -51,5 +51,12 @@ public class HomeController {
 	return "redirect:/";
   }
 
+  
+  @GetMapping("/paypal")
+    public String listEmployee(Model m) {
+        
+        return "paypal";
+    }
+
 
 }
