@@ -3,11 +3,17 @@ function initialize(e) {
     const gateId = e.target.value;
     showMainContainer();
     startEmployeeShift(gateId);
+    console.log(`--> LISTENING ON GATE ${gateId}`);
+    window.onbeforeunload = (e) => logoutAndRemoveFromGate(e, gateId);
+//    window.addEventListener("beforeunload", e => {
+//
+//    })
+}
 
-    window.addEventListener("beforeunload", e => {
-        e.preventDefault();
-        fetch(`${contextPath}/employee-api/remove-from-gate/${gateId}`);
-    })
+function logoutAndRemoveFromGate(e, gateId) {
+    e.preventDefault();
+    fetch(`${contextPath}/employee-api/remove-from-gate/${gateId}`);
+    fetch(`${contextPath}/logout`, {method: "post"});
 }
 
 function fetchStations() {
