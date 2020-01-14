@@ -63,4 +63,11 @@ public class GateServiceImpl implements GateService {
         dao.delete(id);
     }
 
+  @Override
+  public void removeEmployeeFromGate(String id) {
+	Gate gate = dao.findById(Integer.parseInt(id));
+	gate.setEmployee(null);
+	dao.removeEmployeeFromGate(gate);
+  }
+
 }

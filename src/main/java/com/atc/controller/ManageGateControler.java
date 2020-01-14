@@ -2,7 +2,10 @@
 package com.atc.controller;
 
 import com.atc.entity.Gate;
+import com.atc.entity.WrapperGateTerminal;
 import com.atc.service.GateService;
+import com.atc.service.TerminalService;
+import com.atc.service.UserService;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,9 @@ public class ManageGateControler {
     @Autowired
     GateService service;
     
+    @Autowired
+    TerminalService serv;
+    
     @GetMapping
     public String adminHome() {
         return "admin/manageGate/home";
@@ -36,16 +42,17 @@ public class ManageGateControler {
     }
     
     @RequestMapping(value = "/create" , method = RequestMethod.GET)
-    public String showForm(@ModelAttribute("gate") Gate g){
+    public String showForm(@ModelAttribute("wrapperGateTerminal") WrapperGateTerminal w){
         return "admin/manageGate/formGate";
     }
     
     @PostMapping("/create")
-    public String createOrUpdate(@Valid Gate g, BindingResult result){
+    public String create(@Valid WrapperGateTerminal w, BindingResult result){
         if(result.hasErrors()){
             return "formGate";
         }
-        service.addOrUpdate(g);
+        service.addOrUpdate(w.getGate());
+        serv.addOrUpdate(w.getTerminal());
         return "redirect:/admin/manage-gate/list";
     }
     
@@ -53,8 +60,18 @@ public class ManageGateControler {
     public String showUpdateForm (@RequestParam("gateId") String id, Model model){
         Gate g = service.findById(id);
         model.addAttribute("gate", g);
-        return "admin/manageGate/formGate";
+        return "admin/manageGate/formUpdateGate";
     }
+    
+    @PostMapping("/update")
+    public String update(@Valid Gate g, BindingResult result){
+        if(result.hasErrors()){
+            return "formGate";
+        }
+        service.addOrUpdate(g);
+        return "redirect:/admin/manage-gate/list";
+    }
+    
     
     @GetMapping("/delete")
     public String delete(@RequestParam("gateId") Integer id){

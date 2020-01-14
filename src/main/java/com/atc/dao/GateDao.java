@@ -9,13 +9,14 @@ public interface GateDao {
   List<Gate> findAll();
 
   Gate findById(Integer id);
+  
+  void addOrUpdate(Gate g);
 
-
-    public void addOrUpdate(Gate g);
-
-    public void delete(Integer id);
+  void delete(Integer id);
 
   List<Gate> findEntryGatesByStationObj(Station station);
+
+  void removeEmployeeFromGate(Gate gate);
 
   
 }
