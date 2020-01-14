@@ -34,11 +34,18 @@
 
         <label for="value" class="col-sm-8 col-form-label">Amount for Donation</label>
         <div class="col-sm-8 mb-4">
-            <input type="number" class="form-control" id="value" name="amount" >
+            <input type="number" class="form-control" id="value" name="amount" value="0.1" min="0.1" >
         </div>
         
 
         <div class="col-sm-8" id="paypal-button-container"></div>
+        <span>
+            paypal email <br>
+            sb-eoduz871419@personal.example.com<br>
+            password<br>
+        !h}j_9PL
+        </span>
+
 
         <!--  <script>
             paypal.Buttons().render('#paypal-button-container');

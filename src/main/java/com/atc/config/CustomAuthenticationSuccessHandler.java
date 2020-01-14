@@ -33,7 +33,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 		  break;
 		case "ROLE_CLIENT":
 		  hsr.getSession(false).setMaxInactiveInterval(1800);
-		  url = "/client";
+		  url = "/user";
 		  break;
 		case "ROLE_EMPLOYEE":
 		  hsr.getSession(false).setMaxInactiveInterval(30600);

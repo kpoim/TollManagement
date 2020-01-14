@@ -1,8 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <c:set var="path" value="${pageContext.request.contextPath}"/>
+    <c:set var="path" value="${pageContext.request.contextPath}" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -50,6 +51,7 @@
             </div>
         </div>
     </nav>
+    <h1>RETAIL CLIENT</h1>
     <section style="margin-top: 100px;">
         <div class="container  pt-3 pb-3 pl-5 pr-5 shadow extra-margin" style="box-sizing: border-box;">
             <div class="row">
@@ -64,18 +66,19 @@
                                 <th scope="col">SSN</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Address</th>
+                                <th scope="col">Phone</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>1645378748</td>
-                                <td>otto@gmail.com</td>
-                                <td>69 Colonial St.
-                                    Neptune, NJ 07753</td>
+                                <td>${ruser.firstname}</td>
+                                <td>${ruser.lastname}</td>
+                                <td>${ruser.retailAfm}</td>
+                                <td>${ruser.email}</td>
+                                <td>${ruser.address}</td>
+                                <td>${ruser.phone}</td>
                                 <td><a href="">Update</a> </td>
                             </tr>
 
