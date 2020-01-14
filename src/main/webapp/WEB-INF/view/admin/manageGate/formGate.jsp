@@ -6,7 +6,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,35 +13,29 @@
         <title>Manage Gate Page</title>
     </head>
     <body>
-        <c:choose>
-            <c:when test="${gate.id ne 0}">
-                <h1>Update Gate</h1>
-            </c:when>
-            <c:otherwise>
-                <h1>Add Gate</h1>
-            </c:otherwise>
-        </c:choose>
-        
+        <h1>Add Gate</h1>
         <form:form 
             action="${pageContext.request.contextPath}/admin/manage-gate/create" 
             method="POST"
-            modelAttribute="gate">
-            <form:hidden path="id"/>
-            Gate Number: : <form:input path="gateNo"/>
-            <form:errors path="gateNo" cssClass="error"/>
+            modelAttribute="wrapperGateTerminal">
+            Gate Number: : <form:input path="gate.gateNo"/>
+            <form:errors path="gate.gateNo" cssClass="error"/>
             <br/>
-            Station Id: : <form:input path="station.id"/>
-            <form:errors path="station.id" cssClass="error"/>
+            Station Id: : <form:input path="gate.station.id"/>
+            <form:errors path="gate.station.id" cssClass="error"/>
             <br/>
-            Employee Id : <form:input path="employee.id"/>
-            <form:errors path="employee.id" cssClass="error"/>
+            Is Entry : <form:input path="gate.isEntry"/>
+            <form:errors path="gate.isEntry" cssClass="error"/>
             <br/>
-            Is Entry : <form:input path="isEntry"/>
-            <form:errors path="isEntry" cssClass="error"/>
+            Username : <form:input path="terminal.username"/>
+            <form:errors path="terminal.username" cssClass="error"/>
+            <br/>
+            Password : <form:input path="terminal.password"/>
+            <form:errors path="terminal.password" cssClass="error"/>
             <br/>
             <input type="submit" value="Submit">
         </form:form>
-            <br/>
-            <a href ="${pageContext.request.contextPath}/admin/manage-gate/list">Return to list</a>
+        <br/>
+        <a href ="${pageContext.request.contextPath}/admin/manage-gate/list">Return to list</a>
     </body>
 </html>
