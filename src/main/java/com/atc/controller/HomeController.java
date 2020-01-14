@@ -20,5 +20,11 @@ public class HomeController {
 //	m.addAttribute("ud", ud);
 	return "misc/landing-page";
   }
+  
+  @GetMapping("/paypal")
+    public String listEmployee(Model m) {
+        
+        return "paypal";
+    }
 
 }
