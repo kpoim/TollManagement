@@ -131,7 +131,7 @@ INSERT INTO terminal VALUES (16),(17);
 SELECT * FROM user;
 
 
-SELECT * FROM gate;
+SELECT * FROM terminal;
 DELETE FROM gate WHERE gateid=19;
 
 SELECT * FROM ongoing_logs;
@@ -142,4 +142,6 @@ select * from gate;
 
 SET SQL_SAFE_UPDATES = 1;
 UPDATE gate SET employeeid = null;
+
+
 
