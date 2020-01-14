@@ -53,7 +53,7 @@ public class HomeController {
 
   
   @GetMapping("/paypal")
-    public String listEmployee(Model m) {
+    public String paypal() {
         
         return "paypal";
     }
