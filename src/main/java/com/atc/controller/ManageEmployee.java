@@ -43,7 +43,7 @@ public class ManageEmployee {
         if(result.hasErrors()){
             return "formEmployee";
         }
-        service.addOrUpdate(e);
+        service.add(e);
         return "redirect:/admin/manage-employee/listEmployee";
     }
 }

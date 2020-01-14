@@ -9,7 +9,7 @@ public interface EmployeeDao {
     
     List<Employee> findAll();
     
-    public void addOrUpdate(Employee e);
+    public void add(Employee e);
     
     public Employee findById(Integer id);
     

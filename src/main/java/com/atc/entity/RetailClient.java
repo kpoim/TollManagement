@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class RetailClient extends Client {
 
     @Column(name = "retailafm")
-    private int retailAfm;
+    private Long retailAfm;
     @Column(name = "firstname")
     private String firstname;
     @Column(name = "lastname")
@@ -26,7 +26,7 @@ public class RetailClient extends Client {
   }
   
 
-  public RetailClient(int retailAfm, String firstname, String lastname, String phone, String address, String email, Integer clientId, String username, String password, Role role) {
+  public RetailClient(Long retailAfm, String firstname, String lastname, String phone, String address, String email, Integer clientId, String username, String password, Role role) {
 	super(clientId, username, password, role);
 	this.retailAfm = retailAfm;
 	this.firstname = firstname;
@@ -36,7 +36,7 @@ public class RetailClient extends Client {
 	this.email = email;
   }
 
-  public RetailClient(int retailAfm, String firstname, String lastname, String phone, String address, String email, Integer clientId, Integer id, String username, String password, Role role) {
+  public RetailClient(Long retailAfm, String firstname, String lastname, String phone, String address, String email, Integer clientId, Integer id, String username, String password, Role role) {
 	super(clientId, id, username, password, role);
 	this.retailAfm = retailAfm;
 	this.firstname = firstname;
@@ -46,11 +46,11 @@ public class RetailClient extends Client {
 	this.email = email;
   }
 
-  public int getRetailAfm() {
+  public Long getRetailAfm() {
 	return retailAfm;
   }
 
-  public void setRetailAfm(int retailAfm) {
+  public void setRetailAfm(Long retailAfm) {
 	this.retailAfm = retailAfm;
   }
 
@@ -97,7 +97,7 @@ public class RetailClient extends Client {
   @Override
   public int hashCode() {
 	int hash = 7;
-	hash = 59 * hash + this.retailAfm;
+	hash = 59 * hash + Objects.hashCode(this.retailAfm);
 	hash = 59 * hash + Objects.hashCode(this.firstname);
 	hash = 59 * hash + Objects.hashCode(this.lastname);
 	hash = 59 * hash + Objects.hashCode(this.phone);
@@ -118,7 +118,7 @@ public class RetailClient extends Client {
 	  return false;
 	}
 	final RetailClient other = (RetailClient) obj;
-	if (this.retailAfm != other.retailAfm) {
+	if (!Objects.equals(this.retailAfm, other.retailAfm)) {
 	  return false;
 	}
 	if (!Objects.equals(this.firstname, other.firstname)) {

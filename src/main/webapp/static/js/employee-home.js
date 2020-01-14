@@ -3,6 +3,11 @@ function initialize(e) {
     const gateId = e.target.value;
     showMainContainer();
     startEmployeeShift(gateId);
+
+    window.addEventListener("beforeunload", e => {
+        e.preventDefault();
+        fetch(`${contextPath}/employee-api/remove-from-gate/${gateId}`);
+    })
 }
 
 function fetchStations() {
@@ -36,7 +41,8 @@ function fetchStations() {
 
 function fetchGatesByStationId(e) {
     const value = e.target.value;
-    if(value === "") return;
+    if (value === "")
+        return;
     const url = `${contextPath}/employee-api/get-gates/entry/by-station/${value}`;
     fetch(url, {cors: 'no-cors'})
             .then(res => res.json())
@@ -96,9 +102,9 @@ function listenForSSE(gateId) {
     }, false);
 }
 
-function startEmployeeShift(gateId){
+function startEmployeeShift(gateId) {
     const url = `${contextPath}/employee-api/add-to-gate/${gateId}`;
-    fetch(url,{cors:'no-cors'})
+    fetch(url, {cors: 'no-cors'})
             .then(res => res.text())
             .then(res => res && listenForSSE(gateId));
 }
