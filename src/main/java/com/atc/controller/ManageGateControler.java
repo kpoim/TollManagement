@@ -66,7 +66,7 @@ public class ManageGateControler {
     @PostMapping("/update")
     public String update(@Valid Gate g, BindingResult result){
         if(result.hasErrors()){
-            return "formGate";
+            return "admin/manageGate/formUpdateGate";
         }
         service.addOrUpdate(g);
         return "redirect:/admin/manage-gate/list";

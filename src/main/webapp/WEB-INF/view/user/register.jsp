@@ -60,12 +60,12 @@
                             <div class="resultDetail proClient">
                                 <label for="proafm">Company AFM</label>
                                 <form:input type="text" class="form-control" path="proafm"/>
-
+                                <form:errors path="proafm" cssClass="error"/>
                             </div>
                             <div class="resultDetail proClient">
                                 <label for="companyName">Company Name</label>
                                 <form:input type="text" class="form-control" path="companyName"/>
-
+                                <form:errors path="companyName" cssClass="error"/>
                             </div>
 
 
@@ -73,14 +73,17 @@
                             <div class="form-group resultDetail proClient">
                                 <label for="phone">phone</label>
                                 <form:input type="text" class="form-control" path="phone"/>
+                                <form:errors path="phone" cssClass="error"/>
                             </div>
                             <div class="form-group resultDetail proClient">
                                 <label for="address">Address</label>
                                 <form:input type="text" class="form-control" path="address"/>
+                                <form:errors path="address" cssClass="error"/>
                             </div>
                             <div class="form-group resultDetail proClient">
                                 <label for="email">Email</label>
                                 <form:input type="text" class="form-control" path="email"/>
+                                <form:errors path="email" cssClass="error"/>
                             </div>
 
                             <button type="submit" class="btn btn-primary resultDetail proClient">Create</button>

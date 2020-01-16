@@ -27,7 +27,8 @@ public class Gate implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "gateno")
-    @NotNull @Min(0)
+    @NotNull (message="This value is required")
+    @Min(value=0, message=" This value can only be a positive integer number")
     private Integer gateNo;
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "stationid", referencedColumnName = "stationid")

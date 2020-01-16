@@ -31,10 +31,11 @@ public class Station implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "stationid")
     private Integer id;
-    @Size(min=4, max=50)
+    @Size(min=4, max=50, message="The name must have at least 4 digits")
     @Column(name = "stationname")
     private String stationName;
-    @NotNull @Min(0)
+    @NotNull(message="This value is required")
+    @Min(value=0, message= "Cannot be a negative number")
     @Column(name = "distance")
     private Double distance;
     @ManyToOne(optional=false, fetch = FetchType.LAZY)
