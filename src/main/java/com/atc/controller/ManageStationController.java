@@ -38,7 +38,7 @@ public class ManageStationController {
     @PostMapping("/create")
     public String createOrUpdate(@Valid Station s, BindingResult result){
         if(result.hasErrors()){
-            return "formStation";
+            return "admin/manageStation/formStation";
         }
         service.addOrUpdate(s);
         return "redirect:/admin/manage-station/list";

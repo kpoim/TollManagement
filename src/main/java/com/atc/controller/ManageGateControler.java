@@ -49,7 +49,7 @@ public class ManageGateControler {
     @PostMapping("/create")
     public String create(@Valid WrapperGateTerminal w, BindingResult result){
         if(result.hasErrors()){
-            return "formGate";
+            return "admin/manageGate/formGate";
         }
         service.addOrUpdate(w.getGate());
         serv.addOrUpdate(w.getTerminal());

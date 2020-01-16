@@ -14,15 +14,6 @@ CREATE TABLE client (
     clientid INT UNSIGNED NOT NULL
 );
 
-CREATE TABLE terminal (
-	id INT UNSIGNED PRIMARY KEY,
-    gateid INT UNSIGNED,
-    UNIQUE(gateid),
-    CONSTRAINT terminal_gateidFK
-    FOREIGN KEY (gateid)
-    REFEReNCES gate(gateid)
-);
-
 create table retail_clients (
 id INT UNSIGNED NOT NULL  primary key ,
 retailafm bigint unsigned,
@@ -71,6 +62,15 @@ employeeid int unsigned,
 isentry TINYINT(1) DEFAULT 0,
 constraint gate_stationFK foreign key (stationid) references station (stationid),
 constraint gate_employeeFK foreign key (employeeid) references employee (id)
+);
+
+CREATE TABLE terminal (
+	id INT UNSIGNED PRIMARY KEY,
+    gateid INT UNSIGNED,
+    UNIQUE(gateid),
+    CONSTRAINT terminal_gateidFK
+    FOREIGN KEY (gateid)
+    REFEReNCES gate(gateid)
 );
 
 create table ongoing_logs (

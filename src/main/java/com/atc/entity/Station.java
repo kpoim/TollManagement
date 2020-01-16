@@ -19,6 +19,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity(name= "Station")
 @Table(name = "station")
@@ -28,8 +31,10 @@ public class Station implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "stationid")
     private Integer id;
+    @Size(min=4, max=50)
     @Column(name = "stationname")
     private String stationName;
+    @NotNull @Min(0)
     @Column(name = "distance")
     private Double distance;
     @ManyToOne(optional=false, fetch = FetchType.LAZY)
