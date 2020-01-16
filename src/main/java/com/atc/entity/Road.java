@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "road")
@@ -22,6 +23,7 @@ public class Road implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "roadid")
     private Integer id;
+    @Size(min=4, max=50)
     @Column(name = "name")
     private String roadName;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "road")

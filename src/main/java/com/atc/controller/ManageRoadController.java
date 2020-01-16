@@ -42,7 +42,7 @@ public class ManageRoadController {
     @PostMapping("/create")
     public String createOrUpdate(@Valid Road r, BindingResult result){
         if(result.hasErrors()){
-            return "formRoad";
+            return "admin/manageRoad/formRoad";
         }
         service.addOrUpdate(r);
         return "redirect:/admin/manage-road/list";

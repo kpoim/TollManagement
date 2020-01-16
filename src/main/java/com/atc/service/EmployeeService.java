@@ -9,9 +9,13 @@ public interface EmployeeService {
     
     List<Employee> findAll();
     
+    List<Employee> findAllEmployees();
+    
     Employee findById(Integer id);
     
     public void add(Employee e);
     
     public void delete(int id);
+
+    public void addOrUpdate(Employee empl);
 }

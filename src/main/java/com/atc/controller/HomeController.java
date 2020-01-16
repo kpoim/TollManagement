@@ -11,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,45 +19,49 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class HomeController {
 
-
-  @GetMapping("/")
-  public String home(Authentication authentication, Principal principal, Model m) {
+    @GetMapping("/")
+    public String home(Authentication authentication, Principal principal, Model m) {
 //	UserDetails ud = (UserDetails) authentication.getPrincipal();
 //	System.out.println(ud.getUsername());
 //	System.out.println(principal.getName());
 //	System.out.println(authentication.getAuthorities().toString());
 //	m.addAttribute("ud", ud);
-	return "misc/landing-page";
-  }
-  
-  @Autowired
-  ProClientService proClientService;
-  
-  @Autowired
-  RetailClientService retailClientService;
-
-  @GetMapping("/register")
-  public String newClientForm(@ModelAttribute("proClient") ProClient proClient ,@ModelAttribute("retailClient") RetailClient retailClient ) {
-	return "user/register";
-  }
-
-  @PostMapping("/newProClient")
-  public String newProClient(@Valid ProClient proClient) {
-	proClientService.create(proClient);
-	return "redirect:/";
-  }
-  @PostMapping("/newRetailClient")
-  public String newRetailClient(@Valid RetailClient retailClient) {
-	retailClientService.create(retailClient);
-	return "redirect:/";
-  }
-
-  
-  @GetMapping("/paypal")
-    public String paypal() {
-        
-        return "paypal";
+        return "misc/landing-page";
     }
 
+    @Autowired
+    ProClientService proClientService;
+
+    @Autowired
+    RetailClientService retailClientService;
+
+    @GetMapping("/register")
+    public String newClientForm(@ModelAttribute("proClient") ProClient proClient, @ModelAttribute("retailClient") RetailClient retailClient) {
+        return "user/register";
+    }
+
+    @PostMapping("/newProClient")
+    public String newProClient(@Valid ProClient proClient, BindingResult result) {
+        if (result.hasErrors()) {
+            return "user/register";
+        }
+        proClientService.create(proClient);
+        return "redirect:/";
+    }
+
+    @PostMapping("/newRetailClient")
+    public String newRetailClient(@Valid RetailClient retailClient, BindingResult result) {
+        if (result.hasErrors()) {
+            return "user/register";
+        }
+        retailClientService.create(retailClient);
+        return "redirect:/";
+    }
+
+    @GetMapping("/paypal")
+    public String paypal() {
+
+        return "paypal";
+    }
 
 }

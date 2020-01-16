@@ -1,23 +1,23 @@
 
-package com.atc.dao;
+package com.atc.service;
 
 import com.atc.entity.Employee;
 import java.util.List;
 
 
-public interface EmployeeDao {
+public interface AdminService {
     
     List<Employee> findAll();
     
     List<Employee> findAllAdmins();
     
-    List<Employee> findAllEmployees();
+    
+    
+    Employee findById(Integer id);
     
     public void add(Employee e);
     
-    public Employee findById(Integer id);
-    
-    public void delete(Integer id);
+    public void delete(int id);
 
     public void addOrUpdate(Employee empl);
 }

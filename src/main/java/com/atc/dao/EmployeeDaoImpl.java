@@ -1,20 +1,41 @@
-
 package com.atc.dao;
 
 import com.atc.entity.Employee;
+import com.atc.entity.User;
 import java.util.List;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class EmployeeDaoImpl extends SuperDao implements EmployeeDao{
+public class EmployeeDaoImpl extends SuperDao implements EmployeeDao {
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public List<Employee> findAll() {
-        Query q = getSession().createQuery("FROM Employee");
+        Query q = getSession().createQuery("FROM Employee ");
         List<Employee> list = q.getResultList();
         return list;
     }
+    
+    //findALl for admins & Employees
+    @Override
+    public List<Employee> findAllAdmins() {
+        Query q = getSession().createQuery("SELECT e FROM Employee e WHERE e.role= 1 ");
+        List<Employee> list = q.getResultList();
+        return list;
+    }
+
+    @Override
+    public List<Employee> findAllEmployees() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    
 
     @Override
     public void add(Employee e) {
@@ -23,7 +44,7 @@ public class EmployeeDaoImpl extends SuperDao implements EmployeeDao{
 
     @Override
     public Employee findById(Integer id) {
-        return (Employee)getSession().get(Employee.class, id);
+        return (Employee) getSession().get(Employee.class, id);
     }
 
     @Override
@@ -31,5 +52,24 @@ public class EmployeeDaoImpl extends SuperDao implements EmployeeDao{
         Employee e = getSession().getReference(Employee.class, id);
         getSession().delete(e);
     }
+
+    @Override
+    public void addOrUpdate(Employee empl) {
+        Query q = getSession().createQuery("SELECT password FROM User u WHERE u.id=:id");
+        q.setParameter("id", empl.getId());
+        List<String> list = q.getResultList();
+        if (!(list.isEmpty())) {
+            System.out.println("-------------------------------------" + list.get(0) + "--------" + (empl.getPassword().equals(list.get(0))));
+            if ((empl.getPassword().equals(list.get(0)))) {
+                getSession().saveOrUpdate(empl);
+            } else {
+                empl.setPassword(passwordEncoder.encode(empl.getPassword()));
+                getSession().saveOrUpdate(empl);
+            }
+
+        }
+        
+    }
+
     
 }

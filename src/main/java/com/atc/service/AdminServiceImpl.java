@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class EmployeeServiceImpl implements EmployeeService {
+public class AdminServiceImpl implements AdminService {
 
   @Autowired
   EmployeeDao edao;
@@ -26,13 +26,14 @@ public class EmployeeServiceImpl implements EmployeeService {
   public List<Employee> findAll() {
 	return edao.findAll();
   }
-
-  @Override
-    public List<Employee> findAllEmployees() {
-        
-           return edao.findAllEmployees();
-    }
   
+  @Override
+    public List<Employee> findAllAdmins() {
+           return edao.findAllAdmins();
+    }
+
+    
+
   @Override
   public Employee findById(Integer id) {
 	return edao.findById(id);
@@ -40,8 +41,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
   @Override
   public void add(Employee e) {
-	e.setRole(roleService.findById("2"));
+	e.setRole(roleService.findById("1"));
 	e.setPassword(passwordEncoder.encode(e.getPassword()));
+        
 	edao.add(e);
   }
 
@@ -57,4 +59,5 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     
+
 }

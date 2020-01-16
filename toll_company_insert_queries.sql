@@ -125,10 +125,11 @@ INSERT INTO user(username, password, rid) VALUES
 ('terminal2', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
 ('terminal7', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4);
 
-INSERT INTO terminal VALUES (16),(17);
+INSERT INTO terminal VALUES (16,2),(17,7);
 
 -- DROP TABLE terminal;
 SELECT * FROM user;
+DELETE FROM user WHERE id=23;
 
 
 SELECT * FROM terminal;
@@ -143,5 +144,6 @@ select * from gate;
 SET SQL_SAFE_UPDATES = 1;
 UPDATE gate SET employeeid = null;
 
-
+SELECT * FROM pro_clients;
+DELETE FROM pro_clients WHERE id=24;
 

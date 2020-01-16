@@ -14,21 +14,24 @@
     </head>
     <body>
         <h1>List of Employee</h1>
-        <a href="${pageContext.request.contextPath}/admin/manage-employee/create">Add Employee</a>
+        <a href="${pageContext.request.contextPath}/admin/create">Add Admin</a>
         <table border="1">
-            <c:forEach items="${listOfEmployee}" var="e">
+            <c:forEach items="${listOfAdmin}" var="admin">
                  
                 <tr>
-                    <td>${e.fname}</td>
-                    <td>${e.lname}</td>
-                    <td>${e.phone}</td>
-                    <td>${e.email}</td>
+                    
+                    <td>${admin.fname}</td>
+                    <td>${admin.lname}</td>
+                    <td>${admin.phone}</td>
+                    <td>${admin.email}</td>
+                    <td>${admin.role.rname}</td>
                     <td>
-                        <a href="${pageContext.request.contextPath}/admin/manage-employee/update/${e.id}">Update</a>
+                        <a href="${pageContext.request.contextPath}/admin/update/${admin.id}">Update</a>
                     </td>
                     <td>
-                        <a href="${pageContext.request.contextPath}/admin/manage-employee/delete/${e.id}">Delete</a>
+                        <a href="${pageContext.request.contextPath}/admin/delete/${admin.id}">Delete</a>
                     </td>
+                    
                 </tr>
             </c:forEach>
         </table>
