@@ -4,17 +4,29 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "pro_clients")
 public class ProClient extends Client {
-
+    
+    @NotNull(message="AFM cannot be null") 
+    @Min(value=9, message="AFM must have more than 9 digits")
+    @Max(value=10, message="AFM must not have more 10 digits")
     @Column(name = "proafm")
     private Long proafm;
+    @Size(min=3, max=100, message="The company name must be within 3 and 100 characters")
     @Column(name = "companyname")
     private String companyName ;
+//    @Min(value=10, message="Must be at least 10 digits")
     private String phone;
+    @Size(min=5, max=50, message="The address must be within 5 and 50 characters")
     private String address;
+    @Email(message="not a valid email address")
     private String email ;
 
   public ProClient() {

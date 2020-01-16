@@ -1,10 +1,13 @@
 
 package com.atc.entity;
 
+import javax.validation.Valid;
+
 
 public class WrapperGateTerminal {
-    
+    @Valid
     private Gate gate;
+    @Valid
     private Terminal terminal;
     
     public WrapperGateTerminal(){

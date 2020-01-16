@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.Type;
 
 @Entity
@@ -25,6 +27,8 @@ public class Gate implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "gateno")
+    @NotNull (message="This value is required")
+    @Min(value=0, message=" This value can only be a positive integer number")
     private Integer gateNo;
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "stationid", referencedColumnName = "stationid")
