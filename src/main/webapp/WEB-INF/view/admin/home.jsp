@@ -67,7 +67,10 @@
                 <div class="row">
                     <div class="col-12 border border-dark bg-light shadow">
                         <h2>Admin Panel</h2>
-                        <p>Admin name :</p>
+                        <p>Admin  Name : ${admin.fname}  ${admin.lname}</p>
+                        
+                        <a href="${path}/admin/manageAdmin/update/${admin.id}"> Manage your account </a>
+                        <a href="${path}/admin/list-admin"> List of All employees </a>
                         <div class="mt-3">
                             <p><a href="/ATR/admin/manageEmployee.html">Manage Employee</a> | <a href="/ATR/admin/manageStation.html">Manage Station</a> | <a href="/ATR/admin/manageRoad.html">Manage Road</a> | <a href="/ATR/admin/manageGate.html">Manage Gate</a></p>
 
