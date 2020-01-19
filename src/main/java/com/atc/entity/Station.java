@@ -40,7 +40,7 @@ public class Station implements Serializable {
   @Column(name = "latitude")
   private BigDecimal latitude;
   @Column(name = "longtitude")
-  private BigDecimal longtitude;
+  private BigDecimal longitude;
   @ManyToOne(optional = false, fetch = FetchType.LAZY)
   @JoinColumn(name = "roadid")
   //@JsonIgnoreProperties("stations")
@@ -54,12 +54,12 @@ public class Station implements Serializable {
   public Station() {
   }
 
-  public Station(Integer id, String stationName, Double distance, BigDecimal latitude, BigDecimal longtitude, Road road, List<Gate> gates) {
+  public Station(Integer id, String stationName, Double distance, BigDecimal latitude, BigDecimal longitude, Road road, List<Gate> gates) {
 	this.id = id;
 	this.stationName = stationName;
 	this.distance = distance;
 	this.latitude = latitude;
-	this.longtitude = longtitude;
+	this.longitude = longitude;
 	this.road = road;
 	this.gates = gates;
   }
@@ -73,11 +73,11 @@ public class Station implements Serializable {
   }
 
   public BigDecimal getLongtitude() {
-	return longtitude;
+	return longitude;
   }
 
-  public void setLongtitude(BigDecimal longtitude) {
-	this.longtitude = longtitude;
+  public void setLongtitude(BigDecimal longitude) {
+	this.longitude = longitude;
   }
 
   public Integer getId() {
@@ -127,7 +127,7 @@ public class Station implements Serializable {
 	hash = 97 * hash + Objects.hashCode(this.stationName);
 	hash = 97 * hash + Objects.hashCode(this.distance);
 	hash = 97 * hash + Objects.hashCode(this.latitude);
-	hash = 97 * hash + Objects.hashCode(this.longtitude);
+	hash = 97 * hash + Objects.hashCode(this.longitude);
 	return hash;
   }
 
@@ -155,7 +155,7 @@ public class Station implements Serializable {
 	if (!Objects.equals(this.latitude, other.latitude)) {
 	  return false;
 	}
-	if (!Objects.equals(this.longtitude, other.longtitude)) {
+	if (!Objects.equals(this.longitude, other.longitude)) {
 	  return false;
 	}
 	return true;
@@ -163,7 +163,7 @@ public class Station implements Serializable {
 
   @Override
   public String toString() {
-	return "Station{" + "id=" + id + ", stationName=" + stationName + ", distance=" + distance + ", latitude=" + latitude + ", longtitude=" + longtitude + '}';
+	return "Station{" + "id=" + id + ", stationName=" + stationName + ", distance=" + distance + ", latitude=" + latitude + ", longitude=" + longitude + '}';
   }
 
 }

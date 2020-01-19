@@ -92,12 +92,12 @@
                             <div class="form-group resultDetail retailClient">
                                 <label for="username">Username</label>
                                 <form:input type="text" class="form-control" path="username"/>
-
+                                <form:errors path="username" cssClass="error"/>
                             </div>
                             <div class="form-group resultDetail retailClient">
                                 <label for="password">Password</label>
                                 <form:input type="password" class="form-control" path="password"/>
-
+                                <form:errors path="password" cssClass="error"/>
                             </div>
                             <div class="form-group resultDetail retailClient">
 
@@ -109,17 +109,17 @@
                             <div class="resultDetail retailClient">
                                 <label for="retailAfm">AFM</label>
                                 <form:input type="text" class="form-control" path="retailAfm"/>
-
+                                <form:errors path="retailAfm" cssClass="error"/>
                             </div>
                             <div class="resultDetail retailClient">
                                 <label for="firstname">First Name</label>
                                 <form:input type="text" class="form-control" path="firstname"/>
-
+                                <form:errors path="firstname" cssClass="error"/>
                             </div>
                             <div class="resultDetail retailClient">
                                 <label for="lastname">Last name</label>
                                 <form:input type="text" class="form-control" path="lastname"/>
-
+                                <form:errors path="lastname" cssClass="error"/>
                             </div>
 
 
@@ -127,14 +127,17 @@
                             <div class="form-group resultDetail retailClient">
                                 <label for="phone">phone</label>
                                 <form:input type="text" class="form-control" path="phone"/>
+                                <form:errors path="phone" cssClass="error"/>
                             </div>
                             <div class="form-group resultDetail retailClient">
                                 <label for="address">Address</label>
                                 <form:input type="text" class="form-control" path="address"/>
+                                <form:errors path="address" cssClass="error"/>
                             </div>
                             <div class="form-group resultDetail retailClient">
                                 Email
                                 <form:input type="text" class="form-control" path="email"/>
+                                <form:errors path="email" cssClass="error"/>
                             </div>
 
                             <button type="submit" class="btn btn-primary resultDetail retailClient">Create</button>

@@ -7,9 +7,9 @@ public interface StationService {
 
     List<Station> findAll();
 
-    public void addOrUpdate(Station s);
+    void addOrUpdate(Station s);
 
-    public Station findById(Integer id);
+    Station findById(Integer id);
 
-    public void delete(int id);
+    void delete(int id);
 }

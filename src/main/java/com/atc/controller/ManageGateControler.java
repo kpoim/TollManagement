@@ -2,10 +2,10 @@
 package com.atc.controller;
 
 import com.atc.entity.Gate;
+import com.atc.entity.Terminal;
 import com.atc.entity.WrapperGateTerminal;
 import com.atc.service.GateService;
 import com.atc.service.TerminalService;
-import com.atc.service.UserService;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +24,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ManageGateControler {
     
     @Autowired
-    GateService service;
+    GateService gateService;
     
     @Autowired
-    TerminalService serv;
+    TerminalService terminalService;
     
     @GetMapping
     public String adminHome() {
@@ -36,7 +36,7 @@ public class ManageGateControler {
 
     @GetMapping("/list")
     public String listGate(Model m) {
-        List<Gate> list = service.findAll();
+        List<Gate> list = gateService.findAll();
         m.addAttribute("listOfGate", list);
         return "admin/manageGate/listGate";
     }
@@ -51,14 +51,17 @@ public class ManageGateControler {
         if(result.hasErrors()){
             return "admin/manageGate/formGate";
         }
-        service.addOrUpdate(w.getGate());
-        serv.addOrUpdate(w.getTerminal());
+        gateService.addOrUpdate(w.getGate());
+        Terminal terminal= w.getTerminal();
+        terminal.setGate(w.getGate());
+        terminalService.addOrUpdate(terminal);
+        //Adding gateId to Terminal
         return "redirect:/admin/manage-gate/list";
     }
     
     @GetMapping("/update")
     public String showUpdateForm (@RequestParam("gateId") String id, Model model){
-        Gate g = service.findById(id);
+        Gate g = gateService.findById(id);
         model.addAttribute("gate", g);
         return "admin/manageGate/formUpdateGate";
     }
@@ -68,14 +71,16 @@ public class ManageGateControler {
         if(result.hasErrors()){
             return "admin/manageGate/formUpdateGate";
         }
-        service.addOrUpdate(g);
+        gateService.addOrUpdate(g);
         return "redirect:/admin/manage-gate/list";
     }
     
     
     @GetMapping("/delete")
-    public String delete(@RequestParam("gateId") Integer id){
-        service.delete(id);
+    public String delete(@RequestParam("gateId") String id){
+        Gate g = gateService.findById(id);
+        Terminal t = terminalService.findByGateId(g);
+        terminalService.delete(t); 
         return "redirect:/admin/manage-gate/list";
     }
     

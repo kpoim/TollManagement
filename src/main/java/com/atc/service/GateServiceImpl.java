@@ -59,8 +59,8 @@ public class GateServiceImpl implements GateService {
     }
 
     @Override
-    public void delete(Integer id) {
-        dao.delete(id);
+    public void delete(Gate g) {
+        dao.delete(g);
     }
 
   @Override
@@ -69,5 +69,10 @@ public class GateServiceImpl implements GateService {
 	gate.setEmployee(null);
 	dao.removeEmployeeFromGate(gate);
   }
+
+    @Override
+    public Gate findById(Integer id) {
+        return dao.findById(id);
+    }
 
 }

@@ -13,9 +13,9 @@ public interface EmployeeService {
     
     Employee findById(Integer id);
     
-    public void add(Employee e);
+    void add(Employee e);
     
-    public void delete(int id);
+    void delete(int id);
 
-    public void addOrUpdate(Employee empl);
+    void addOrUpdate(Employee empl);
 }
