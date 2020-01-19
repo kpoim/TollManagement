@@ -1,6 +1,7 @@
 package com.atc.config;
 
 import com.atc.service.UserService;
+import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -10,6 +11,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @EnableWebSecurity
 public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
@@ -31,8 +36,11 @@ public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 		.antMatchers("/admin/**").hasRole("ADMIN")
 		.antMatchers("/employee/**").hasRole("EMPLOYEE")
 		.antMatchers("/user/**").hasRole("CLIENT")
+//		.antMatchers("/terminal-api/**").hasRole("TERMINAL")
 		.antMatchers("/card/*").hasAnyRole("TERMINAL", "CLIENT")
-		.antMatchers("/").permitAll()
+		.antMatchers("/**").permitAll()
+		.and()
+		.cors()
 		.and()
 		.formLogin()
 		.successHandler(successHandler)
@@ -40,6 +48,16 @@ public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 		.permitAll()
 		.and().logout().permitAll()
 		.and().exceptionHandling().accessDeniedPage("/access-denied");
+  }
+  
+  @Bean
+  CorsConfigurationSource corsConfigurationSource() {
+      CorsConfiguration configuration = new CorsConfiguration();
+      configuration.setAllowedOrigins(Arrays.asList("*"));
+      configuration.setAllowedMethods(Arrays.asList("GET","POST"));
+      UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+      source.registerCorsConfiguration("/**", configuration);
+      return source;
   }
 
   @Bean

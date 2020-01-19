@@ -112,6 +112,11 @@ CREATE TABLE user (
     CONSTRAINT roleFK FOREIGN KEY (rid) REFERENCES role(rid)
 );
 
+CREATE TABLE geometry (
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    geometry VARCHAR(500)
+);
+
 -- DELIMITER $
 -- create trigger copy_history
 -- before insert 

@@ -97,12 +97,49 @@
 
                                             console.log(data);
                                             createMap(data.routes[0].geometry);
-                                            fetch(contextPath + "/terminal-api/store-geometry/${history.id}", {
-                                                method: "post",
+                                            fetch(contextPath + "/terminal-api/return-json", {
+                                                method: "GET",
                                                 headers: {
-                                                    'Content-Type': 'application/json'
+                                                    'Content-Type': 'application/json; charset=UTF-8'
+                                                }
+                                            })
+                                                    .then(res => res.json())
+                                                    .then(res => {
+                                                        console.log("RESPONSE: " + res);
+                                                        fetch(contextPath + "/terminal-api/store-json", {
+                                                            method: "POST",
+                                                            headers: {
+                                                                'Content-Type': 'application/json; charset=UTF-8'
+                                                            },
+                                                            body: JSON.stringify(["res.geometry"])
+                                                        })
+                                                                .then(res => res.text())
+                                                                .then(res => console.log("RESPONSE: " + res))
+                                                                .catch(err => console.error(err));
+                                                    })
+                                                    .catch(err => console.error(err));
+
+
+//                                            fetch(contextPath + "/terminal-api/store-json", {
+//                                                method: "POST",
+//                                                headers: {
+//                                                    'Content-Type': 'application/json; charset=UTF-8'
+//                                                },
+////                                                body: JSON.stringify({'geometry': 'alifhbnsfbilnkl'})
+//                                                body: JSON.stringify(['hello world'])
+//                                            })
+//                                                    .then(res => res.text())
+//                                                    .then(res => console.log("RESPONSE: " + res))
+//                                                    .catch(err => console.error(err));
+
+
+                                            fetch(contextPath + "/terminal-api/store-geometry/${history.id}", {
+                                                method: 'POST',
+                                                headers: {
+                                                    'Content-Type': 'application/json; charset=UTF-8'
                                                 },
-                                                body: JSON.stringify(data.routes[0].geometry)
+//                                                body: JSON.stringify({'geometry': 'alifhbnsfbilnkl'})
+                                                body: JSON.stringify({'id': 1, 'geometry': data.routes[0].geometry})
                                             })
 //                                            createMap(osrmJSON.routes[0].geometry);
                                         })
