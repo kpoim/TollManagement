@@ -7,7 +7,7 @@
     </head>
     <body>
         <h1>This page is forbidden</h1>
-        <h3>This is Spring Security baby!!!</h3>
+        <h3>You have to login first</h3>
         <a href="${pageContext.request.contextPath}/">Home Page</a>
     </body>
 </html>

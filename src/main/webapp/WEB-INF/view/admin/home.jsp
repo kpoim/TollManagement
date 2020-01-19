@@ -71,6 +71,7 @@
                         
                         <a href="${path}/admin/manageAdmin/update/${admin.id}"> Manage your account </a>
                         <a href="${path}/admin/list-admin"> List of All employees </a>
+                        <a href="${path}/admin/change-password-form/${admin.id}"> Change Password </a>
                         <div class="mt-3">
                             <p><a href="/ATR/admin/manageEmployee.html">Manage Employee</a> | <a href="/ATR/admin/manageStation.html">Manage Station</a> | <a href="/ATR/admin/manageRoad.html">Manage Road</a> | <a href="/ATR/admin/manageGate.html">Manage Gate</a></p>
 

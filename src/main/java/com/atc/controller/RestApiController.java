@@ -2,11 +2,14 @@ package com.atc.controller;
 
 import com.atc.components.AuthenticationFacade;
 import com.atc.components.MyUserDetails;
+import com.atc.entity.Client;
 import com.atc.entity.Employee;
 import com.atc.entity.Gate;
 import com.atc.entity.Station;
+import com.atc.service.ClientService;
 import com.atc.service.GateService;
 import com.atc.service.StationService;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,6 +31,9 @@ public class RestApiController {
 
   @Autowired
   GateService gateService;
+
+  @Autowired
+  ClientService clientService;
 
   @Autowired
   AuthenticationFacade auth;
@@ -61,5 +67,16 @@ public class RestApiController {
 	gateService.removeEmployeeFromGate(id);
 	return ResponseEntity.ok().body(true);
   }
-
+  
+ @GetMapping("/get-username")
+  public ResponseEntity<List<String>> getUsername() {
+	List<Client> clients = clientService.findAll();
+        List<String> clientsUsernames= new ArrayList();
+        for(int i=0;i<clients.size();i++){
+            clientsUsernames.add(clients.get(i).getUsername());
+        }
+	return ResponseEntity.ok().body(clientsUsernames);
+  }
+  
+  
 }
