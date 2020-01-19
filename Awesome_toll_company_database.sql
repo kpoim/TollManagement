@@ -43,6 +43,8 @@ stationid int unsigned auto_increment primary key,
 stationname varchar(70),
 distance decimal(8,3),
 roadid int unsigned,
+latitude DECIMAL(12,9),
+longtitude DECIMAL(12,9),
 constraint roadFK foreign key (roadid) references road (roadid)
 );
 
@@ -89,6 +91,9 @@ entrytime timestamp not null,
 exittime timestamp,
 entrygateid int unsigned,
 exitgateid int unsigned,
+geometry VARCHAR(500),
+cost DECIMAL(5,2),
+vehicle INT UNSIGNED,
 constraint gateFK1 foreign key (entrygateid) references gate (gateid),
 constraint gateFK2 foreign key (exitgateid) references gate (gateid)
 );

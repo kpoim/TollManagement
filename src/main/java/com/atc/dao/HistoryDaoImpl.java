@@ -15,4 +15,14 @@ public class HistoryDaoImpl extends SuperDao implements HistoryDao {
 	return true;
   }
 
+  @Override
+  public History findById(Integer id) {
+	return getSession().byId(History.class).load(id);
+  }
+
+  @Override
+  public void update(History history) {
+	getSession().update(history);
+  }
+
 }

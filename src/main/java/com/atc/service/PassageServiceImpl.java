@@ -33,7 +33,7 @@ public class PassageServiceImpl implements PassageService {
   public History processCard(String id) {
 	Ongoing ongoing = ongoingService.findOngoingByCardId(id);
 	System.out.println("PROCESSCARD ONGOING: " + ongoing);
-	Gate gate = getGateId(id);
+	Gate gate = extractGateFromTerminal(id);
 	System.out.println("PROCESSCARD GATE: " + gate);
 	if (ongoing == null) {
 	  ongoingService.newEntry(id, gate);
@@ -49,7 +49,8 @@ public class PassageServiceImpl implements PassageService {
 	}
   }
   
-  private Gate getGateId(String id){
+  @Override
+  public Gate extractGateFromTerminal(String id){
 //	User terminal = (User)auth.getAuthentication().getPrincipal();
 	MyUserDetails principal = (MyUserDetails)auth.getAuthentication().getPrincipal();
 	Terminal terminal = (Terminal) principal.getUser();

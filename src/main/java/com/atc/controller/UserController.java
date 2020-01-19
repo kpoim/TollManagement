@@ -39,5 +39,10 @@ public class UserController {
         }
         return "redirect:/";
     }
+	
+	@GetMapping("/map")
+	public String showMap(){
+	  return "user/map";
+	}
 
 }

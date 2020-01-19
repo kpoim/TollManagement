@@ -32,23 +32,51 @@ public class History implements Serializable {
   @JoinColumn(name = "exitgateid")
   @JsonIgnore
   private Gate exitgate;
+  @Column(name = "geometry")
+  private String geometry;
+  @Column(name = "cost")
+  private Double cost;
+  @Column(name = "vehicle")
+  private Integer vehicle;
   
   
   public History() {
   }
 
-  public History(Integer id, Integer cardid, Timestamp entrytime, Gate entrygateid, Timestamp exittime, Gate exitgateid) {
+  public History(Integer id, Integer cardid, Timestamp entrytime, Gate entrygate, Timestamp exittime, Gate exitgate) {
 	this.id = id;
 	this.cardid = cardid;
 	this.entrytime = entrytime;
-	System.out.println("HISTORY1111");
-	this.entrygate = entrygateid;
-	System.out.println("HISTORY2222");
+	this.entrygate = entrygate;
 	this.exittime = exittime;
-	this.exitgate = exitgateid;
-	System.out.println("HISTORY3333");
+	this.exitgate = exitgate;
   }
+  
+  
 
+  public History(Integer id, Integer cardid, Timestamp entrytime, Gate entrygate, Timestamp exittime, Gate exitgate, String geometry) {
+	this.id = id;
+	this.cardid = cardid;
+	this.entrytime = entrytime;
+	this.entrygate = entrygate;
+	this.exittime = exittime;
+	this.exitgate = exitgate;
+	this.geometry = geometry;
+  }
+  
+
+  public History(Integer id, Integer cardid, Timestamp entrytime, Gate entrygate, Timestamp exittime, Gate exitgate, String geometry, Double cost, Integer vehicle) {
+	this.id = id;
+	this.cardid = cardid;
+	this.entrytime = entrytime;
+	this.entrygate = entrygate;
+	this.exittime = exittime;
+	this.exitgate = exitgate;
+	this.geometry = geometry;
+	this.cost = cost;
+	this.vehicle = vehicle;
+  }
+  
   public Integer getId() {
 	return id;
   }
@@ -97,15 +125,42 @@ public class History implements Serializable {
 	this.exitgate = exitgate;
   }
 
+  public String getGeometry() {
+	return geometry;
+  }
+
+  public void setGeometry(String geometry) {
+	this.geometry = geometry;
+  }
+
+  public Double getCost() {
+	return cost;
+  }
+
+  public void setCost(Double cost) {
+	this.cost = cost;
+  }
+
+  public Integer getVehicle() {
+	return vehicle;
+  }
+
+  public void setVehicle(Integer vehicle) {
+	this.vehicle = vehicle;
+  }
+
   @Override
   public int hashCode() {
-	int hash = 3;
-	hash = 97 * hash + Objects.hashCode(this.id);
-	hash = 97 * hash + Objects.hashCode(this.cardid);
-	hash = 97 * hash + Objects.hashCode(this.entrytime);
-	hash = 97 * hash + Objects.hashCode(this.entrygate);
-	hash = 97 * hash + Objects.hashCode(this.exittime);
-	hash = 97 * hash + Objects.hashCode(this.exitgate);
+	int hash = 7;
+	hash = 29 * hash + Objects.hashCode(this.id);
+	hash = 29 * hash + Objects.hashCode(this.cardid);
+	hash = 29 * hash + Objects.hashCode(this.entrytime);
+	hash = 29 * hash + Objects.hashCode(this.entrygate);
+	hash = 29 * hash + Objects.hashCode(this.exittime);
+	hash = 29 * hash + Objects.hashCode(this.exitgate);
+	hash = 29 * hash + Objects.hashCode(this.geometry);
+	hash = 29 * hash + Objects.hashCode(this.cost);
+	hash = 29 * hash + Objects.hashCode(this.vehicle);
 	return hash;
   }
 
@@ -121,6 +176,9 @@ public class History implements Serializable {
 	  return false;
 	}
 	final History other = (History) obj;
+	if (!Objects.equals(this.geometry, other.geometry)) {
+	  return false;
+	}
 	if (!Objects.equals(this.id, other.id)) {
 	  return false;
 	}
@@ -139,13 +197,19 @@ public class History implements Serializable {
 	if (!Objects.equals(this.exitgate, other.exitgate)) {
 	  return false;
 	}
+	if (!Objects.equals(this.cost, other.cost)) {
+	  return false;
+	}
+	if (!Objects.equals(this.vehicle, other.vehicle)) {
+	  return false;
+	}
 	return true;
   }
 
   @Override
   public String toString() {
-	return "History{" + "id=" + id + ", cardid=" + cardid + ", entrytime=" + entrytime + ", entrygateid=" + entrygate + ", exittime=" + exittime + ", exitgateid=" + exitgate + '}';
+	return "History{" + "id=" + id + ", cardid=" + cardid + ", entrytime=" + entrytime + ", entrygate=" + entrygate + ", exittime=" + exittime + ", exitgate=" + exitgate + ", geometry=" + geometry + ", cost=" + cost + ", vehicle=" + vehicle + '}';
   }
-  
+
   
 }

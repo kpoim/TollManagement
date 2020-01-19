@@ -8,4 +8,8 @@ public interface HistoryService {
 
   History addToHistory(Ongoing ongoing, Gate exitGate);
 
+  History findById(String historyId);
+
+  Boolean addGeometry(String historyId, String geometry);
+
 }
