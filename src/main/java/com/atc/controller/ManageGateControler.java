@@ -47,15 +47,20 @@ public class ManageGateControler {
     }
     
     @PostMapping("/create")
-    public String create(@Valid WrapperGateTerminal w, BindingResult result){
+    public String create(@Valid @ModelAttribute("wrapperGateTerminal")WrapperGateTerminal w, BindingResult result, Model m){
         if(result.hasErrors()){
             return "admin/manageGate/formGate";
         }
-        gateService.addOrUpdate(w.getGate());
         Terminal terminal= w.getTerminal();
+        Terminal existing = terminalService.findByUsername(terminal.getUsername());
+        if(existing!=null){
+            m.addAttribute("wrapperGateTerminal", new WrapperGateTerminal());
+            m.addAttribute("terminalExistsError", "This terminal already exists");
+            return "admin/manageGate/formGate";
+        }
+        gateService.addOrUpdate(w.getGate());
         terminal.setGate(w.getGate());
         terminalService.addOrUpdate(terminal);
-        //Adding gateId to Terminal
         return "redirect:/admin/manage-gate/list";
     }
     
@@ -80,7 +85,11 @@ public class ManageGateControler {
     public String delete(@RequestParam("gateId") String id){
         Gate g = gateService.findById(id);
         Terminal t = terminalService.findByGateId(g);
-        terminalService.delete(t); 
+        if(t!= null){
+            terminalService.delete(t); 
+        }else{
+            gateService.delete(g);
+        }
         return "redirect:/admin/manage-gate/list";
     }
     

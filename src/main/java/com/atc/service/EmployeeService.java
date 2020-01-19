@@ -18,4 +18,8 @@ public interface EmployeeService {
     void delete(int id);
 
     void addOrUpdate(Employee empl);
+
+    public Employee findByUsername(String username);
+
+    
 }

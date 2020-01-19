@@ -16,13 +16,18 @@
         <h1>List of Roads</h1>
         <a href="${pageContext.request.contextPath}/admin/manage-road/create">Add Road</a>
         <table border="1">
+            <tr>
+                <th>Road id</th>
+                <th>Road Name</th>
+            </tr>
             <c:forEach items="${listOfRoad}" var="r">
                 <c:url var="updateLink" value="/admin/manage-road/update">
                     <c:param name="roadId" value="${r.id}" />
                 </c:url>
                 <c:url var="deleteLink" value="/admin/manage-road/delete">>
                     <c:param name="roadId" value="${r.id}" />
-                </c:url>     
+                </c:url>   
+
                 <tr>
                     <td>${r.id}</td>
                     <td>${r.roadName}</td>

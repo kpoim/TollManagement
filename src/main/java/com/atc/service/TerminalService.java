@@ -13,4 +13,6 @@ public interface TerminalService {
     
     void delete(Terminal t); 
 
+    public Terminal findByUsername(String username);
+
 }

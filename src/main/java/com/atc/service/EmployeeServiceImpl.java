@@ -56,5 +56,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         edao.addOrUpdate(empl);
     }
 
+    @Override
+    public Employee findByUsername(String username) {
+        return edao.findByUsername(username);
+    }
+
     
 }

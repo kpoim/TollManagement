@@ -38,5 +38,10 @@ public class TerminalSerivceImpl implements TerminalService{
     public Terminal findByGateId(Gate g) {
         return tdao.findByGateId(g);
     }
+
+    @Override
+    public Terminal findByUsername(String username) {
+        return tdao.findByUsername(username);
+    }
     
 }

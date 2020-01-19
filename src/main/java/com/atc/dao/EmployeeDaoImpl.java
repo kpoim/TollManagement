@@ -3,6 +3,7 @@ package com.atc.dao;
 import com.atc.entity.Employee;
 import com.atc.entity.User;
 import java.util.List;
+import javax.persistence.NoResultException;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -31,7 +32,9 @@ public class EmployeeDaoImpl extends SuperDao implements EmployeeDao {
 
     @Override
     public List<Employee> findAllEmployees() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         Query q = getSession().createQuery("SELECT e FROM Employee e WHERE e.role= 2 ");
+        List<Employee> list = q.getResultList();
+        return list;
     }
 
     
@@ -69,6 +72,18 @@ public class EmployeeDaoImpl extends SuperDao implements EmployeeDao {
 
         }
         
+    }
+
+    @Override
+    public Employee findByUsername(String username) {
+        Query q = getSession().createQuery("SELECT e FROM Employee e WHERE e.username = : username");
+        q.setParameter("username", username);
+        Employee empl = null;
+	try {
+	  empl = (Employee) q.getSingleResult();
+	} catch (NoResultException e) {
+	}
+	return empl;
     }
 
     

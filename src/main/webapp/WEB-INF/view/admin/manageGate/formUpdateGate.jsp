@@ -21,10 +21,10 @@
             modelAttribute="gate">
             Gate id: <form:input path="id" readonly="true" />
             <br/>
-            Gate Number: : <form:input path="gateNo"/>
+            Gate Number: : <form:input path="gateNo" placeholder="Gate number"/>
             <form:errors path="gateNo" cssClass="error"/>
             <br/>
-            Station Id: : <form:input path="station.id"/>
+            Station Id: : <form:input path="station.id" placeholder="Station id"/>
             <form:errors path="station.id" cssClass="error"/>
             <br/>
             Is Entry : <form:input path="isEntry"/>

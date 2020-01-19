@@ -28,13 +28,13 @@
             method="POST"
             modelAttribute="station">
             <form:hidden path="id"/>
-            Station Name: : <form:input path="stationName"/>
+            Station Name: : <form:input path="stationName" placeholder="Station Name"/>
             <form:errors path="stationName" cssClass="error"/>
             <br/>
-            Distance: : <form:input path="distance"/>
+            Distance: : <form:input path="distance" placeholder="Distance"/>
             <form:errors path="distance" cssClass="error"/>
             <br/>
-            Road Id : <form:input path="road.id"/>
+            Road Id : <form:input path="road.id" placeholder="Road id"/>
             <form:errors path="road.id" cssClass="error"/>
             <br/>
             <input type="submit" value="Submit">
