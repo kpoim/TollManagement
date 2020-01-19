@@ -1,5 +1,5 @@
-INSERT INTO card (cardid)
-VALUES (101),
+insert into card (cardid)
+values (101),
 (102),
 (103),
 (104),
@@ -33,22 +33,22 @@ INSERT INTO user(username, password, rid) VALUES
 ('ret2', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 3),
 ('ret3', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 3);
 
-INSERT INTO retail_clients (id, retailafm, firstname, lastname, phone, email)
-VALUES (10, 0000111123, 'Dimitris', 'Kokoras', 6991234321, 'koko@gmail.gr'),
+insert into retail_clients (id, retailafm, firstname, lastname, phone, email)
+values (10, 0000111123, 'Dimitris', 'Kokoras', 6991234321, 'koko@gmail.gr'),
 (11, 1234111124, 'Vasilis', 'Iakovopoulos', 6988966987, 'iako@gmail.gr'),
 (12, 4321432112, 'Sotiris', 'Kalampokakis', 6976976977, 'kala@email.gr');
 
-INSERT INTO pro_clients (id, proafm, companyname, phone, address, email)
-VALUES (13, 1111222233, 'Coscote', 6999999986, 'Kolokotroni 27', 'email@coscote.gr'),
+insert into pro_clients (id, proafm, companyname, phone, address, email)
+values (13, 1111222233, 'Coscote', 6999999986, 'Kolokotroni 27', 'email@coscote.gr'),
 (14, 1111222233, 'Xaplopoulos', 6988877766, 'Ath. DIakou 02', 'email@xaplo.gr'),
 (15, 3335557779, 'Byte', 6945678923, 'Kavalas 18', 'email@byte.gr');
 
-INSERT INTO road (name) VALUES ('Egnatia'),
+insert into road (name) values ('Egnatia'),
 ('P.A.TH.E.'),
 ('Ionia');
 
-INSERT INTO station (stationname, distance, roadid)
-VALUES 
+insert into station (stationname, distance, roadid)
+values 
 ('Turias', 0, 1),
 ('Pamvotidas', 30.5, 1),
 ('Malakasiou', 87.9, 1),
@@ -63,9 +63,43 @@ VALUES
 ('Aggelokastrou', 46.1, 3),
 ('Menidiou', 101, 3),
 ('Terovou', 164, 3);
+SELECT * FROM station;
 
-INSERT INTO employee
-VALUES (1, 'Nick', 'Nickolson', 6996996999, 'nickolson@atc.gr'),
+-- UPDATE station SET
+-- stationname = 'Agios Stefanos',
+-- latitude = 38.138963,
+-- longitude = 23.843020
+-- WHERE stationid = 6;
+
+-- UPDATE station SET
+-- stationname = 'Malakasa',
+-- latitude = 38.2355644,
+-- longitude = 23.7871869
+-- WHERE stationid = 7;
+
+UPDATE station SET
+stationname = 'Katerini',
+latitude = 40.2532067,
+longitude = 22.5386118,
+distance = 409
+WHERE stationid = 8;
+
+UPDATE station SET
+stationname = 'Larisa',
+latitude = 39.579468, 
+longitude = 22.482579,
+distance = 322
+WHERE stationid = 9;
+
+UPDATE station SET
+stationname = 'Delta',
+latitude = 40.605956,
+longitude = 22.723859,
+distance = 458
+WHERE stationid = 10;
+
+insert into employee
+values (1, 'Nick', 'Nickolson', 6996996999, 'nickolson@atc.gr'),
 (2, 'Jack', 'Jackson', 6936549871, 'jackson@atc.gr'),
 (3, 'Andy', 'Andyson', 6924567892, 'andyson@atc.gr'),
 (4, 'George', 'Georgeson', 6906901111, 'georgeson@atc.gr'),
@@ -95,7 +129,7 @@ VALUES (1, 'Nick', 'Nickolson', 6996996999, 'nickolson@atc.gr'),
 -- ('Dimitris', 'Arkoudas', 6964679183, 'arkoudas@atc.gr'),
 -- ('Manolis', 'Alepoudakis', 6978964915, 'alepoudakis@atc.gr');
 
-INSERT INTO gate (gateNo, stationid, isentry) VALUES
+insert into gate (gateNo, stationid, isentry) values
 (1001, 1, 0),
 (1002, 1, 1), #ENTRY
 (1003, 1, 0),
@@ -113,8 +147,15 @@ INSERT INTO gate (gateNo, stationid, isentry) VALUES
 (5001, 5, 0),
 (5002, 5, 1),
 (6001, 6, 0),
-(6002, 6, 1);
-
+(6002, 6, 1),
+(7001, 7, 0),
+(7002, 7, 1), #ENTRY
+(8001, 8, 0),
+(8002, 8, 1),
+(9001, 9, 0),
+(9002, 9, 1),
+(10001, 10, 0),
+(10002, 10, 1);
 
 
 -- insert into ongoing_logs (cardid, entrygateid, entrytime)
@@ -124,28 +165,77 @@ INSERT INTO gate (gateNo, stationid, isentry) VALUES
 INSERT INTO user(username, password, rid) VALUES
 ('terminal2', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
 ('terminal7', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4);
+INSERT INTO user(username, password, rid) VALUES
+('terminal17', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
+('terminal18', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
+('terminal19', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
+('terminal20', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
+('terminal21', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
+('terminal22', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
+('terminal23', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
+('terminal24', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
+('terminal25', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
+('terminal26', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4);
 
-INSERT INTO terminal VALUES (16,2),(17,7);
+INSERT INTO terminal VALUES (16),(17);
 
-DROP TABLE terminal;
+INSERT INTO terminal VALUES 
+(24,17),
+(25,18),
+(26,19),
+(27,20),
+(28,21),
+(29,22),
+(30,23),
+(31,24),
+(32,25),
+(33,26);
+
+
+-- DROP TABLE terminal;
 SELECT * FROM user;
-DELETE FROM user WHERE id=20;
 
-
-SELECT * FROM gate;
-DELETE FROM gate WHERE gateid=19;
-
-SELECT * FROM ongoing_logs;
-
+SELECT * FROM history_logs;
 SELECT * FROM ongoing_logs;
 SELECT * FROM terminal;
+select * from gate;
+
+INSERT INTO ongoing_logs VALUES
+(26,	101,	18,	'2020-01-18 18:50:48'),
+(27,	102,	18,	'2020-01-18 18:50:52'),
+(28,	103,	20,	'2020-01-18 18:51:32'),
+(29,	104,	20,	'2020-01-18 18:51:42'),
+(30,	105,	24,	'2020-01-18 18:53:46'),
+(31,	106,	24,	'2020-01-18 18:53:50'),
+(32,	107,	26,	'2020-01-18 18:54:16'),
+(33,	108,	26,	'2020-01-18 18:54:18'),
+(34,	109,	18,	'2020-01-18 18:50:48');
+
+SELECT * FROM role;
+SELECT * FROM user;
+SELECT * FROM client;
+SELECT * FROM pro_clients;
+SELECT * FROM retail_clients;
+SELECT * FROM employee;
+desc pro_clients;
+
+SELECT * FROM retail_clients;
+desc retail_clients;
 
 SET SQL_SAFE_UPDATES = 1;
 UPDATE gate SET employeeid = null;
-
-SELECT * FROM terminal;
-
-SELECT * FROM user;
+DELETE FROM ongoing_logs;
+DELETE FROM history_logs;
 
 
+-- ALTER TABLE history_logs
+-- ADD geometry VARCHAR(500);
 
+-- ALTER TABLE history_logs
+-- ADD cost DECIMAL(5,2);
+
+-- ALTER TABLE history_logs
+-- ADD vehicle INT UNSIGNED;
+
+-- ALTER TABLE station
+-- ADD longitude DECIMAL(12,9);

@@ -43,8 +43,8 @@ stationid INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 stationname VARCHAR(70),
 distance DECIMAL(8,3),
 roadid INT UNSIGNED,
-Latitude VARCHAR(11) NOT NULL,  
-Longitude VARCHAR(11) NOT NULL,
+latitude DECIMAL(12,9),  
+longitude DECIMAL(12,9),
 CONSTRAINT roadFK FOREIGN KEY (roadid) REFERENCES road (roadid)
 );
 
@@ -91,6 +91,9 @@ entrytime TIMESTAMP NOT NULL,
 exittime TIMESTAMP,
 entrygateid INT UNSIGNED,
 exitgateid INT UNSIGNED,
+geometry VARCHAR(500),
+cost DECIMAL(5,2),
+vehicle INT UNSIGNED,
 CONSTRAINT gateFK1 FOREIGN KEY (entrygateid) REFERENCES gate (gateid),
 CONSTRAINT gateFK2 FOREIGN KEY (exitgateid) REFERENCES gate (gateid)
 );
@@ -107,6 +110,11 @@ CREATE TABLE user (
     password VARCHAR(68),
     rid INT UNSIGNED,
     CONSTRAINT roleFK FOREIGN KEY (rid) REFERENCES role(rid)
+);
+
+CREATE TABLE geometry (
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    geometry VARCHAR(500)
 );
 
 -- DELIMITER $

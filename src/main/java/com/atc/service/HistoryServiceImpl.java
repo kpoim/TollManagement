@@ -32,5 +32,23 @@ public class HistoryServiceImpl implements HistoryService {
 	System.out.println("HistService HISTORY: " + history);
 	return dao.addToHistory(history) ? history : null;
   }
+
+  @Override
+  public History findById(String historyId) {
+	try {
+	  Integer id = Integer.parseInt(historyId);
+	  return dao.findById(id);
+	} catch (Exception e) {
+	  return null;
+	}
+  }
+
+  @Override
+  public Boolean addGeometry(String historyId, String geometry) {
+	History history = findById(historyId);
+	history.setGeometry(geometry);
+	dao.update(history);
+	return history.getGeometry().equals(geometry);
+  }
   
 }
