@@ -34,8 +34,7 @@ public class GateDaoImpl extends SuperDao implements GateDao {
   }
 
   @Override
-  public void delete(Integer id) {
-	Gate g = getSession().getReference(Gate.class, id);
+  public void delete(Gate g) {
 	getSession().delete(g);
   }
 

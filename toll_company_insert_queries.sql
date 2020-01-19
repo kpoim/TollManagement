@@ -1,5 +1,5 @@
-insert into card (cardid)
-values (101),
+INSERT INTO card (cardid)
+VALUES (101),
 (102),
 (103),
 (104),
@@ -33,22 +33,22 @@ INSERT INTO user(username, password, rid) VALUES
 ('ret2', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 3),
 ('ret3', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 3);
 
-insert into retail_clients (id, retailafm, firstname, lastname, phone, email)
-values (10, 0000111123, 'Dimitris', 'Kokoras', 6991234321, 'koko@gmail.gr'),
+INSERT INTO retail_clients (id, retailafm, firstname, lastname, phone, email)
+VALUES (10, 0000111123, 'Dimitris', 'Kokoras', 6991234321, 'koko@gmail.gr'),
 (11, 1234111124, 'Vasilis', 'Iakovopoulos', 6988966987, 'iako@gmail.gr'),
 (12, 4321432112, 'Sotiris', 'Kalampokakis', 6976976977, 'kala@email.gr');
 
-insert into pro_clients (id, proafm, companyname, phone, address, email)
-values (13, 1111222233, 'Coscote', 6999999986, 'Kolokotroni 27', 'email@coscote.gr'),
+INSERT INTO pro_clients (id, proafm, companyname, phone, address, email)
+VALUES (13, 1111222233, 'Coscote', 6999999986, 'Kolokotroni 27', 'email@coscote.gr'),
 (14, 1111222233, 'Xaplopoulos', 6988877766, 'Ath. DIakou 02', 'email@xaplo.gr'),
 (15, 3335557779, 'Byte', 6945678923, 'Kavalas 18', 'email@byte.gr');
 
-insert into road (name) values ('Egnatia'),
+INSERT INTO road (name) VALUES ('Egnatia'),
 ('P.A.TH.E.'),
 ('Ionia');
 
-insert into station (stationname, distance, roadid)
-values 
+INSERT INTO station (stationname, distance, roadid)
+VALUES 
 ('Turias', 0, 1),
 ('Pamvotidas', 30.5, 1),
 ('Malakasiou', 87.9, 1),
@@ -64,8 +64,8 @@ values
 ('Menidiou', 101, 3),
 ('Terovou', 164, 3);
 
-insert into employee
-values (1, 'Nick', 'Nickolson', 6996996999, 'nickolson@atc.gr'),
+INSERT INTO employee
+VALUES (1, 'Nick', 'Nickolson', 6996996999, 'nickolson@atc.gr'),
 (2, 'Jack', 'Jackson', 6936549871, 'jackson@atc.gr'),
 (3, 'Andy', 'Andyson', 6924567892, 'andyson@atc.gr'),
 (4, 'George', 'Georgeson', 6906901111, 'georgeson@atc.gr'),
@@ -95,7 +95,7 @@ values (1, 'Nick', 'Nickolson', 6996996999, 'nickolson@atc.gr'),
 -- ('Dimitris', 'Arkoudas', 6964679183, 'arkoudas@atc.gr'),
 -- ('Manolis', 'Alepoudakis', 6978964915, 'alepoudakis@atc.gr');
 
-insert into gate (gateNo, stationid, isentry) values
+INSERT INTO gate (gateNo, stationid, isentry) VALUES
 (1001, 1, 0),
 (1002, 1, 1), #ENTRY
 (1003, 1, 0),
@@ -127,23 +127,25 @@ INSERT INTO user(username, password, rid) VALUES
 
 INSERT INTO terminal VALUES (16,2),(17,7);
 
--- DROP TABLE terminal;
+DROP TABLE terminal;
 SELECT * FROM user;
-DELETE FROM user WHERE id=23;
+DELETE FROM user WHERE id=20;
 
 
-SELECT * FROM terminal;
+SELECT * FROM gate;
 DELETE FROM gate WHERE gateid=19;
 
 SELECT * FROM ongoing_logs;
 
 SELECT * FROM ongoing_logs;
 SELECT * FROM terminal;
-select * from gate;
 
 SET SQL_SAFE_UPDATES = 1;
 UPDATE gate SET employeeid = null;
 
-SELECT * FROM pro_clients;
-DELETE FROM pro_clients WHERE id=24;
+SELECT * FROM terminal;
+
+SELECT * FROM user;
+
+
 

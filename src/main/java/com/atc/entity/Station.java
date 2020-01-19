@@ -3,7 +3,6 @@ package com.atc.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.List;
@@ -43,7 +42,7 @@ public class Station implements Serializable{
     //@JsonIgnoreProperties("stations")
     @JsonBackReference
     private Road road;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "id")
     @JsonIgnore
     @JsonManagedReference
     private List<Gate> gates;
@@ -90,13 +89,13 @@ public class Station implements Serializable{
         this.road = road;
     }
 
-    public List<Gate> getGates() {
-        return gates;
-    }
-
-    public void setGates(List<Gate> gates) {
-        this.gates = gates;
-    }
+//    public List<Gate> getGates() {
+//        return gates;
+//    }
+//
+//    public void setGates(List<Gate> gates) {
+//        this.gates = gates;
+//    }
     
 
     @Override

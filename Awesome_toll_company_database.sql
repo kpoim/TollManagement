@@ -1,12 +1,12 @@
-create database if not exists awesome_toll_company
+CREATE DATABASE IF NOT EXISTS awesome_toll_company
 default character set utf8mb4;
 
-DROP SCHEMA awesome_toll_company;
+DROP SCHEMA awesome_toll_company; 
 
-use awesome_toll_company;
+USE awesome_toll_company;
 
-create table card (
-cardid int unsigned primary key auto_increment
+CREATE TABLE card (
+cardid INT UNSIGNED PRIMARY KEY AUTO_INCREMENT
 );
 
 CREATE TABLE client (
@@ -14,54 +14,56 @@ CREATE TABLE client (
     clientid INT UNSIGNED NOT NULL
 );
 
-create table retail_clients (
-id INT UNSIGNED NOT NULL  primary key ,
-retailafm bigint unsigned,
-firstname varchar(100),
-lastname varchar(100),
+CREATE TABLE retail_clients (
+id INT UNSIGNED NOT NULL PRIMARY KEY ,
+retailafm BIGINT UNSIGNED,
+firstname VARCHAR(100),
+lastname VARCHAR(100),
 phone VARCHAR(15),
-address varchar(100),
-email varchar(50)
+address VARCHAR(100),
+email VARCHAR(50)
 );
 
-create table pro_clients (
-id INT UNSIGNED NOT NULL primary key,
-proafm bigint unsigned ,
+CREATE TABLE pro_clients (
+id INT UNSIGNED NOT NULL PRIMARY KEY,
+proafm BIGINT UNSIGNED ,
 companyname varchar(100),
 phone VARCHAR(15),
-address varchar(100),
-email varchar(50)
+address VARCHAR(100),
+email VARCHAR(50)
 );
 
-create table road (
-roadid int unsigned auto_increment primary key,
-name varchar(70)
+CREATE TABLE road (
+roadid INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+NAME VARCHAR(70)
 );
 
 create table station (
-stationid int unsigned auto_increment primary key,
-stationname varchar(70),
-distance decimal(8,3),
-roadid int unsigned,
-constraint roadFK foreign key (roadid) references road (roadid)
+stationid INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+stationname VARCHAR(70),
+distance DECIMAL(8,3),
+roadid INT UNSIGNED,
+Latitude VARCHAR(11) NOT NULL,  
+Longitude VARCHAR(11) NOT NULL,
+CONSTRAINT roadFK FOREIGN KEY (roadid) REFERENCES road (roadid)
 );
 
 create table employee (
-id int unsigned primary key,
-firstname varchar (50),
-lastname varchar (50),
+id INT UNSIGNED PRIMARY KEY,
+firstname VARCHAR (50),
+lastname VARCHAR (50),
 phone VARCHAR(15),
-email varchar (50)
+email VARCHAR (50)
 );
 
 create table gate (
-gateid int unsigned auto_increment primary key,
-gateNo int unsigned,
-stationid int unsigned,
-employeeid int unsigned,
+gateid INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+gateNo INT UNSIGNED,
+stationid INT UNSIGNED,
+employeeid INT UNSIGNED,
 isentry TINYINT(1) DEFAULT 0,
-constraint gate_stationFK foreign key (stationid) references station (stationid),
-constraint gate_employeeFK foreign key (employeeid) references employee (id)
+CONSTRAINT gate_stationFK FOREIGN KEY (stationid) REFERENCES station (stationid),
+CONSTRAINT gate_employeeFK FOREIGN KEY (employeeid) REFERENCES employee (id)
 );
 
 CREATE TABLE terminal (
@@ -70,27 +72,27 @@ CREATE TABLE terminal (
     UNIQUE(gateid),
     CONSTRAINT terminal_gateidFK
     FOREIGN KEY (gateid)
-    REFEReNCES gate(gateid)
+    REFERENCES gate(gateid)
 );
 
 create table ongoing_logs (
-ongoingid int unsigned auto_increment primary key,
-cardid int unsigned,
-gateid int unsigned,
-entrytime timestamp not null,
-constraint ol_cardFK1 foreign key (cardid) references card (cardid),
-constraint ol_gateFK foreign key (gateid) references gate (gateid)
+ongoingid INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+cardid INT UNSIGNED,
+gateid INT UNSIGNED,
+entrytime TIMESTAMP NOT NULL,
+CONSTRAINT ol_cardFK1 FOREIGN KEY (cardid) REFERENCES card (cardid),
+CONSTRAINT ol_gateFK FOREIGN KEY (gateid) REFERENCES gate (gateid)
 );
 
 create table history_logs (
-historyid int unsigned primary key,
-cardid int unsigned,
-entrytime timestamp not null,
-exittime timestamp,
-entrygateid int unsigned,
-exitgateid int unsigned,
-constraint gateFK1 foreign key (entrygateid) references gate (gateid),
-constraint gateFK2 foreign key (exitgateid) references gate (gateid)
+historyid INT UNSIGNED PRIMARY KEY,
+cardid INT UNSIGNED,
+entrytime TIMESTAMP NOT NULL,
+exittime TIMESTAMP,
+entrygateid INT UNSIGNED,
+exitgateid INT UNSIGNED,
+CONSTRAINT gateFK1 FOREIGN KEY (entrygateid) REFERENCES gate (gateid),
+CONSTRAINT gateFK2 FOREIGN KEY (exitgateid) REFERENCES gate (gateid)
 );
 
 CREATE TABLE role(
@@ -101,7 +103,7 @@ CREATE TABLE role(
 
 CREATE TABLE user (
 	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50),
+    username VARCHAR(50) UNIQUE,
     password VARCHAR(68),
     rid INT UNSIGNED,
     CONSTRAINT roleFK FOREIGN KEY (rid) REFERENCES role(rid)
@@ -122,6 +124,7 @@ CREATE TABLE user (
 -- END;
 -- $
 -- DELIMITER ;
+
 
 select * from client;
 select * from retail_clients;
