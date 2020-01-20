@@ -227,6 +227,7 @@ SELECT * FROM pro_clients;
 SELECT * FROM retail_clients;
 SELECT * FROM employee;
 desc pro_clients;
+SELECT * FROM terminal;
 
 SELECT * FROM user;
 SELECT * FROM station;
@@ -241,7 +242,6 @@ SELECT * FROM vehicle;
 SELECT * FROM retail_clients;
 SELECT * FROM card;
 desc retail_clients;
-
 
 -- ALTER TABLE history_logs
 -- ADD geometry VARCHAR(500);

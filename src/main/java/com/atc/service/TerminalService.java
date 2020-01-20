@@ -3,6 +3,7 @@ package com.atc.service;
 
 import com.atc.entity.Gate;
 import com.atc.entity.Terminal;
+import java.util.List;
 
 
 public interface TerminalService {
@@ -14,5 +15,7 @@ public interface TerminalService {
     void delete(Terminal t); 
 
     public Terminal findByUsername(String username);
+
+    public List<Terminal> findAll();
 
 }

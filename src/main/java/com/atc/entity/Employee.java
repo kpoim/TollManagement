@@ -7,6 +7,7 @@ import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 
 @Entity
 @Table(name = "employee")
@@ -20,6 +21,7 @@ public class Employee extends User implements Serializable {
   @Column(name = "phone")
   private String phone;
   @Column(name = "email")
+  @Email(message="please enter a valid email (ex name@email.com")
   private String email;
 
   public Employee() {

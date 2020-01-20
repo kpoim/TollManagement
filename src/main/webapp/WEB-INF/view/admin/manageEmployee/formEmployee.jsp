@@ -38,6 +38,7 @@
                             <div class="form-group ">
                                 <label for="password">Password</label>
                                 <form:input type="password" class="form-control" path="password"/>
+                                <form:errors path="password" cssClass="error"/>
                             </div>
                             <div class="form-group">
                                 <label for="firstName">First name</label>
