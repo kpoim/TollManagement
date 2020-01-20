@@ -212,8 +212,21 @@ INSERT INTO ongoing_logs VALUES
 (30,	105,	24,	'2020-01-18 18:53:46'),
 (31,	106,	24,	'2020-01-18 18:53:50');
 
+INSERT INTO ongoing_logs VALUES
+-- (26,	101,	18,	'2020-01-18 18:50:48');
+-- (27,	101,	18,	'2020-01-18 18:50:52');
+-- (28,	101,	22,	'2020-01-18 18:51:32');
+(29,	101,	20,	'2020-01-18 18:51:42');
+-- (30,	101,	24,	'2020-01-18 18:53:46');
+-- (31,	101,	24,	'2020-01-18 18:53:50');
 
 
+
+
+SELECT * FROM history_logs;
+SELECT * FROM ongoing_logs;
+SELECT * FROM terminal;
+select * from gate;
 SET SQL_SAFE_UPDATES = 1;
 UPDATE gate SET employeeid = null;
 DELETE FROM ongoing_logs;
@@ -232,11 +245,6 @@ SELECT * FROM terminal;
 SELECT * FROM user;
 SELECT * FROM station;
 SELECT * FROM road;
-
-SELECT * FROM history_logs;
-SELECT * FROM ongoing_logs;
-SELECT * FROM terminal;
-select * from gate;
 
 SELECT * FROM vehicle;
 SELECT * FROM retail_clients;
