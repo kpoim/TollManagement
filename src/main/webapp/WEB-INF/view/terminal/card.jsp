@@ -63,91 +63,49 @@
                     <c:choose>
                         <c:when test="${history == null}">
                             <h2>Welcome to the highway!!</h2>
-                            <script>
-
-
-            const redirectToURL = window.location.origin + "/terminal";
-            setTimeout(() => {
-                console.log(redirectToURL);
-                window.location.replace(redirectToURL);
-            }, 10000);
-                            </script>
                         </c:when>
                         <c:otherwise>
                             <script>
-                                const coords = {
-                                    entry: {
-                                        latitude:${entrylat},
-                                        longitude: ${entrylong}
-                                    },
-                                    exit: {
-                                        latitude:${exitlat},
-                                        longitude: ${exitlong}
-                                    }
-                                };
+                                console.log("INSIDE JS");
+            const coords = {
+                entry: {
+                    latitude:${entrylat},
+                    longitude: ${entrylong}
+                },
+                exit: {
+                    latitude:${exitlat},
+                    longitude: ${exitlong}
+                }
+            };
+            console.log("ailfhasifcadpfhadpif",coords);
 //                                const myJson = {"routes": [{"geometry": "k_xgFkzopCecP}c@crGxv\\moNh{Tw|DbcPnbB~lb@uyA``LkpEh|EwbDwcBubCzwKafPcUwxEehFgvEtsCypBjnQiaSxpHqt@~w`@cyDdtJqWthQsqEjxOl|AhlUgcLd|HwpDwdDusDsn[dtF_rYug@qkKusWkmOypUhxM{jS|tSixMwbBaaDmpE_eJn`CarBl|HubNvpN_kJluYeoD~qAkuK_eDweTtsE{hQ_yFowFsyPkmJqtGc{D~pA{lEtuIamZlcGsvF{z@etPxtDikRcsOijVvdG_fLspGqdGinU", "legs": [{"summary": "", "weight": 14559.6, "duration": 14510.6, "steps": [], "distance": 455998.5}], "weight_name": "routability", "weight": 14559.6, "duration": 14510.6, "distance": 455998.5}], "waypoints": [{"hint": "hUALgP___38MAAAARgAAAD0AAAAkAAAAP9IEQmlUWkJ1KSlDmjIzQgwAAAAjAAAAPQAAABIAAADvpQAAGtFrATj0RQLM0GsBU_RFAgEAfwEgdBCd", "distance": 7.467237340266575, "name": "Αθήνα - Θεσσαλονίκη - Εύζωνοι", "location": [23.843098, 38.138936]}, {"hint": "H0u4gv___38aAAAAfwAAAAAAAADMAgAAi4-cQn4LokIAAAAAjoNvRBoAAABAAAAAAAAAAGYBAADvpQAAEL1aAQ6ZawITvVoBBJlrAgAA7wQgdBCd", "distance": 1.1390913118809045, "name": "Εγνατία Οδός", "location": [22.723856, 40.605966]}], "code": "Ok"};
 //                                const thivaPoints = [23.3216443, 38.365156];
 //                                const lamiaPoints = [22.4570683, 38.868296];
-                                const url = "http://127.0.0.1:5000/route/v1/driving/" + createLongLatStringForRoute(coords);
-//                                const url = "http://localhost:8080";
-                                console.log(url);
-                                fetch(url)
-                                        .then(res => res.json())
-                                        .then(data => {
-
-                                            console.log(data);
-                                            createMap(data.routes[0].geometry);
-                                            fetch(contextPath + "/terminal-api/return-json", {
-                                                method: "GET",
-                                                headers: {
-                                                    'Content-Type': 'application/json; charset=UTF-8'
-                                                }
-                                            })
-                                                    .then(res => res.json())
-                                                    .then(res => {
-                                                        console.log("RESPONSE: " + res);
-                                                        fetch(contextPath + "/terminal-api/store-json", {
-                                                            method: "POST",
-                                                            headers: {
-                                                                'Content-Type': 'application/json; charset=UTF-8'
-                                                            },
-                                                            body: JSON.stringify(["res.geometry"])
-                                                        })
-                                                                .then(res => res.text())
-                                                                .then(res => console.log("RESPONSE: " + res))
-                                                                .catch(err => console.error(err));
-                                                    })
-                                                    .catch(err => console.error(err));
-
-
-//                                            fetch(contextPath + "/terminal-api/store-json", {
-//                                                method: "POST",
-//                                                headers: {
-//                                                    'Content-Type': 'application/json; charset=UTF-8'
-//                                                },
-////                                                body: JSON.stringify({'geometry': 'alifhbnsfbilnkl'})
-//                                                body: JSON.stringify(['hello world'])
-//                                            })
-//                                                    .then(res => res.text())
-//                                                    .then(res => console.log("RESPONSE: " + res))
-//                                                    .catch(err => console.error(err));
-
-
-                                            fetch(contextPath + "/terminal-api/store-geometry/${history.id}", {
-                                                method: 'POST',
-                                                headers: {
-                                                    'Content-Type': 'application/json; charset=UTF-8'
-                                                },
-//                                                body: JSON.stringify({'geometry': 'alifhbnsfbilnkl'})
-                                                body: JSON.stringify({'id': 1, 'geometry': data.routes[0].geometry})
-                                            })
-//                                            createMap(osrmJSON.routes[0].geometry);
-                                        })
-                                        .catch(err => console.error(err));
+            const url = "http://127.0.0.1:5000/route/v1/driving/" + createLongLatStringForRoute(coords);
+            console.log(url);
+            fetch(url)
+                    .then(res => res.json())
+                    .then(data => {
+                        createMap(data.routes[0].geometry);
+                        fetch(contextPath + "/terminal-api/store-geometry/${history.id}", {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json; charset=UTF-8'
+                            },
+                            body: JSON.stringify(data.routes[0].geometry)
+                        })
+                    })
+                    .catch(err => console.error(err));
                             </script>
                             <h2>Hope you enjoyed!!</h2>
                         </c:otherwise>
                     </c:choose>
+                    <script>
+                        const redirectToURL = window.location.origin + "/terminal";
+                        setTimeout(() => {
+                            window.location.replace(redirectToURL);
+                        }, 10000);
+                    </script>
                     <div style="width:100%; height: 50vh;" id="map"></div>
                 </div>
             </div>

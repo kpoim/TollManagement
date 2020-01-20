@@ -44,6 +44,7 @@
             </div>
         </nav>
         <div class="stationGate container" style="margin-top: 100px;">
+            <div class="road-option"></div>
             <div class="station-option"></div>
             <div class="gate-option"></div>
         </div>
@@ -51,8 +52,9 @@
             <section style="margin-top: 100px;">
                 <div class="container  pt-3 pb-3 pl-5 pr-5 shadow extra-margin" style="box-sizing: border-box;">
                     <div class="row">
-                        <div class="col-6 border border-dark bg-light shadow">Name: </div>
-                        <div class="col-6 border border-dark bg-light shadow">Station: </div>
+                        <div id="employee-name" class="col-4 border border-dark bg-light shadow">Name: ${fullName}</div>
+                        <div id="station-name" class="col-4 border border-dark bg-light shadow">Station: </div>
+                        <div id="gate-no" class="col-4 border border-dark bg-light shadow">Gate: </div>
                     </div>
 
                 </div>
@@ -75,48 +77,41 @@
                             <fieldset class="form-group">
                                 <div class="row">
                                     <legend class="col-form-label col-sm-2 pt-0">Vehicle</legend>
-                                    <div class="col-sm-10">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gridRadios" id="motorcycle"
-                                                   value="0.04" onclick="myFunction()" required>
-                                            <label class="form-check-label" for="motorcycle">
-                                                Motorcycle
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gridRadios"
-                                                   id="passenger-car" value="0.06" onclick="myFunction()" required>
-                                            <label class="form-check-label" for="passenger-car">
-                                                Passenger car
-                                            </label>
-                                        </div>
-                                        <div class="form-check ">
-                                            <input class="form-check-input" type="radio" name="gridRadios" id="bus"
-                                                   value="0.16" onclick="myFunction()" required>
-                                            <label class="form-check-label" for="bus">
-                                                Bus
-                                            </label>
-                                        </div>
-                                        <div class="form-check ">
-                                            <input class="form-check-input" type="radio" name="gridRadios"
-                                                   id="truck-with-4-axis" value="0.23" onclick="myFunction()" required>
-                                            <label class="form-check-label" for="truck-with-4-axis">
-                                                Truck with >=4 axis
-                                            </label>
-                                        </div>
+                                    <div id="vehicles" class="col-sm-10">
+                                        <!--                                        <div class="form-check">
+                                                                                    <input class="form-check-input" type="radio" name="gridRadios" id="motorcycle"
+                                                                                           value="0.04" onclick="myFunction()" required>
+                                                                                    <label class="form-check-label" for="motorcycle">
+                                                                                        Motorcycle
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="form-check">
+                                                                                    <input class="form-check-input" type="radio" name="gridRadios"
+                                                                                           id="passenger-car" value="0.06" onclick="myFunction()" required>
+                                                                                    <label class="form-check-label" for="passenger-car">
+                                                                                        Passenger car
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="form-check ">
+                                                                                    <input class="form-check-input" type="radio" name="gridRadios" id="bus"
+                                                                                           value="0.16" onclick="myFunction()" required>
+                                                                                    <label class="form-check-label" for="bus">
+                                                                                        Bus
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="form-check ">
+                                                                                    <input class="form-check-input" type="radio" name="gridRadios"
+                                                                                           id="truck-with-4-axis" value="0.23" onclick="myFunction()" required>
+                                                                                    <label class="form-check-label" for="truck-with-4-axis">
+                                                                                        Truck with >=4 axis
+                                                                                    </label>
+                                                                                </div>-->
                                     </div>
                                 </div>
-                                <div id="data"></div>
                             </fieldset>
-                            <script>
-                                function myFunction() {
-
-                                    document.getElementById("amount").value = ($('input[name=gridRadios]:checked').val() * 123).toFixed(2);
-                                }
-                            </script>
                             <div class="form-group row">
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-success">PAY</button>
+                                    <button type="submit" id="pay-button" class="btn btn-success">PAY</button>
                                 </div>
                             </div>
                         </form>

@@ -15,8 +15,8 @@ import javax.validation.constraints.Size;
 public class ProClient extends Client {
     
     @NotNull(message="AFM cannot be null") 
-    @Min(value=9, message="AFM must have more than 9 digits")
-    @Max(value=10, message="AFM must not have more 10 digits")
+//    @Min(value=9, message="AFM must have more than 9 digits")
+//    @Max(value=10, message="AFM must not have more 10 digits")
     @Column(name = "proafm")
     private Long proafm;
     @Size(min=3, max=100, message="The company name must be within 3 and 100 characters")

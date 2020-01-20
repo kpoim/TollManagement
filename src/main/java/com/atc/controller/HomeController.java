@@ -41,7 +41,7 @@ public class HomeController {
     }
 
     @PostMapping("/newProClient")
-    public String newProClient(@Valid ProClient proClient, BindingResult result) {
+    public String newProClient(@Valid ProClient proClient, BindingResult result, @Valid RetailClient retailClient, BindingResult result2) {
         if (result.hasErrors()) {
             return "user/register";
         }

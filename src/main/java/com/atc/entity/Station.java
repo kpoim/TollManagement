@@ -39,7 +39,7 @@ public class Station implements Serializable {
   private Double distance;
   @Column(name = "latitude")
   private BigDecimal latitude;
-  @Column(name = "longtitude")
+  @Column(name = "longitude")
   private BigDecimal longitude;
   @ManyToOne(optional = false, fetch = FetchType.LAZY)
   @JoinColumn(name = "roadid")

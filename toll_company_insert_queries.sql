@@ -65,17 +65,17 @@ values
 ('Terovou', 164, 3);
 SELECT * FROM station;
 
--- UPDATE station SET
--- stationname = 'Agios Stefanos',
--- latitude = 38.138963,
--- longitude = 23.843020
--- WHERE stationid = 6;
+UPDATE station SET
+stationname = 'Agios Stefanos',
+latitude = 38.138963,
+longitude = 23.843020
+WHERE stationid = 6;
 
--- UPDATE station SET
--- stationname = 'Malakasa',
--- latitude = 38.2355644,
--- longitude = 23.7871869
--- WHERE stationid = 7;
+UPDATE station SET
+stationname = 'Malakasa',
+latitude = 38.2355644,
+longitude = 23.7871869
+WHERE stationid = 7;
 
 UPDATE station SET
 stationname = 'Katerini',
@@ -90,6 +90,12 @@ latitude = 39.579468,
 longitude = 22.482579,
 distance = 322
 WHERE stationid = 9;
+
+INSERT INTO vehicle VALUES
+('Motorcycle', 0.04),
+('Passenger car', 0.06),
+('Bus', 0.16),
+('Truck', 0.23);
 
 UPDATE station SET
 stationname = 'Delta',
@@ -177,23 +183,25 @@ INSERT INTO user(username, password, rid) VALUES
 ('terminal25', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
 ('terminal26', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4);
 
-INSERT INTO terminal VALUES (16),(17);
+INSERT INTO terminal VALUES (16,2),(17,7);
 
 INSERT INTO terminal VALUES 
-(24,17),
-(25,18),
-(26,19),
-(27,20),
-(28,21),
-(29,22),
-(30,23),
-(31,24),
-(32,25),
-(33,26);
+(18,17),
+(19,18),
+(20,19),
+(21,20),
+(22,21),
+(23,22),
+(24,23),
+(25,24),
+(26,25),
+(27,26);
 
 
 -- DROP TABLE terminal;
 SELECT * FROM user;
+SELECT * FROM station;
+SELECT * FROM road;
 
 SELECT * FROM history_logs;
 SELECT * FROM ongoing_logs;
@@ -226,6 +234,7 @@ SET SQL_SAFE_UPDATES = 1;
 UPDATE gate SET employeeid = null;
 DELETE FROM ongoing_logs;
 DELETE FROM history_logs;
+DELETE FROM terminal;
 
 
 -- ALTER TABLE history_logs
@@ -239,3 +248,6 @@ DELETE FROM history_logs;
 
 -- ALTER TABLE station
 -- ADD longitude DECIMAL(12,9);
+
+-- ALTER TABLE history_logs
+-- ADD CONSTRAINT gateFK3 FOREIGN KEY (vehicle) REFERENCES vehicle(id);

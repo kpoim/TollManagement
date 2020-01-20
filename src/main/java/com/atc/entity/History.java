@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -36,8 +38,9 @@ public class History implements Serializable {
   private String geometry;
   @Column(name = "cost")
   private Double cost;
-  @Column(name = "vehicle")
-  private Integer vehicle;
+  @JoinColumn(name = "vehicle")
+  @ManyToOne(fetch = FetchType.LAZY)
+  private Vehicle vehicle;
   
   
   public History() {
@@ -65,7 +68,7 @@ public class History implements Serializable {
   }
   
 
-  public History(Integer id, Integer cardid, Timestamp entrytime, Gate entrygate, Timestamp exittime, Gate exitgate, String geometry, Double cost, Integer vehicle) {
+  public History(Integer id, Integer cardid, Timestamp entrytime, Gate entrygate, Timestamp exittime, Gate exitgate, String geometry, Double cost, Vehicle vehicle) {
 	this.id = id;
 	this.cardid = cardid;
 	this.entrytime = entrytime;
@@ -141,11 +144,11 @@ public class History implements Serializable {
 	this.cost = cost;
   }
 
-  public Integer getVehicle() {
+  public Vehicle getVehicle() {
 	return vehicle;
   }
 
-  public void setVehicle(Integer vehicle) {
+  public void setVehicle(Vehicle vehicle) {
 	this.vehicle = vehicle;
   }
 
