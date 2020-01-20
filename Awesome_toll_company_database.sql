@@ -5,13 +5,17 @@ default character set utf8mb4;
 
 USE awesome_toll_company;
 
-CREATE TABLE card (
-cardid INT UNSIGNED PRIMARY KEY AUTO_INCREMENT
+CREATE TABLE client (
+    id INT UNSIGNED PRIMARY KEY,
+    clientid INT UNSIGNED NOT NULL,
+    question VARCHAR(100),
+    answer VARCHAR(100)
 );
 
-CREATE TABLE client (
-	id INT UNSIGNED PRIMARY KEY,
-    clientid INT UNSIGNED NOT NULL
+CREATE TABLE card (
+	cardid INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	clientid INT UNSIGNED,
+    CONSTRAINT cardFK FOREIGN KEY (clientid) REFERENCES client(id)
 );
 
 CREATE TABLE retail_clients (
@@ -135,7 +139,3 @@ CREATE TABLE user (
 -- END;
 -- $
 -- DELIMITER ;
-
-
-select * from client;
-select * from retail_clients;

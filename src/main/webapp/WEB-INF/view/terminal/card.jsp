@@ -60,13 +60,20 @@
         <section style="margin-top: 100px;">
             <div class="container  pt-3 pb-3 pl-5 pr-5 shadow extra-margin" style="box-sizing: border-box;">
                 <div style="width:100%; height: 50vh;" id="content">
+
                     <c:choose>
-                        <c:when test="${history == null}">
-                            <h2>Welcome to the highway!!</h2>
+                        <c:when test="${employeePresent == false}">
+                            <h2>This Gate is currently closed.</h2>
                         </c:when>
                         <c:otherwise>
-                            <script>
-                                console.log("INSIDE JS");
+                            <c:choose>
+                                <c:when test="${gateIsExit == null}">
+                                    <c:choose>
+                                        <c:when test="${history == null}">
+                                            <h2>Welcome to the highway!!</h2>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <script>
             const coords = {
                 entry: {
                     latitude:${entrylat},
@@ -77,12 +84,7 @@
                     longitude: ${exitlong}
                 }
             };
-            console.log("ailfhasifcadpfhadpif",coords);
-//                                const myJson = {"routes": [{"geometry": "k_xgFkzopCecP}c@crGxv\\moNh{Tw|DbcPnbB~lb@uyA``LkpEh|EwbDwcBubCzwKafPcUwxEehFgvEtsCypBjnQiaSxpHqt@~w`@cyDdtJqWthQsqEjxOl|AhlUgcLd|HwpDwdDusDsn[dtF_rYug@qkKusWkmOypUhxM{jS|tSixMwbBaaDmpE_eJn`CarBl|HubNvpN_kJluYeoD~qAkuK_eDweTtsE{hQ_yFowFsyPkmJqtGc{D~pA{lEtuIamZlcGsvF{z@etPxtDikRcsOijVvdG_fLspGqdGinU", "legs": [{"summary": "", "weight": 14559.6, "duration": 14510.6, "steps": [], "distance": 455998.5}], "weight_name": "routability", "weight": 14559.6, "duration": 14510.6, "distance": 455998.5}], "waypoints": [{"hint": "hUALgP___38MAAAARgAAAD0AAAAkAAAAP9IEQmlUWkJ1KSlDmjIzQgwAAAAjAAAAPQAAABIAAADvpQAAGtFrATj0RQLM0GsBU_RFAgEAfwEgdBCd", "distance": 7.467237340266575, "name": "Αθήνα - Θεσσαλονίκη - Εύζωνοι", "location": [23.843098, 38.138936]}, {"hint": "H0u4gv___38aAAAAfwAAAAAAAADMAgAAi4-cQn4LokIAAAAAjoNvRBoAAABAAAAAAAAAAGYBAADvpQAAEL1aAQ6ZawITvVoBBJlrAgAA7wQgdBCd", "distance": 1.1390913118809045, "name": "Εγνατία Οδός", "location": [22.723856, 40.605966]}], "code": "Ok"};
-//                                const thivaPoints = [23.3216443, 38.365156];
-//                                const lamiaPoints = [22.4570683, 38.868296];
             const url = "http://127.0.0.1:5000/route/v1/driving/" + createLongLatStringForRoute(coords);
-            console.log(url);
             fetch(url)
                     .then(res => res.json())
                     .then(data => {
@@ -96,8 +98,22 @@
                         })
                     })
                     .catch(err => console.error(err));
-                            </script>
-                            <h2>Hope you enjoyed!!</h2>
+                                            </script>
+                                            <h2>Hope you enjoyed!!</h2>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:choose>
+                                        <c:when test="${gateIsExit == false}">
+                                            <h2>This is an entry gate. You can't exit.</h2>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <h2>This is an exit gate. You can't enter.</h2>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:otherwise>
+                            </c:choose>
                         </c:otherwise>
                     </c:choose>
                     <script>

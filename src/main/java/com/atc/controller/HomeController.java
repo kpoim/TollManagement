@@ -58,6 +58,11 @@ public class HomeController {
 //	m.addAttribute("ud", ud);
         return "misc/landing-page";
     }
+	
+	@GetMapping("/template")
+	public String template(){
+	  return "misc/template";
+	}
 
     @RequestMapping("/error")
     public String handleError(HttpServletRequest request) {

@@ -16,6 +16,9 @@ public class ProClientServiceImpl implements ProClientService {
 
   @Autowired
   ProClientDao dao;
+  
+  @Autowired
+  CardService cardService;
 
   @Autowired
   private BCryptPasswordEncoder passwordEncoder;
@@ -23,9 +26,10 @@ public class ProClientServiceImpl implements ProClientService {
   @Override
   public ProClient create(ProClient pc) {
 	pc.setRole(roleService.findById("3"));
-        pc.setAnswer(passwordEncoder.encode(pc.getAnswer()));
-         System.out.println("ENCODED ANSWER " + pc.getAnswer());
+	pc.setAnswer(passwordEncoder.encode(pc.getAnswer()));
+	System.out.println("ENCODED ANSWER " + pc.getAnswer());
 	pc.setPassword(passwordEncoder.encode(pc.getPassword()));
+	pc.addCard(cardService.create());
 	return dao.create(pc);
   }
 

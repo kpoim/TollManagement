@@ -40,7 +40,7 @@ public class Gate implements Serializable {
     private Employee employee;
     @Column(columnDefinition = "TINYINT", name = "isentry")
     @Type(type = "org.hibernate.type.NumericBooleanType")
-    public boolean isEntry;
+    private boolean isEntry;
 
     public Gate() {
     }
