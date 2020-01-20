@@ -15,8 +15,6 @@ import javax.validation.constraints.Size;
 public class RetailClient extends Client {
     
     @NotNull(message="AFM cannot be null") 
-    @Min(value=9, message="AFM must have more than 9 digits")
-    @Max(value=10, message="AFM must not have more 10 digits")
     @Column(name = "retailafm")
     private Long retailAfm;
     @Size(min=3, max=100, message="The first name must be within 3 and 100 characters")
@@ -25,13 +23,12 @@ public class RetailClient extends Client {
     @Size(min=3, max=100, message="The last name must be within 3 and 100 characters")
     @Column(name = "lastname")
     private String lastname;
-//    @Min(value=10, message="Must be at least 10 digits")
     @Column(name = "phone")
     private String phone;
     @Size(min=5, max=50, message="The address must be within 5 and 50 characters")
     @Column(name = "address")
     private String address;
-    @Email(message="not a valid email address")
+    @Email(message="please enter a valid email (ex name@email.com")
     @Column(name = "email")
     private String email;
 

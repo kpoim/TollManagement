@@ -28,19 +28,20 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 	  String url = "/access-denied";
 	  switch(auth.getAuthority()){
 		case "ROLE_ADMIN":
-		  hsr.getSession(false).setMaxInactiveInterval(600);
+		  hsr.getSession(true).setMaxInactiveInterval(600);
 		  url = "/admin";
 		  break;
 		case "ROLE_CLIENT":
-		  hsr.getSession(false).setMaxInactiveInterval(1800);
+		  hsr.getSession(true).setMaxInactiveInterval(1800);
 		  url = "/user";
 		  break;
 		case "ROLE_EMPLOYEE":
-		  hsr.getSession(false).setMaxInactiveInterval(30600);
+//		  TODO try to change session(true) to false
+		  hsr.getSession(true).setMaxInactiveInterval(30600);
 		  url = "/employee";
 		  break;
 		case "ROLE_TERMINAL":
-		  hsr.getSession(false).setMaxInactiveInterval(3600);
+		  hsr.getSession(true).setMaxInactiveInterval(3600);
 		  url = "/terminal";
 		  break;
 	  }

@@ -4,6 +4,7 @@ package com.atc.service;
 import com.atc.dao.TerminalDao;
 import com.atc.entity.Gate;
 import com.atc.entity.Terminal;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -42,6 +43,11 @@ public class TerminalSerivceImpl implements TerminalService{
     @Override
     public Terminal findByUsername(String username) {
         return tdao.findByUsername(username);
+    }
+
+    @Override
+    public List<Terminal> findAll() {
+        return tdao.findAll();
     }
     
 }

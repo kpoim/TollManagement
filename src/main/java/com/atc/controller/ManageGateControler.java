@@ -36,8 +36,8 @@ public class ManageGateControler {
 
     @GetMapping("/list")
     public String listGate(Model m) {
-        List<Gate> list = gateService.findAll();
-        m.addAttribute("listOfGate", list);
+        List<Terminal> list = terminalService.findAll();
+        m.addAttribute("listOfTerminal", list);
         return "admin/manageGate/listGate";
     }
     
@@ -47,19 +47,20 @@ public class ManageGateControler {
     }
     
     @PostMapping("/create")
-    public String create(@Valid @ModelAttribute("wrapperGateTerminal")WrapperGateTerminal w, BindingResult result, Model m){
+    public String create(@Valid @ModelAttribute("wrapperGateTerminal") WrapperGateTerminal w, BindingResult result, Model m){
         if(result.hasErrors()){
             return "admin/manageGate/formGate";
         }
+        Gate gate = w.getGate();
         Terminal terminal= w.getTerminal();
         Terminal existing = terminalService.findByUsername(terminal.getUsername());
         if(existing!=null){
             m.addAttribute("wrapperGateTerminal", new WrapperGateTerminal());
-            m.addAttribute("terminalExistsError", "This terminal already exists");
+            m.addAttribute("wrapperGateTerminalExistsError", "This terminal already exists");
             return "admin/manageGate/formGate";
         }
-        gateService.addOrUpdate(w.getGate());
-        terminal.setGate(w.getGate());
+        gateService.addOrUpdate(gate);
+        terminal.setGate(gate);
         terminalService.addOrUpdate(terminal);
         return "redirect:/admin/manage-gate/list";
     }
@@ -82,14 +83,10 @@ public class ManageGateControler {
     
     
     @GetMapping("/delete")
-    public String delete(@RequestParam("gateId") String id){
+    public String delete(@RequestParam("gateId") Integer id){
         Gate g = gateService.findById(id);
         Terminal t = terminalService.findByGateId(g);
-        if(t!= null){
-            terminalService.delete(t); 
-        }else{
-            gateService.delete(g);
-        }
+        terminalService.delete(t);
         return "redirect:/admin/manage-gate/list";
     }
     

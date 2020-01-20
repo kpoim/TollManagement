@@ -42,7 +42,7 @@ public class ManageEmployeeController {
     }
     
     @PostMapping("/create")
-    public String createOrUpdate(@Valid @ModelAttribute("employee")Employee e, BindingResult result, Model m){
+    public String createOrUpdate(@Valid @ModelAttribute("employee") Employee e, BindingResult result, Model m){
         if(result.hasErrors()){
             return "admin/manageEmployee/formEmployee";
         }

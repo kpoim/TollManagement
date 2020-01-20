@@ -12,6 +12,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Manage Station Page</title>
+        <style>
+            .error{
+                color: red;
+            }
+        </style>
     </head>
     <body>
         <c:choose>
@@ -34,7 +39,8 @@
             Distance: : <form:input path="distance" placeholder="Distance"/>
             <form:errors path="distance" cssClass="error"/>
             <br/>
-            Road Id : <form:input path="road.id" placeholder="Road id"/>
+            Road Id : 
+            <form:input path="road.id" placeholder="Road id"/>
             <form:errors path="road.id" cssClass="error"/>
             <br/>
             <input type="submit" value="Submit">

@@ -24,7 +24,7 @@
             Gate Number: : <form:input path="gateNo" placeholder="Gate number"/>
             <form:errors path="gateNo" cssClass="error"/>
             <br/>
-            Station Id: : <form:input path="station.id" placeholder="Station id"/>
+            Station Id: : <form:select path="station.id"/>
             <form:errors path="station.id" cssClass="error"/>
             <br/>
             Is Entry : <form:input path="isEntry"/>
