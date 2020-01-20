@@ -71,14 +71,14 @@ public class HomeController {
 
     @GetMapping("/register")
     public String newClientForm(@ModelAttribute("proClient") ProClient proClient, @ModelAttribute("retailClient") RetailClient retailClient) {
-        return "user/register";
+        return "redirect:/login#register";
     }
 
     @PostMapping("/newProClient")
     public String newProClient(@Valid @ModelAttribute("proClient")ProClient proClient, BindingResult result, final Model m ) {
         if (result.hasErrors()) {
             m.addAttribute("retailClient", new RetailClient());
-            return "user/register";
+            return "misc/login-page";
         }
         proClientService.create(proClient);
         return "redirect:/";
@@ -88,7 +88,7 @@ public class HomeController {
     public String newRetailClient(@Valid @ModelAttribute("retailClient")RetailClient retailClient, BindingResult result, final Model m) {
         if (result.hasErrors()) {
             m.addAttribute("proClient", new ProClient());
-            return "user/register";
+            return "redirect:/login#register";
         }
         retailClientService.create(retailClient);
         return "redirect:/";

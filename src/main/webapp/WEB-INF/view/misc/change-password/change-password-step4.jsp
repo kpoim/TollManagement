@@ -264,7 +264,7 @@
 
         </div>
         <script>
-            const redirectURL = "${pageContext.request.contextPath}/user";
+            const redirectURL = "${pageContext.request.contextPath}/login";
             setTimeout("window.location.href= redirectURL;", 3000);
         </script>
     </body>

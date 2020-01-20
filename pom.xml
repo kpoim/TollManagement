@@ -94,7 +94,12 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.6</version>
         </dependency>
-        </dependencies>
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>

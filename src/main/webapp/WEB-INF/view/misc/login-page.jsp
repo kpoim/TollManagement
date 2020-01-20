@@ -1,5 +1,6 @@
 
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,7 +65,7 @@
                 overflow: hidden;
                 position: relative;
                 width: 900px;
-                height: 550px;
+                height: 600px;
                 margin: 0 auto 100px;
                 background: #fff;
             }
@@ -297,7 +298,7 @@
                 transform: translate3d(0, 0, 0);
             }
 
-            
+
 
 
             /*-------------------------------------*/
@@ -338,6 +339,11 @@
                 /* font-size: 26px; */
                 display: block;
                 text-align: center;
+            }
+
+            ul{  display: flex;
+                 flex-direction: column;
+                 align-items: center;
             }
 
         </style>
@@ -397,6 +403,15 @@
                 <div class="forggoternPassword">
                     <a href="${pageContext.request.contextPath}/forgotten-password">Forgotten Password</a>
                 </div>
+                <spring:hasBindErrors name="proClient">
+                    <h2 style="color:red">Failed to Sign Up</h2>
+                    <ul>
+                        <c:forEach var="error" items="${errors.allErrors}">
+                            <li><b style="color:red" ><spring:message  message="${error}" /></b></li>
+                            <br />
+                        </c:forEach>
+                </spring:hasBindErrors>
+                </ul>
             </div>
             <div class="sub-cont">
                 <div class="img">
@@ -429,7 +444,7 @@
                                         </label>
                                         <button type="button" class="submit">Sign Up</button>-->
                     <!--Sign up-->
-                    <div class="options">
+                    <div class="options" id="register">
                         <div class="radioOption">
                             <label class="customLabel" style="white-space: nowrap;">
                                 <input type="radio" name="choose-one" value="ProClient" checked required class="chooseOne  "
@@ -465,8 +480,8 @@
                         <div class="oneRow">
                             <div class="resultDetail proClient">
                                 <label ><span>Company AFM</span>
-                                    <form:input type="text"  path="proafm" required="required"/>
-                                    <%--<form:errors path="proafm" cssClass="error"/>--%>
+                                    <form:input type="number" min="9"   path="proafm" required="required"/>
+                                    <form:errors path="proafm" cssClass="error"/>
                                 </label>
                             </div>
                             <div class="resultDetail proClient">
@@ -553,7 +568,7 @@
                         <div class="oneRow">
                             <div class="resultDetail retailClient">
                                 <label ><span>AFM</span>
-                                    <form:input type="text"  path="retailAfm" required="required"/>
+                                    <form:input type="number" min="9" max="10" path="retailAfm" required="required"/>
                                 </label>
                             </div>
                             <div class="resultDetail retailClient">
@@ -616,6 +631,24 @@
             document.querySelector('.img__btn').addEventListener('click', function () {
                 document.querySelector('.cont').classList.toggle('s--signup');
             });
+        </script>
+        <script>
+            $(document).ready(function () {
+                if (window.location.href.indexOf("#register") > -1) {
+                    //alert("your url contains the name franky");
+                    //window.onload = 
+                    clickButton();
+                }
+            });
+            function clickButton() {
+                var button = document.querySelector(".img__btn");
+                button.addEventListener("click", console.log("clicked"));
+                button.click();
+            }
+            ;
+            //code
+
+
         </script>
     </body>
 </html>                 
