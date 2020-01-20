@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,6 +16,12 @@
     <body>
         <h1>List of Stations</h1>
         <a href="${pageContext.request.contextPath}/admin/manage-station/create">Add Station</a>
+        <br/>
+        <form:form action="${pageContext.request.contextPath}/admin/manage-station/search" method="GET">
+            <label for="search">Search By Name:</label>
+            <input type="text"  name="search" size="8">
+            <input type="submit" value="Search">
+        </form:form>
         <table border="1">
             <tr>
                 <th>Station id</th>

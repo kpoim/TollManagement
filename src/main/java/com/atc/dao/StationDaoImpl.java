@@ -30,5 +30,13 @@ public class StationDaoImpl extends SuperDao implements StationDao {
         Station s = getSession().getReference(Station.class, id);
         getSession().delete(s);
     }
+
+    @Override
+    public List<Station> findByName(String search) {
+        Query q = getSession().createQuery("SELECT s FROM Station s WHERE s.stationName LIKE :name");
+        q.setParameter("name","%"+ search +"%");
+        List<Station> list = q.getResultList();
+        return list;
+    }
   
 }

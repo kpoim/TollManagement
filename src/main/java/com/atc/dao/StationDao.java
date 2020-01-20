@@ -12,5 +12,7 @@ public interface StationDao {
     public Station findById(Integer id);
 
     public void delete(int id);
+
+    public List<Station> findByName(String search);
   
 }

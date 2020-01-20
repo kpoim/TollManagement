@@ -33,22 +33,22 @@ INSERT INTO user(username, password, rid) VALUES
 ('ret2', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 3),
 ('ret3', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 3);
 
-insert into retail_clients (id, retailafm, firstname, lastname, phone, email)
-values (10, 0000111123, 'Dimitris', 'Kokoras', 6991234321, 'koko@gmail.gr'),
-(11, 1234111124, 'Vasilis', 'Iakovopoulos', 6988966987, 'iako@gmail.gr'),
-(12, 4321432112, 'Sotiris', 'Kalampokakis', 6976976977, 'kala@email.gr');
+INSERT INTO retail_clients (id, retailafm, firstname, lastname, phone, email)
+VALUES (13, 0000111123, 'Dimitris', 'Kokoras', 6991234321, 'koko@gmail.gr'),
+(14, 1234111124, 'Vasilis', 'Iakovopoulos', 6988966987, 'iako@gmail.gr'),
+(15, 4321432112, 'Sotiris', 'Kalampokakis', 6976976977, 'kala@email.gr');
 
-insert into pro_clients (id, proafm, companyname, phone, address, email)
-values (13, 1111222233, 'Coscote', 6999999986, 'Kolokotroni 27', 'email@coscote.gr'),
-(14, 1111222233, 'Xaplopoulos', 6988877766, 'Ath. DIakou 02', 'email@xaplo.gr'),
-(15, 3335557779, 'Byte', 6945678923, 'Kavalas 18', 'email@byte.gr');
+INSERT INTO pro_clients (id, proafm, companyname, phone, address, email)
+VALUES (10, 1111222233, 'Coscote', 6999999986, 'Kolokotroni 27', 'email@coscote.gr'),
+(11, 1111222233, 'Xaplopoulos', 6988877766, 'Ath. DIakou 02', 'email@xaplo.gr'),
+(12, 3335557779, 'Byte', 6945678923, 'Kavalas 18', 'email@byte.gr');
 
-insert into road (name) values ('Egnatia'),
+INSERT INTO road (name) VALUES ('Egnatia'),
 ('P.A.TH.E.'),
 ('Ionia');
 
-insert into station (stationname, distance, roadid)
-values 
+INSERT INTO station (stationname, distance, roadid)
+VALUES 
 ('Turias', 0, 1),
 ('Pamvotidas', 30.5, 1),
 ('Malakasiou', 87.9, 1),
@@ -104,8 +104,8 @@ longitude = 22.723859,
 distance = 458
 WHERE stationid = 10;
 
-insert into employee
-values (1, 'Nick', 'Nickolson', 6996996999, 'nickolson@atc.gr'),
+INSERT INTO employee
+VALUES (1, 'Nick', 'Nickolson', 6996996999, 'nickolson@atc.gr'),
 (2, 'Jack', 'Jackson', 6936549871, 'jackson@atc.gr'),
 (3, 'Andy', 'Andyson', 6924567892, 'andyson@atc.gr'),
 (4, 'George', 'Georgeson', 6906901111, 'georgeson@atc.gr'),
@@ -135,7 +135,7 @@ values (1, 'Nick', 'Nickolson', 6996996999, 'nickolson@atc.gr'),
 -- ('Dimitris', 'Arkoudas', 6964679183, 'arkoudas@atc.gr'),
 -- ('Manolis', 'Alepoudakis', 6978964915, 'alepoudakis@atc.gr');
 
-insert into gate (gateNo, stationid, isentry) values
+INSERT INTO gate (gateNo, stationid, isentry) VALUES
 (1001, 1, 0),
 (1002, 1, 1), #ENTRY
 (1003, 1, 0),
@@ -219,6 +219,16 @@ INSERT INTO ongoing_logs VALUES
 (33,	108,	26,	'2020-01-18 18:54:18'),
 (34,	109,	18,	'2020-01-18 18:50:48');
 
+-- INSERT INTO client 
+-- (clientid, question, answer)
+-- VALUES 
+-- (1, 10, 'color', '$2y$12$kAVt/I9nZcWIC7..AzO4d.RxAQb1DYpJeap2dA/wwzToeAgC79MQC'),
+-- (2, 11, 'color', '$2y$12$kAVt/I9nZcWIC7..AzO4d.RxAQb1DYpJeap2dA/wwzToeAgC79MQC'),
+-- (3, 12, 'color', '$2y$12$kAVt/I9nZcWIC7..AzO4d.RxAQb1DYpJeap2dA/wwzToeAgC79MQC'),
+-- (4, 13, 'color', '$2y$12$kAVt/I9nZcWIC7..AzO4d.RxAQb1DYpJeap2dA/wwzToeAgC79MQC'),
+-- (5, 14, 'color', '$2y$12$kAVt/I9nZcWIC7..AzO4d.RxAQb1DYpJeap2dA/wwzToeAgC79MQC'),
+-- (6, 15, 'color', '$2y$12$kAVt/I9nZcWIC7..AzO4d.RxAQb1DYpJeap2dA/wwzToeAgC79MQC');
+
 SELECT * FROM role;
 SELECT * FROM user;
 SELECT * FROM client;
@@ -243,6 +253,10 @@ SELECT * FROM terminal;
 SELECT * FROM user;
 SELECT * FROM station;
 DELETE FROM gate WHERE gateid>26;
+
+SELECT * FROM client;
+
+
 -- ALTER TABLE history_logs
 -- ADD geometry VARCHAR(500);
 

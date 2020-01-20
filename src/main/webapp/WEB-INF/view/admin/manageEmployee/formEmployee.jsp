@@ -34,6 +34,7 @@
                                 <label for="username">Username</label>
                                 <form:input type="text" class="form-control" path="username"/>
                                 <form:errors path="username" cssClass="error"/>
+                                ${employeeExistsError}
                             </div>
                             <div class="form-group ">
                                 <label for="password">Password</label>

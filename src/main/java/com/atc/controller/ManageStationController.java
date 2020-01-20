@@ -56,4 +56,12 @@ public class ManageStationController {
         service.delete(id);
         return "redirect:/admin/manage-station/list";
     }
+    
+    @GetMapping("/search")
+    public String searchStation(@RequestParam("search") String search, Model m){
+        List<Station> list = service.findByName(search);
+        m.addAttribute("listOfStation", list);
+        return "admin/manageStation/listStation";
+    }
+    
 }

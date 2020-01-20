@@ -29,4 +29,9 @@ public class RetailClientServiceImpl implements RetailClientService {
 	return dao.create(rc);
   }
 
+    @Override
+    public RetailClient findByUsername(String username) {
+        return dao.findByUsername(username);
+    }
+
 }

@@ -12,4 +12,6 @@ public interface StationService {
     Station findById(Integer id);
 
     void delete(int id);
+
+    public List<Station> findByName(String search);
 }

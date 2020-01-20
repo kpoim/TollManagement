@@ -80,6 +80,12 @@ public class HomeController {
             m.addAttribute("retailClient", new RetailClient());
             return "misc/login-page";
         }
+        ProClient existing = proClientService.findByUsername(proClient.getUsername());
+        if(existing!=null){
+            m.addAttribute("retailClient", new ProClient());
+            m.addAttribute("proExistsError", "This username already exists");
+            return "redirect:/login#register";
+        }
         proClientService.create(proClient);
         return "redirect:/";
     }
@@ -88,6 +94,12 @@ public class HomeController {
     public String newRetailClient(@Valid @ModelAttribute("retailClient")RetailClient retailClient, BindingResult result, final Model m) {
         if (result.hasErrors()) {
             m.addAttribute("proClient", new ProClient());
+            return "redirect:/login#register";
+        }
+        RetailClient existing = retailClientService.findByUsername(retailClient.getUsername());
+        if(existing!=null){
+            m.addAttribute("retailClient", new RetailClient());
+            m.addAttribute("retailExistsError", "This username already exists");
             return "redirect:/login#register";
         }
         retailClientService.create(retailClient);
