@@ -297,20 +297,7 @@
                 transform: translate3d(0, 0, 0);
             }
 
-            .icon-link {
-                position: absolute;
-                left: 5px;
-                bottom: 5px;
-                width: 32px;
-            }
-            .icon-link img {
-                width: 100%;
-                vertical-align: top;
-            }
-            .icon-link--twitter {
-                left: auto;
-                right: 5px;
-            }
+            
 
 
             /*-------------------------------------*/
@@ -357,16 +344,8 @@
     </head>
     <body>
         <!--<div class="login-form">
-        <c:if test="${param.error !=null}">
-            <div class="alert alert-danger">
-                <i>Invalid username/password</i>
-            </div>
-        </c:if>
-        <c:if test="${param.logout !=null}">
-            <div class="alert alert-success">
-                <i>Logout succesfully</i>
-            </div>
-        </c:if>
+        -->
+        <!--
         <form:form action="${pageContext.request.contextPath}/authenticate" method="POST">
             <h2 class="text-center">Log in</h2>       
             <div class="form-group">
@@ -404,7 +383,16 @@
                         <!--<button type="submit" class="btn btn-primary btn-block">Log in</button>-->
                         <button type="submit" class="submit">Sign In</button>
                     </div>
-
+                    <c:if test="${param.error !=null}">
+                        <div class="alert alert-danger text-center">
+                            <i>Invalid username/password</i>
+                        </div>
+                    </c:if>
+                    <c:if test="${param.logout !=null}">
+                        <div class="alert alert-success">
+                            <i>Logout succesfully</i>
+                        </div>
+                    </c:if>
                 </form:form >
                 <div class="forggoternPassword">
                     <a href="${pageContext.request.contextPath}/forgotten-password">Forgotten Password</a>
@@ -459,13 +447,13 @@
                     <form:form method="post" action="${pageContext.request.contextPath}/newProClient" modelAttribute="proClient">
                         <div class="oneRow">
                             <div class="resultDetail proClient">
-                                <label for="username"><span>Username</span>
-                                    <form:input type="text"  path="username"/>
+                                <label ><span>Username</span>
+                                    <form:input type="text"  path="username" required="required"/>
                                 </label>
                             </div>
                             <div class="resultDetail proClient">
-                                <label for="password"><span>Password</span>
-                                    <form:input type="password" path="password"/>
+                                <label ><span>Password</span>
+                                    <form:input type="password" path="password" required="required"/>
                                 </label>
                             </div>
                         </div>
@@ -476,36 +464,36 @@
                         </div>
                         <div class="oneRow">
                             <div class="resultDetail proClient">
-                                <label for="proafm"><span>Company AFM</span>
-                                    <form:input type="text"  path="proafm"/>
+                                <label ><span>Company AFM</span>
+                                    <form:input type="text"  path="proafm" required="required"/>
                                     <%--<form:errors path="proafm" cssClass="error"/>--%>
                                 </label>
                             </div>
                             <div class="resultDetail proClient">
-                                <label for="companyName"><span>Company Name</span>
-                                    <form:input type="text"  path="companyName"/>
+                                <label ><span>Company Name</span>
+                                    <form:input type="text"  path="companyName" required="required"/>
                                     <form:errors path="companyName" cssClass="error"/>
                                 </label>
                             </div>
                         </div>
                         <div class="oneRow">
                             <div class="resultDetail proClient">
-                                <label for="phone"><span>Phone</span>
-                                    <form:input type="text" path="phone"/>
+                                <label ><span>Phone</span>
+                                    <form:input type="text" path="phone" required="required"/>
                                     <form:errors path="phone" cssClass="error"/>
                                 </label>
                             </div>
                             <div class="resultDetail proClient">
-                                <label for="address"><span>Address</span>
-                                    <form:input type="text"  path="address"/>
+                                <label ><span>Address</span>
+                                    <form:input type="text"  path="address" required="required"/>
                                     <form:errors path="address" cssClass="error"/>
                                 </label>
                             </div>
                         </div>
                         <div class="oneRow">
                             <div class="resultDetail proClient">
-                                <label for="email"><span>Email</span>
-                                    <form:input type="text"  path="email"/>
+                                <label ><span>Email</span>
+                                    <form:input type="text"  path="email" required="required"/>
                                     <form:errors path="email" cssClass="error"/>
                                 </label>
                             </div>
@@ -513,14 +501,14 @@
                         <div class="oneRow">
 
                             <div class="resultDetail proClient">
-                                <label for="companyName"><span>Security Question</span>
-                                    <form:input type="text"  path="question"/>
+                                <label ><span>Security Question</span>
+                                    <form:input type="text"  path="question" required="required"/>
                                     <form:errors path="question" cssClass="error"/>
                                 </label>
                             </div>
                             <div class="resultDetail proClient">
-                                <label for="companyName"><span>Security Answer</span>
-                                    <form:input type="text"  path="answer"/>
+                                <label ><span>Security Answer</span>
+                                    <form:input type="text"  path="answer" required="required"/>
                                     <form:errors path="answer" cssClass="error"/>
                                 </label>
                             </div>
@@ -533,13 +521,13 @@
                     <form:form method="post" action='${pageContext.request.contextPath}/newRetailClient' modelAttribute="retailClient">
                         <div class="oneRow">
                             <div class="resultDetail retailClient">
-                                <label for="username"><span>Username</span>
-                                    <form:input type="text"  path="username"/>
+                                <label ><span>Username</span>
+                                    <form:input type="text"  path="username" required="required"/>
                                 </label>
                             </div>
                             <div class="resultDetail retailClient">
-                                <label for="password"><span>Password</span>
-                                    <form:input type="password"  path="password"/>
+                                <label ><span>Password</span>
+                                    <form:input type="password"  path="password" required="required"/>
                                 </label>
                             </div>
                         </div>
@@ -552,50 +540,50 @@
                         <div class="oneRow">
 
                             <div class="resultDetail retailClient">
-                                <label for="firstname"><span>First Name</span>
-                                    <form:input type="text"  path="firstname"/>
+                                <label ><span>First Name</span>
+                                    <form:input type="text"  path="firstname" required="required"/>
                                 </label>
                             </div>
                             <div class="resultDetail retailClient">
-                                <label for="lastname"><span>Last name</span>
-                                    <form:input type="text" path="lastname"/>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="oneRow">
-                            <div class="resultDetail retailClient">
-                                <label for="retailAfm"><span>AFM</span>
-                                    <form:input type="text"  path="retailAfm"/>
-                                </label>
-                            </div>
-                            <div class="resultDetail retailClient">
-                                <label for="phone"><span>Phone</span>
-                                    <form:input type="text"  path="phone"/>
+                                <label ><span>Last name</span>
+                                    <form:input type="text" path="lastname" required="required"/>
                                 </label>
                             </div>
                         </div>
                         <div class="oneRow">
                             <div class="resultDetail retailClient">
-                                <label for="address"><span>Address</span>
-                                    <form:input type="text"  path="address"/>
+                                <label ><span>AFM</span>
+                                    <form:input type="text"  path="retailAfm" required="required"/>
+                                </label>
+                            </div>
+                            <div class="resultDetail retailClient">
+                                <label ><span>Phone</span>
+                                    <form:input type="text"  path="phone" required="required"/>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="oneRow">
+                            <div class="resultDetail retailClient">
+                                <label ><span>Address</span>
+                                    <form:input type="text"  path="address" required="required"/>
                                 </label>
                             </div>
                             <div class="resultDetail retailClient">
                                 <label><span>Email</span>
-                                    <form:input type="text" path="email"/>
+                                    <form:input type="text" path="email" required="required"/>
                                 </label>
                             </div>
                         </div>
                         <div class="oneRow">
                             <div class="resultDetail retailClient">
-                                <label for="companyName"><span>Security Question</span>
-                                    <form:input type="text" path="question"/>
+                                <label ><span>Security Question</span>
+                                    <form:input type="text" path="question" required="required"/>
                                     <form:errors path="question" cssClass="error"/>
                                 </label>
                             </div>
                             <div class="resultDetail retailClient">
-                                <label for="companyName"><span>Security Answer</span>
-                                    <form:input type="text" path="answer"/>
+                                <label ><span>Security Answer</span>
+                                    <form:input type="text" path="answer" required="required"/>
                                     <form:errors path="answer" cssClass="error"/>
                                 </label>
                             </div>

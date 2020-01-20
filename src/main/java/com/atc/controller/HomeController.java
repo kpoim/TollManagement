@@ -7,7 +7,11 @@ import com.atc.service.ClientService;
 import com.atc.service.ProClientService;
 import com.atc.service.RetailClientService;
 import java.security.Principal;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -49,25 +53,43 @@ public class HomeController {
         return "misc/landing-page";
     }
 
+    @RequestMapping("/error")
+    public String handleError(HttpServletRequest request) {
+        Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
+
+        if (status != null) {
+            Integer statusCode = Integer.valueOf(status.toString());
+
+            if (statusCode == HttpStatus.NOT_FOUND.value()) {
+                return "misc/error-404";
+            } else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
+                return "misc/error-500";
+            }
+        }
+        return "misc/error-page";
+    }
+
     @GetMapping("/register")
     public String newClientForm(@ModelAttribute("proClient") ProClient proClient, @ModelAttribute("retailClient") RetailClient retailClient) {
         return "user/register";
     }
 
     @PostMapping("/newProClient")
-    public String newProClient(ProClient proClient) {
-//        if (result.hasErrors()) {
-//            return "user/register";
-//        }
+    public String newProClient(@Valid @ModelAttribute("proClient")ProClient proClient, BindingResult result, final Model m ) {
+        if (result.hasErrors()) {
+            m.addAttribute("retailClient", new RetailClient());
+            return "user/register";
+        }
         proClientService.create(proClient);
         return "redirect:/";
     }
 
     @PostMapping("/newRetailClient")
-    public String newRetailClient(RetailClient retailClient) {
-//        if (result.hasErrors()) {
-//            return "user/register";
-//        }
+    public String newRetailClient(@Valid @ModelAttribute("retailClient")RetailClient retailClient, BindingResult result, final Model m) {
+        if (result.hasErrors()) {
+            m.addAttribute("proClient", new ProClient());
+            return "user/register";
+        }
         retailClientService.create(retailClient);
         return "redirect:/";
     }
@@ -98,9 +120,9 @@ public class HomeController {
 
     @PostMapping("/check-answer")
     public String changePassword(@ModelAttribute("persistantClient") Client client,
-             @ModelAttribute("username") String username, BindingResult resultUsername,
-             @ModelAttribute("question") String question, BindingResult resultQuestion,
-             @ModelAttribute("newanswer") String answer, BindingResult resultAnswer) {
+            @ModelAttribute("username") String username, BindingResult resultUsername,
+            @ModelAttribute("question") String question, BindingResult resultQuestion,
+            @ModelAttribute("newanswer") String answer, BindingResult resultAnswer) {
 
         String correctAnswer = client.getAnswer();
         //answer = passwordEncoder.encode(answer);
@@ -119,7 +141,7 @@ public class HomeController {
 
     @PostMapping("/new-password")
     public String newPassword(@ModelAttribute("persistantClient") Client client,
-             @ModelAttribute("newPassword") String newPassword, BindingResult resultQuestion
+            @ModelAttribute("newPassword") String newPassword, BindingResult resultQuestion
     ) {
         System.out.println("New password " + newPassword);
         System.out.println("CLIENT" + client);
