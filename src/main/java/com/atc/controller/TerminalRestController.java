@@ -56,14 +56,8 @@ public class TerminalRestController {
 //  public @ResponseBody Geometry storeGeometry(@PathVariable("id") String historyId, @RequestBody Geometry json){
   @PostMapping("/store-geometry/{id}")
   @ResponseStatus(HttpStatus.CREATED)
-  public ResponseEntity<Geometry> storeGeometry(@PathVariable("id") String historyId, @RequestBody Geometry json) {
-//    String json = httpEntity.getBody();
-	System.out.println("json = " + json);
-//	geometryService.create(json);
-//	System.out.println(geometry);
-//	historyService.findById(historyId);
-//	return ResponseEntity.ok().body("response-text");
-	return ResponseEntity.ok().body(json);
-//	return json;
+  public ResponseEntity<Boolean> storeGeometry(@PathVariable("id") String historyId, @RequestBody String geometry) {
+	  historyService.findById(historyId);
+	return ResponseEntity.ok().body(historyService.addGeometry(historyId, geometry));
   }
 }

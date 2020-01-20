@@ -34,7 +34,7 @@ function createMap(geometry) {
 }
 
 function createLongLatStringForRoute(coords) {
-    return `${coords.entry.longitude},${coords.entry.latitude};${coords.exit.longitude},${coords.exit.latitude}`;
+    return coords.entry.longitude + "," + coords.entry.latitude + ";" + coords.exit.longitude + "," + coords.exit.latitude;
 }
 
 //COORDS: 

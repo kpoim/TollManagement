@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS awesome_toll_company
 default character set utf8mb4;
 
-DROP SCHEMA awesome_toll_company; 
+-- DROP SCHEMA awesome_toll_company; 
 
 USE awesome_toll_company;
 
@@ -84,6 +84,13 @@ CONSTRAINT ol_cardFK1 FOREIGN KEY (cardid) REFERENCES card (cardid),
 CONSTRAINT ol_gateFK FOREIGN KEY (gateid) REFERENCES gate (gateid)
 );
 
+CREATE TABLE vehicle(
+	-- id INT UNSIGNED AUTO_INCREMENT ,
+    name VARCHAR(20) PRIMARY KEY,
+    #ppkm = price per km
+    ppkm DECIMAL(5,4)
+);
+
 create table history_logs (
 historyid INT UNSIGNED PRIMARY KEY,
 cardid INT UNSIGNED,
@@ -93,9 +100,10 @@ entrygateid INT UNSIGNED,
 exitgateid INT UNSIGNED,
 geometry VARCHAR(500),
 cost DECIMAL(5,2),
-vehicle INT UNSIGNED,
+vehicle VARCHAR(20),
 CONSTRAINT gateFK1 FOREIGN KEY (entrygateid) REFERENCES gate (gateid),
-CONSTRAINT gateFK2 FOREIGN KEY (exitgateid) REFERENCES gate (gateid)
+CONSTRAINT gateFK2 FOREIGN KEY (exitgateid) REFERENCES gate (gateid),
+CONSTRAINT gateFK3 FOREIGN KEY (vehicle) REFERENCES vehicle(name)
 );
 
 CREATE TABLE role(
@@ -110,11 +118,6 @@ CREATE TABLE user (
     password VARCHAR(68),
     rid INT UNSIGNED,
     CONSTRAINT roleFK FOREIGN KEY (rid) REFERENCES role(rid)
-);
-
-CREATE TABLE geometry (
-	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    geometry VARCHAR(500)
 );
 
 -- DELIMITER $

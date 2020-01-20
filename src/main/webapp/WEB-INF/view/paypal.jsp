@@ -29,7 +29,7 @@
         crossorigin="anonymous"></script>
 
         <script
-            src="https://www.paypal.com/sdk/js?client-id=AZAXxTPUZw_iv_a5hit8u85xl5z36z8n3C6V-4XoqQckgasgjVJeqypnGMW_qgLbV2Ij4iBa2X0H-UPx"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
+            src="https://www.paypal.com/sdk/js?client-id=AWk0x1CD9HuHlrUjGIlQtoTef_TiVP0WZh9DlPb8EgOh8BBe4gIrH8th7Lv2Batwf1bE-YiPc0Nu_6uD"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
         </script>
 
         <label for="value" class="col-sm-8 col-form-label">Amount for Donation</label>

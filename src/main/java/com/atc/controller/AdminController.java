@@ -85,7 +85,7 @@ public class AdminController {
         adminService.delete(Integer.parseInt(id));
         return "redirect:/admin/list";
     }
-    
+   
     
 
 }

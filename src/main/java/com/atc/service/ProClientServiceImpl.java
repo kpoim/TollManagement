@@ -23,6 +23,8 @@ public class ProClientServiceImpl implements ProClientService {
   @Override
   public ProClient create(ProClient pc) {
 	pc.setRole(roleService.findById("3"));
+        pc.setAnswer(passwordEncoder.encode(pc.getAnswer()));
+         System.out.println("ENCODED ANSWER " + pc.getAnswer());
 	pc.setPassword(passwordEncoder.encode(pc.getPassword()));
 	return dao.create(pc);
   }

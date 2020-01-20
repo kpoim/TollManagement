@@ -81,7 +81,7 @@
 
                             </tbody>
                         </table>
-
+                                    <a href="${path}/change-password-form/${puser.id}"> Change Password </a>
                     </div>
                     <div class="mt-3">
                         <p><a href="/ATR/driversHistory.html">Drivers History</a> | <a href="">Statistics</a></p>
