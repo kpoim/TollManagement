@@ -16,6 +16,11 @@ import org.hibernate.validator.constraints.Range;
 public class ProClient extends Client {
     
     @NotNull(message="AFM cannot be null") 
+
+
+    @Min(value=100000000, message="AFM must have more than 9 digits")
+    @Max(value=999999999, message="AFM must not have more 10 digits")
+
     @Column(name = "proafm")
     private Long proafm;
     @Size(min=3, max=100, message="The company name must be within 3 and 100 characters")

@@ -16,6 +16,8 @@ public class RetailClient extends Client {
     
     @NotNull(message="AFM cannot be null") 
     @Column(name = "retailafm")
+    @Min(value=100000000, message="AFM must have more than 9 digits")
+    @Max(value=999999999, message="AFM must not have more 10 digits")
     private Long retailAfm;
     @Size(min=3, max=100, message="The first name must be within 3 and 100 characters")
     @Column(name = "firstname")

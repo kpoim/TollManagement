@@ -9,9 +9,9 @@ public interface CardDao {
     
     List<Card> findAll();
     
-    public void addOrUpdate(Card c);
+    Card addOrUpdate(Card c);
     
-    public void delete(Integer id);
+    void delete(Integer id);
     
-    public Card findById(Integer id);
+    Card findById(Integer id);
 }

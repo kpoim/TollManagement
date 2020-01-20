@@ -20,8 +20,10 @@ public class CardDaoImpl extends SuperDao implements CardDao{
     }
 
     @Override
-    public void addOrUpdate(Card c) {
+    public Card addOrUpdate(Card c) {
         getSession().saveOrUpdate(c);
+		 System.out.println("-------> " + c);
+		return c.getId() == 0 ? null : c;
     }
 
     @Override

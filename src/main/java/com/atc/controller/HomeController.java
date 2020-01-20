@@ -52,6 +52,11 @@ public class HomeController {
 //	m.addAttribute("ud", ud);
         return "misc/landing-page";
     }
+	
+	@GetMapping("/template")
+	public String template(){
+	  return "misc/template";
+	}
 
     @RequestMapping("/error")
     public String handleError(HttpServletRequest request) {
@@ -94,7 +99,7 @@ public class HomeController {
     public String newRetailClient(@Valid @ModelAttribute("retailClient")RetailClient retailClient, BindingResult result, final Model m) {
         if (result.hasErrors()) {
             m.addAttribute("proClient", new ProClient());
-            return "redirect:/login#register";
+            return "misc/login-page";
         }
         RetailClient existing = retailClientService.findByUsername(retailClient.getUsername());
         if(existing!=null){

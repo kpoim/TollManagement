@@ -12,6 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class RetailClientServiceImpl implements RetailClientService {
 
   @Autowired
+  CardService cardService;
+
+  @Autowired
   RoleService roleService;
 
   @Autowired
@@ -23,9 +26,10 @@ public class RetailClientServiceImpl implements RetailClientService {
   @Override
   public RetailClient create(RetailClient rc) {
 	rc.setRole(roleService.findById("3"));
-        rc.setAnswer(passwordEncoder.encode(rc.getAnswer()));
-         System.out.println("ENCODED ANSWER " + rc.getAnswer());
+	rc.setAnswer(passwordEncoder.encode(rc.getAnswer()));
+	System.out.println("ENCODED ANSWER " + rc.getAnswer());
 	rc.setPassword(passwordEncoder.encode(rc.getPassword()));
+	rc.addCard(cardService.create());
 	return dao.create(rc);
   }
 

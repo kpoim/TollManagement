@@ -22,10 +22,10 @@ public class PassageServiceImpl implements PassageService {
 
   @Autowired
   HistoryService historyService;
-  
+
   @Autowired
   AuthenticationFacade auth;
-  
+
   @Autowired
   GateService gateService;
 
@@ -36,23 +36,28 @@ public class PassageServiceImpl implements PassageService {
 	Gate gate = extractGateFromTerminal(id);
 	System.out.println("PROCESSCARD GATE: " + gate);
 	if (ongoing == null) {
-	  ongoingService.newEntry(id, gate);
+	  if (gate.isIsEntry()) {
+		ongoingService.newEntry(id, gate);
+	  }
 	  return null;
 	} else {
+	  if (gate.isIsEntry()) {
+		return null;
+	  }
 	  System.out.println("PC ONGOING NOT NULL");
 	  History history = historyService.addToHistory(ongoing, gate);
 	  System.out.println("RETURNEDD" + history);
-	  if (history != null) {
+	  if (history != null && history.getId() != null) {
 		ongoingService.delete(ongoing);
 	  }
 	  return history;
 	}
   }
-  
+
   @Override
-  public Gate extractGateFromTerminal(String id){
+  public Gate extractGateFromTerminal(String id) {
 //	User terminal = (User)auth.getAuthentication().getPrincipal();
-	MyUserDetails principal = (MyUserDetails)auth.getAuthentication().getPrincipal();
+	MyUserDetails principal = (MyUserDetails) auth.getAuthentication().getPrincipal();
 	Terminal terminal = (Terminal) principal.getUser();
 //	System.out.println("PSI TERMINAL: "+terminal);
 //	System.out.println("PSI EXIT GATE: " + terminal.getGate());
