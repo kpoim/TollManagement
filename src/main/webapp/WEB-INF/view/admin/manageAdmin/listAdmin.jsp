@@ -13,6 +13,7 @@
         <title>Employee Page</title>
     </head>
     <body>
+        <%@include file="../../misc/navbars/nav-admin.jsp" %>
         <h1>List of Employee</h1>
         <a href="${pageContext.request.contextPath}/admin/create">Add Admin</a>
         <table border="1">

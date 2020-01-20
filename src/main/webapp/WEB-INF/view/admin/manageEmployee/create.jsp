@@ -15,41 +15,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js"
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
         </script>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
-            <div class="container">
-                <a class="navbar-brand" href="#">A T W</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item ">
-                            <a class="nav-link" href="/ATR/admin/admin.html">Home
-
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="/ATR/admin/manageEmployee.html">Manage Employee</a>
-
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="/ATR/admin/manageStation.html">Manage Station</a>
-
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/ATR/admin/manageRoad.html">Manage Road</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Manage Gate</a>
-                            <span class="sr-only">(current)</span>
-                        </li>
-
-
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    <%@include file="../../misc/navbars/nav-admin.jsp" %>
     <!-- end of header -->
     <section style="margin-top: 100px;">
         <div class="container  pt-3 pb-3 pl-5 pr-5 shadow extra-margin" style="box-sizing: border-box;">
