@@ -3,6 +3,7 @@ package com.atc.dao;
 
 import com.atc.entity.Gate;
 import com.atc.entity.Terminal;
+import java.util.List;
 import javax.persistence.NoResultException;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
@@ -42,6 +43,13 @@ public class TerminalDaoImpl extends SuperDao implements TerminalDao{
 	} catch (NoResultException e) {
 	}
 	return terminal;
+    }
+
+    @Override
+    public List<Terminal> findAll() {
+        Query q = getSession().createQuery("FROM Terminal");
+        List<Terminal> list = q.getResultList();
+        return list;
     }
 
 }

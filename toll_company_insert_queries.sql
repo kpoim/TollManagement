@@ -177,7 +177,7 @@ INSERT INTO user(username, password, rid) VALUES
 ('terminal25', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
 ('terminal26', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4);
 
-INSERT INTO terminal VALUES (16),(17);
+INSERT INTO terminal VALUES (16,2),(17,7);
 
 INSERT INTO terminal VALUES 
 (24,17),
@@ -218,6 +218,7 @@ SELECT * FROM pro_clients;
 SELECT * FROM retail_clients;
 SELECT * FROM employee;
 desc pro_clients;
+SELECT * FROM terminal;
 
 SELECT * FROM retail_clients;
 desc retail_clients;
@@ -226,8 +227,14 @@ SET SQL_SAFE_UPDATES = 1;
 UPDATE gate SET employeeid = null;
 DELETE FROM ongoing_logs;
 DELETE FROM history_logs;
+DELETE FROM pro_clients WHERE id>15;
+DELETE FROM terminal;
 
-
+SELECT * FROM gate;
+SELECT * FROM terminal;
+SELECT * FROM user;
+SELECT * FROM station;
+DELETE FROM gate WHERE gateid>26;
 -- ALTER TABLE history_logs
 -- ADD geometry VARCHAR(500);
 

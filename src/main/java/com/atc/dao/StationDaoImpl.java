@@ -12,7 +12,6 @@ public class StationDaoImpl extends SuperDao implements StationDao {
     public List<Station> findAll() {
         Query q = getSession().createQuery("FROM Station");
         List<Station> list = q.getResultList();
-		System.out.println(list);
         return list;
     }
 

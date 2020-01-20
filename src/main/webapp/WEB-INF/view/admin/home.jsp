@@ -70,7 +70,7 @@
                         <p>Admin  Name : ${admin.fname}  ${admin.lname}</p>
                         
                         <a href="${path}/admin/manageAdmin/update/${admin.id}"> Manage your account </a>
-                        <a href="${path}/admin/list-admin"> List of All employees </a>
+                        <a href="${path}/admin/list-admin"> List of Administrators </a>
                         <div class="mt-3">
                             <p><a href="${pageContext.request.contextPath}/admin/manage-employee/list-employee">Manage Employee</a> | 
                                 <a href="${pageContext.request.contextPath}/admin/manage-station/list">Manage Station</a> | 

@@ -22,21 +22,23 @@
                 <td>Station id</td>
                 <td>Employee id</td>
                 <td>Entry Gate</td>
+                <td>Terminal</td>
             </tr>
-            <c:forEach items="${listOfGate}" var="g">
+            <c:forEach items="${listOfTerminal}" var="t">
                 <c:url var="updateLink" value="/admin/manage-gate/update">
-                    <c:param name="gateId" value="${g.id}" />
+                    <c:param name="gateId" value="${t.gate.id}" />
                 </c:url>
                 <c:url var="deleteLink" value="/admin/manage-gate/delete">>
-                    <c:param name="gateId" value="${g.id}" />
+                    <c:param name="gateId" value="${t.gate.id}" />
                 </c:url>
 
                 <tr>
-                    <td>${g.id}</td>
-                    <td>${g.gateNo}</td>
-                    <td>${g.station.getId()}</td>
-                    <td>${g.employee.getId()}</td>
-                    <td>${g.isEntry}</td>
+                    <td>${t.gate.id}</td>
+                    <td>${t.gate.gateNo}</td>
+                    <td>${t.gate.station.getId()}</td>
+                    <td>${t.gate.employee.getId()}</td>
+                    <td>${t.gate.isEntry}</td>
+                    <td>${t.username}</td>
                     <td>
                         <a href="${updateLink}">Update</a>
                     </td>

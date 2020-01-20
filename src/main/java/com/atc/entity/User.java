@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 
 
 @Entity
@@ -24,8 +25,9 @@ public class User implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
+  @NotBlank(message = "Username is mandatory")
   private String username;
-  
+  @NotBlank(message = "Password is mandatory")
   private String password;
   
   @ManyToOne(fetch = FetchType.EAGER)

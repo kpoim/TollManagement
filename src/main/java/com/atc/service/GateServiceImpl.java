@@ -60,7 +60,12 @@ public class GateServiceImpl implements GateService {
 
     @Override
     public void delete(Gate g) {
-        dao.delete(g);
+        try{
+            dao.delete(g);
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        
     }
 
   @Override
