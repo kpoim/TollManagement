@@ -23,6 +23,9 @@ public class HistoryServiceImpl implements HistoryService {
 
   @Override
   public History addToHistory(Ongoing ongoing, Gate exitGate) {
+	if(exitGate.getEmployee() == null){
+	  return new History();
+	}
 	History history = new History(
 		ongoing.getId(),
 		ongoing.getCardid(),

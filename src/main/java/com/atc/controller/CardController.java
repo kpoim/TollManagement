@@ -37,8 +37,18 @@ public class CardController {
 		History history = passageService.processCard(id);
 		model.addAttribute("history", history);
 		model.getAttribute("history");
+		if (history == null && !gate.isIsEntry()) {
+		  model.addAttribute("gateIsExit", true);
+		  return null;
+		} else if (history != null && gate.isIsEntry()) {
+		  model.addAttribute("gateIsExit", false);
+		  return null;
+		}
+		model.addAttribute("gateIsExit", null);
 		if (history == null) {
 		  model.addAttribute("station", gate.getStation());
+		} else if (history.getId() == null) {
+		  model.addAttribute("employeePresent", false);
 		} else {
 		  model.addAttribute("entrylat", history.getEntrygate().getStation().getLatitude());
 		  model.addAttribute("entrylong", history.getEntrygate().getStation().getLongtitude());

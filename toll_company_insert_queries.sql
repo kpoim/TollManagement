@@ -1,13 +1,4 @@
-insert into card (cardid)
-values (101),
-(102),
-(103),
-(104),
-(105),
-(106),
-(107),
-(108),
-(109);
+
 
 INSERT INTO role VALUES
 (1, 'ROLE_ADMIN'),
@@ -33,15 +24,31 @@ INSERT INTO user(username, password, rid) VALUES
 ('ret2', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 3),
 ('ret3', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 3);
 
-insert into retail_clients (id, retailafm, firstname, lastname, phone, email)
-values (10, 0000111123, 'Dimitris', 'Kokoras', 6991234321, 'koko@gmail.gr'),
-(11, 1234111124, 'Vasilis', 'Iakovopoulos', 6988966987, 'iako@gmail.gr'),
-(12, 4321432112, 'Sotiris', 'Kalampokakis', 6976976977, 'kala@email.gr');
+INSERT INTO client VALUES
+(10, 0, 'color', '$2y$12$kAVt/I9nZcWIC7..AzO4d.RxAQb1DYpJeap2dA/wwzToeAgC79MQC'),
+(11, 0, 'color', '$2y$12$kAVt/I9nZcWIC7..AzO4d.RxAQb1DYpJeap2dA/wwzToeAgC79MQC'),
+(12, 0, 'color', '$2y$12$kAVt/I9nZcWIC7..AzO4d.RxAQb1DYpJeap2dA/wwzToeAgC79MQC'),
+(13, 1, 'color', '$2y$12$kAVt/I9nZcWIC7..AzO4d.RxAQb1DYpJeap2dA/wwzToeAgC79MQC'),
+(14, 1, 'color', '$2y$12$kAVt/I9nZcWIC7..AzO4d.RxAQb1DYpJeap2dA/wwzToeAgC79MQC'),
+(15, 1, 'color', '$2y$12$kAVt/I9nZcWIC7..AzO4d.RxAQb1DYpJeap2dA/wwzToeAgC79MQC');
+
+insert into card
+values (101, 10),
+(102, 11),
+(103, 12),
+(104, 13),
+(105, 14),
+(106, 15);
 
 insert into pro_clients (id, proafm, companyname, phone, address, email)
-values (13, 1111222233, 'Coscote', 6999999986, 'Kolokotroni 27', 'email@coscote.gr'),
-(14, 1111222233, 'Xaplopoulos', 6988877766, 'Ath. DIakou 02', 'email@xaplo.gr'),
-(15, 3335557779, 'Byte', 6945678923, 'Kavalas 18', 'email@byte.gr');
+values (10, 1111222233, 'Coscote', 6999999986, 'Kolokotroni 27', 'email@coscote.gr'),
+(11, 1111222233, 'Xaplopoulos', 6988877766, 'Ath. DIakou 02', 'email@xaplo.gr'),
+(12, 3335557779, 'Byte', 6945678923, 'Kavalas 18', 'email@byte.gr');
+
+insert into retail_clients (id, retailafm, firstname, lastname, phone, email)
+values (13, 0000111123, 'Dimitris', 'Kokoras', 6991234321, 'koko@gmail.gr'),
+(14, 1234111124, 'Vasilis', 'Iakovopoulos', 6988966987, 'iako@gmail.gr'),
+(15, 4321432112, 'Sotiris', 'Kalampokakis', 6976976977, 'kala@email.gr');
 
 insert into road (name) values ('Egnatia'),
 ('P.A.TH.E.'),
@@ -197,27 +204,21 @@ INSERT INTO terminal VALUES
 (26,25),
 (27,26);
 
-
--- DROP TABLE terminal;
-SELECT * FROM user;
-SELECT * FROM station;
-SELECT * FROM road;
-
-SELECT * FROM history_logs;
-SELECT * FROM ongoing_logs;
-SELECT * FROM terminal;
-select * from gate;
-
 INSERT INTO ongoing_logs VALUES
 (26,	101,	18,	'2020-01-18 18:50:48'),
 (27,	102,	18,	'2020-01-18 18:50:52'),
 (28,	103,	20,	'2020-01-18 18:51:32'),
 (29,	104,	20,	'2020-01-18 18:51:42'),
 (30,	105,	24,	'2020-01-18 18:53:46'),
-(31,	106,	24,	'2020-01-18 18:53:50'),
-(32,	107,	26,	'2020-01-18 18:54:16'),
-(33,	108,	26,	'2020-01-18 18:54:18'),
-(34,	109,	18,	'2020-01-18 18:50:48');
+(31,	106,	24,	'2020-01-18 18:53:50');
+
+
+
+SET SQL_SAFE_UPDATES = 1;
+UPDATE gate SET employeeid = null;
+DELETE FROM ongoing_logs;
+DELETE FROM history_logs;
+DELETE FROM terminal;
 
 SELECT * FROM role;
 SELECT * FROM user;
@@ -227,14 +228,19 @@ SELECT * FROM retail_clients;
 SELECT * FROM employee;
 desc pro_clients;
 
-SELECT * FROM retail_clients;
-desc retail_clients;
+SELECT * FROM user;
+SELECT * FROM station;
+SELECT * FROM road;
 
-SET SQL_SAFE_UPDATES = 1;
-UPDATE gate SET employeeid = null;
-DELETE FROM ongoing_logs;
-DELETE FROM history_logs;
-DELETE FROM terminal;
+SELECT * FROM history_logs;
+SELECT * FROM ongoing_logs;
+SELECT * FROM terminal;
+select * from gate;
+
+SELECT * FROM vehicle;
+SELECT * FROM retail_clients;
+SELECT * FROM card;
+desc retail_clients;
 
 
 -- ALTER TABLE history_logs
