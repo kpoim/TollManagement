@@ -2,17 +2,19 @@ package com.atc.controller;
 
 import com.atc.components.AuthenticationFacade;
 import com.atc.components.MyUserDetails;
+import com.atc.entity.Client;
 import com.atc.entity.Employee;
 import com.atc.entity.Gate;
 import com.atc.entity.Road;
 import com.atc.entity.Station;
 import com.atc.entity.Vehicle;
+import com.atc.service.ClientService;
 import com.atc.service.GateService;
 import com.atc.service.HistoryService;
 import com.atc.service.RoadService;
 import com.atc.service.StationService;
 import com.atc.service.VehicleService;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,8 +24,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,6 +36,9 @@ public class EmployeeRestController {
 
   @Autowired
   GateService gateService;
+
+  @Autowired
+  ClientService clientService;
 
   @Autowired
   AuthenticationFacade auth;
@@ -107,6 +110,16 @@ public class EmployeeRestController {
   public ResponseEntity<Boolean> pay(@PathVariable("h") String historyId, @PathVariable("p") Double price, @PathVariable("v") Vehicle vehicle){
 	Boolean b = historyService.updateCostAndVehicle(historyId, price, vehicle);
 	return ResponseEntity.ok().body(b);
+  }
+  
+ @GetMapping("/get-username")
+  public ResponseEntity<List<String>> getUsername() {
+	List<Client> clients = clientService.findAll();
+        List<String> clientsUsernames= new ArrayList();
+        for(int i=0;i<clients.size();i++){
+            clientsUsernames.add(clients.get(i).getUsername());
+        }
+	return ResponseEntity.ok().body(clientsUsernames);
   }
   
 }

@@ -20,4 +20,6 @@ public interface AdminService {
     public void delete(int id);
 
     public void addOrUpdate(Employee empl);
+
+    public Employee findByUsername(String username);
 }

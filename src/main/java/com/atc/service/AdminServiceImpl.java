@@ -58,6 +58,11 @@ public class AdminServiceImpl implements AdminService {
         edao.addOrUpdate(empl);
     }
 
+    @Override
+    public Employee findByUsername(String username) {
+        return edao.findByUsername(username);
+    }
+
     
 
 }

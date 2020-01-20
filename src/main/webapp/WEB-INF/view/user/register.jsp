@@ -60,16 +60,14 @@
                             <div class="resultDetail proClient">
                                 <label for="proafm">Company AFM</label>
                                 <form:input type="text" class="form-control" path="proafm"/>
-                                <form:errors path="proafm" cssClass="error"/>
+                                <%--<form:errors path="proafm" cssClass="error"/>--%>
                             </div>
                             <div class="resultDetail proClient">
                                 <label for="companyName">Company Name</label>
                                 <form:input type="text" class="form-control" path="companyName"/>
                                 <form:errors path="companyName" cssClass="error"/>
                             </div>
-
-
-
+                            
                             <div class="form-group resultDetail proClient">
                                 <label for="phone">phone</label>
                                 <form:input type="text" class="form-control" path="phone"/>
@@ -84,6 +82,17 @@
                                 <label for="email">Email</label>
                                 <form:input type="text" class="form-control" path="email"/>
                                 <form:errors path="email" cssClass="error"/>
+                            </div>
+                            <hr>
+                            <div class="form-group resultDetail proClient">
+                                <label for="companyName">Security Question</label>
+                                <form:input type="text" class="form-control" path="question"/>
+                                <form:errors path="question" cssClass="error"/>
+                            </div>
+                            <div class="form-group resultDetail proClient">
+                                <label for="companyName">Security Answer</label>
+                                <form:input type="text" class="form-control" path="answer"/>
+                                <form:errors path="answer" cssClass="error"/>
                             </div>
 
                             <button type="submit" class="btn btn-primary resultDetail proClient">Create</button>
@@ -139,7 +148,17 @@
                                 <form:input type="text" class="form-control" path="email"/>
                                 <form:errors path="email" cssClass="error"/>
                             </div>
-
+                             <hr>
+                            <div class="form-group resultDetail retailClient">
+                                <label for="companyName">Security Question</label>
+                                <form:input type="text" class="form-control" path="question"/>
+                                <form:errors path="question" cssClass="error"/>
+                            </div>
+                            <div class="form-group resultDetail retailClient">
+                                <label for="companyName">Security Answer</label>
+                                <form:input type="text" class="form-control" path="answer"/>
+                                <form:errors path="answer" cssClass="error"/>
+                            </div>
                             <button type="submit" class="btn btn-primary resultDetail retailClient">Create</button>
                         </form:form>
 

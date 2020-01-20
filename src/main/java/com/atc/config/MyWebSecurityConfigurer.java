@@ -43,7 +43,7 @@ public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 		.and()
 		.cors()
 		.and()
-		.formLogin()
+		.formLogin().loginPage("/login")
 		.successHandler(successHandler)
 		.loginProcessingUrl("/authenticate")
 		.permitAll()

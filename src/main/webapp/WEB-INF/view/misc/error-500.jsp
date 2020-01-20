@@ -1,9 +1,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Access Denied</title>
+        <title>ERROR 500</title>
         <style>
             *, *:before, *:after {
                 box-sizing: border-box;
@@ -244,13 +245,9 @@
 
         <div class="cont">
             <div class="form sign-in">
-                <h1 style="color:red;">This page is forbidden</h1>
-                <h2  style="color:red;">You have to login first</h2>
-                <p>Please wait, you automatically redirect to Sign in/Sign up page</p>
-                <div class="forLoader">
-                    <div class="loader"></div>
-                </div>
-                <a href="${pageContext.request.contextPath}/login">Or manually go to Sign in/Sign up page</a>
+                <h1 style="color:red;">Error 500</h1>
+
+                <a href="#" onclick="history.go(-1)">Go Back</a>
 
             </div>
             <div class="sub-cont">
@@ -263,9 +260,9 @@
 
                 </div>
             </div>
-            <script>
+<!--            <script>
                 const redirectURL = "${pageContext.request.contextPath}/login";
                 setTimeout("window.location.href= redirectURL;", 3000);
-            </script>
+            </script>-->
     </body>
 </html>

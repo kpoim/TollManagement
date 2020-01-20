@@ -23,6 +23,8 @@ public class RetailClientServiceImpl implements RetailClientService {
   @Override
   public RetailClient create(RetailClient rc) {
 	rc.setRole(roleService.findById("3"));
+        rc.setAnswer(passwordEncoder.encode(rc.getAnswer()));
+         System.out.println("ENCODED ANSWER " + rc.getAnswer());
 	rc.setPassword(passwordEncoder.encode(rc.getPassword()));
 	return dao.create(rc);
   }

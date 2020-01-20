@@ -3,6 +3,7 @@ package com.atc.dao;
 import com.atc.entity.Employee;
 import com.atc.entity.User;
 import java.util.List;
+import javax.persistence.NoResultException;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -31,7 +32,9 @@ public class EmployeeDaoImpl extends SuperDao implements EmployeeDao {
 
     @Override
     public List<Employee> findAllEmployees() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Query q = getSession().createQuery("SELECT e FROM Employee e WHERE e.role= 2 ");
+        List<Employee> list = q.getResultList();
+        return list;
     }
 
     
@@ -58,17 +61,41 @@ public class EmployeeDaoImpl extends SuperDao implements EmployeeDao {
         Query q = getSession().createQuery("SELECT password FROM User u WHERE u.id=:id");
         q.setParameter("id", empl.getId());
         List<String> list = q.getResultList();
+        System.out.println("======================================"+passwordEncoder.matches(empl.getPassword(),list.get(0)) );
+        System.out.println("------------------------Password from form "+empl.getPassword());
+        System.out.println("------------------------Password from database "+ list.get(0));
         if (!(list.isEmpty())) {
             System.out.println("-------------------------------------" + list.get(0) + "--------" + (empl.getPassword().equals(list.get(0))));
-            if ((empl.getPassword().equals(list.get(0)))) {
-                getSession().saveOrUpdate(empl);
-            } else {
+            if (passwordEncoder.matches(empl.getPassword(),list.get(0))) {
                 empl.setPassword(passwordEncoder.encode(empl.getPassword()));
+                getSession().saveOrUpdate(empl);
+                System.out.println("1111111"+empl.getPassword());
+            }else if(empl.getPassword().equals(list.get(0))){
+                System.out.println("2222222"+empl.getPassword());
+                getSession().saveOrUpdate(empl);
+            }
+            else {
+                System.out.println("3333333"+empl.getPassword());
+                
+                empl.setPassword(passwordEncoder.encode(empl.getPassword()));
+                
                 getSession().saveOrUpdate(empl);
             }
 
         }
         
+    }
+
+    @Override
+    public Employee findByUsername(String username) {
+        Query q = getSession().createQuery("SELECT e FROM Employee e WHERE e.username = : username");
+        q.setParameter("username", username);
+        Employee empl = null;
+	try {
+	  empl = (Employee) q.getSingleResult();
+	} catch (NoResultException e) {
+	}
+	return empl;
     }
 
     

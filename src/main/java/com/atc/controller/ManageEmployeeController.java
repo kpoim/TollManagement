@@ -42,9 +42,15 @@ public class ManageEmployeeController {
     }
     
     @PostMapping("/create")
-    public String createOrUpdate(@Valid Employee e, BindingResult result){
+    public String createOrUpdate(@Valid @ModelAttribute("employee")Employee e, BindingResult result, Model m){
         if(result.hasErrors()){
-            return "formEmployee";
+            return "admin/manageEmployee/formEmployee";
+        }
+        Employee exists = service.findByUsername(e.getUsername());
+        if(exists!=null){
+            m.addAttribute("employee", new Employee());
+            m.addAttribute("employeeExistsError", "This username is taken");
+            return "admin/manageEmployee/formEmployee";
         }
         service.add(e);
         return "redirect:/admin/manage-employee/listEmployee";
@@ -57,7 +63,7 @@ public class ManageEmployeeController {
         return "admin/manageEmployee/updateEmployee";
     }
     
-    @PostMapping("/update")
+     @PostMapping("/update")
     public String update(@ModelAttribute("persistantEmployee") @Valid Employee empl, BindingResult result){
         if(result.hasErrors()){
             return "admin/manageEmployee/updateEmployee";

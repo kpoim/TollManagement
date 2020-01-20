@@ -18,19 +18,19 @@
             action="${pageContext.request.contextPath}/admin/manage-gate/create" 
             method="POST"
             modelAttribute="wrapperGateTerminal">
-            Gate Number: : <form:input path="gate.gateNo"/>
+            Gate Number: : <form:input path="gate.gateNo" placeholder="Gate Number"/>
             <form:errors path="gate.gateNo" cssClass="error"/>
             <br/>
-            Station Id: : <form:input path="gate.station.id"/>
+            Station Id: : <form:input path="gate.station.id" placeholder="Station id"/>
             <form:errors path="gate.station.id" cssClass="error"/>
             <br/>
             Is Entry : <form:input path="gate.isEntry"/>
             <form:errors path="gate.isEntry" cssClass="error"/>
             <br/>
-            Username : <form:input path="terminal.username"/>
+            Username : <form:input path="terminal.username" placeholder="username"/>
             <form:errors path="terminal.username" cssClass="error"/>
             <br/>
-            Password : <form:input path="terminal.password"/>
+            Password : <form:input type="password" path="terminal.password" placeholder="password"/>
             <form:errors path="terminal.password" cssClass="error"/>
             <br/>
             <input type="submit" value="Submit">

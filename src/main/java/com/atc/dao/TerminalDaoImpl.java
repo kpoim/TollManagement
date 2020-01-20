@@ -32,4 +32,16 @@ public class TerminalDaoImpl extends SuperDao implements TerminalDao{
 	return terminal;
     }
 
+    @Override
+    public Terminal findByUsername(String username) {
+        Query q = getSession().createQuery("SELECT t FROM Terminal t WHERE t.username = : username");
+        q.setParameter("username", username);
+        Terminal terminal = null;
+	try {
+	  terminal = (Terminal) q.getSingleResult();
+	} catch (NoResultException e) {
+	}
+	return terminal;
+    }
+
 }

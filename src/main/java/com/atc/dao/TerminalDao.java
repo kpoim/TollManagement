@@ -13,4 +13,6 @@ public interface TerminalDao {
 
     public Terminal findByGateId(Gate g);
 
+    public Terminal findByUsername(String username);
+
 }
