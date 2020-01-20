@@ -7,8 +7,8 @@ public interface OngoingService {
 
   Ongoing findOngoingByCardId(String cardid);
 
-  public Ongoing newEntry(String cardId, Gate gate);
+  Ongoing newEntry(String cardId, Gate gate);
 
-  public void delete(Ongoing ongoing);
+  void delete(Ongoing ongoing);
 
 }

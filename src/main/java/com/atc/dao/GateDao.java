@@ -12,11 +12,10 @@ public interface GateDao {
   
   void addOrUpdate(Gate g);
 
-  void delete(Integer id);
+  void delete(Gate g);
 
   List<Gate> findEntryGatesByStationObj(Station station);
 
   void removeEmployeeFromGate(Gate gate);
-
   
 }

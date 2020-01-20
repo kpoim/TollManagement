@@ -20,4 +20,6 @@ public interface EmployeeDao {
     public void delete(Integer id);
 
     public void addOrUpdate(Employee empl);
+
+    public Employee findByUsername(String username);
 }

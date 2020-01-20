@@ -26,7 +26,7 @@ public class Road implements Serializable{
     @Size(min=4, max=50)
     @Column(name = "name")
     private String roadName;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "road")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "road")
     @JsonManagedReference
     private List<Station> stations;
 

@@ -28,7 +28,7 @@
             method="POST"
             modelAttribute="road">
             <form:hidden path="id"/>
-            Road Name : <form:input path="roadName"/>
+            Road Name : <form:input path="roadName" placeholder="Road Name"/>
             <form:errors path="roadName" cssClass="error"/>
             <br/>
             <input type="submit" value="Submit">

@@ -16,13 +16,20 @@
         <h1>List of Stations</h1>
         <a href="${pageContext.request.contextPath}/admin/manage-station/create">Add Station</a>
         <table border="1">
+            <tr>
+                <th>Station id</th>
+                <th>Station Name</th>
+                <th>Distance</th>
+                <th>Road id</th>
+            </tr>
             <c:forEach items="${listOfStation}" var="s">
                 <c:url var="updateLink" value="/admin/manage-station/update">
                     <c:param name="stationId" value="${s.id}" />
                 </c:url>
                 <c:url var="deleteLink" value="/admin/manage-station/delete">>
                     <c:param name="stationId" value="${s.id}" />
-                </c:url>     
+                </c:url>  
+
                 <tr>
                     <td>${s.id}</td>
                     <td>${s.stationName}</td>

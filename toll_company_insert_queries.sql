@@ -63,6 +63,40 @@ values
 ('Aggelokastrou', 46.1, 3),
 ('Menidiou', 101, 3),
 ('Terovou', 164, 3);
+SELECT * FROM station;
+
+-- UPDATE station SET
+-- stationname = 'Agios Stefanos',
+-- latitude = 38.138963,
+-- longitude = 23.843020
+-- WHERE stationid = 6;
+
+-- UPDATE station SET
+-- stationname = 'Malakasa',
+-- latitude = 38.2355644,
+-- longitude = 23.7871869
+-- WHERE stationid = 7;
+
+UPDATE station SET
+stationname = 'Katerini',
+latitude = 40.2532067,
+longitude = 22.5386118,
+distance = 409
+WHERE stationid = 8;
+
+UPDATE station SET
+stationname = 'Larisa',
+latitude = 39.579468, 
+longitude = 22.482579,
+distance = 322
+WHERE stationid = 9;
+
+UPDATE station SET
+stationname = 'Delta',
+latitude = 40.605956,
+longitude = 22.723859,
+distance = 458
+WHERE stationid = 10;
 
 insert into employee
 values (1, 'Nick', 'Nickolson', 6996996999, 'nickolson@atc.gr'),
@@ -113,8 +147,15 @@ insert into gate (gateNo, stationid, isentry) values
 (5001, 5, 0),
 (5002, 5, 1),
 (6001, 6, 0),
-(6002, 6, 1);
-
+(6002, 6, 1),
+(7001, 7, 0),
+(7002, 7, 1), #ENTRY
+(8001, 8, 0),
+(8002, 8, 1),
+(9001, 9, 0),
+(9002, 9, 1),
+(10001, 10, 0),
+(10002, 10, 1);
 
 
 -- insert into ongoing_logs (cardid, entrygateid, entrytime)
@@ -124,26 +165,77 @@ insert into gate (gateNo, stationid, isentry) values
 INSERT INTO user(username, password, rid) VALUES
 ('terminal2', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
 ('terminal7', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4);
+INSERT INTO user(username, password, rid) VALUES
+('terminal17', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
+('terminal18', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
+('terminal19', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
+('terminal20', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
+('terminal21', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
+('terminal22', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
+('terminal23', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
+('terminal24', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
+('terminal25', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4),
+('terminal26', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 4);
 
-INSERT INTO terminal VALUES (16,2),(17,7);
+INSERT INTO terminal VALUES (16),(17);
+
+INSERT INTO terminal VALUES 
+(24,17),
+(25,18),
+(26,19),
+(27,20),
+(28,21),
+(29,22),
+(30,23),
+(31,24),
+(32,25),
+(33,26);
+
 
 -- DROP TABLE terminal;
 SELECT * FROM user;
-DELETE FROM user WHERE id=23;
 
-
-SELECT * FROM terminal;
-DELETE FROM gate WHERE gateid=19;
-
-SELECT * FROM ongoing_logs;
-
+SELECT * FROM history_logs;
 SELECT * FROM ongoing_logs;
 SELECT * FROM terminal;
 select * from gate;
 
+INSERT INTO ongoing_logs VALUES
+(26,	101,	18,	'2020-01-18 18:50:48'),
+(27,	102,	18,	'2020-01-18 18:50:52'),
+(28,	103,	20,	'2020-01-18 18:51:32'),
+(29,	104,	20,	'2020-01-18 18:51:42'),
+(30,	105,	24,	'2020-01-18 18:53:46'),
+(31,	106,	24,	'2020-01-18 18:53:50'),
+(32,	107,	26,	'2020-01-18 18:54:16'),
+(33,	108,	26,	'2020-01-18 18:54:18'),
+(34,	109,	18,	'2020-01-18 18:50:48');
+
+SELECT * FROM role;
+SELECT * FROM user;
+SELECT * FROM client;
+SELECT * FROM pro_clients;
+SELECT * FROM retail_clients;
+SELECT * FROM employee;
+desc pro_clients;
+
+SELECT * FROM retail_clients;
+desc retail_clients;
+
 SET SQL_SAFE_UPDATES = 1;
 UPDATE gate SET employeeid = null;
+DELETE FROM ongoing_logs;
+DELETE FROM history_logs;
 
-SELECT * FROM pro_clients;
-DELETE FROM pro_clients WHERE id=24;
 
+-- ALTER TABLE history_logs
+-- ADD geometry VARCHAR(500);
+
+-- ALTER TABLE history_logs
+-- ADD cost DECIMAL(5,2);
+
+-- ALTER TABLE history_logs
+-- ADD vehicle INT UNSIGNED;
+
+-- ALTER TABLE station
+-- ADD longitude DECIMAL(12,9);

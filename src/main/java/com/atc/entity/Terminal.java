@@ -2,7 +2,6 @@ package com.atc.entity;
 
 import java.util.Objects;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -11,7 +10,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Terminal extends User {
 
-  @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   @JoinColumn(name = "gateid")
   private Gate gate;
   

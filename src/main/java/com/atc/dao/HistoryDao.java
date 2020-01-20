@@ -6,4 +6,8 @@ public interface HistoryDao {
 
   public boolean addToHistory(History history);
 
+  public History findById(Integer id);
+
+  void update(History history);
+
 }

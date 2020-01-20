@@ -16,8 +16,10 @@ public interface GateService {
 
   void addOrUpdate(Gate g);
 
-  void delete(Integer id);
+  void delete(Gate g);
 
   void removeEmployeeFromGate(String id);
+  
+  Gate findById(Integer id);
 
 }

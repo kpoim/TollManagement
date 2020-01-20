@@ -45,16 +45,16 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${path}/admin/manageEmployee">Manage Employee</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/admin/manage-employee/list-employee">Manage Employee</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/ATR/admin/manageStation.html">Manage Station</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/admin/manage-station/list">Manage Station</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/ATR/admin/manageRoad.html">Manage Road</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/admin/manage-road/list">Manage Road</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${path}/admin/manageGate">Manage Gate</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/admin/manage-gate/list">Manage Gate</a>
                         </li>
 
 
@@ -73,7 +73,10 @@
                         <a href="${path}/admin/list-admin"> List of All employees </a>
                         <a href="${path}/admin/change-password-form/${admin.id}"> Change Password </a>
                         <div class="mt-3">
-                            <p><a href="/ATR/admin/manageEmployee.html">Manage Employee</a> | <a href="/ATR/admin/manageStation.html">Manage Station</a> | <a href="/ATR/admin/manageRoad.html">Manage Road</a> | <a href="/ATR/admin/manageGate.html">Manage Gate</a></p>
+                            <p><a href="${pageContext.request.contextPath}/admin/manage-employee/list-employee">Manage Employee</a> | 
+                                <a href="${pageContext.request.contextPath}/admin/manage-station/list">Manage Station</a> | 
+                                <a href="${pageContext.request.contextPath}/admin/manage-road/list">Manage Road</a> | 
+                                <a href="${pageContext.request.contextPath}/admin/manage-gate/list">Manage Gate</a></p>
 
                         </div>
 
