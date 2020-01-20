@@ -13,6 +13,17 @@
 
         <link rel="stylesheet" href="${path}/static/css/homepage-css.css">
         <title>ATR</title>
+        <style>
+            table{
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                border: 0;
+            }
+            td , tr{
+                padding: 10px;
+            }
+        </style>
     </head>
     <body>
         <!-- bootstrap javascript -->
@@ -38,40 +49,40 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item ">
-                            <a class="nav-link" href="/">Home
+                            <a class="nav-link" href="#">Home
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <security:authorize access="hasRole('ADMIN')">
-                            <li class="nav-item">
-
+                        <li class="nav-item">
+                            
                                 <a  class="nav-link" href="${pageContext.request.contextPath}/admin">Admin Page</a>
-
-                            </li>
+                            
+                        </li>
                         </security:authorize>
                         <security:authorize access="hasRole('CLIENT')">
-                            <li class="nav-item">
-
+                        <li class="nav-item">
+                            
                                 <a  class="nav-link" href="${pageContext.request.contextPath}/user">Client Page</a>
-
-                            </li>
+                            
+                        </li>
                         </security:authorize>
                         <security:authorize access="hasRole('EMPLOYEE')">
-                            <li class="nav-item">
-
+                        <li class="nav-item">
+                            
                                 <a  class="nav-link" href="${pageContext.request.contextPath}/employee">Employee Page</a>
-
-                            </li>
+                            
+                        </li>
                         </security:authorize>
                         <security:authorize access="hasRole('TERMINAL')">
-                            <li class="nav-item">
-
+                        <li class="nav-item">
+                            
                                 <a  class="nav-link" href="${pageContext.request.contextPath}/terminal">Terminal Page</a>
-
-                            </li>
+                            
+                        </li>
                         </security:authorize>
                         <li class="nav-item">
-                            <a class="nav-link" href="/">About</a>
+                            <a class="nav-link" href="#">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="${path}/toll-rates">Toll Rates</a>
@@ -79,20 +90,20 @@
                         <li class="nav-item">
                             <a class="nav-link" href="${path}/donation">Donation</a>
                         </li>
-
+                        
                         <security:authorize access="(!hasAnyRole('ADMIN','CLIENT', 'EMPLOYEE' , 'TERMINAL'))">
-                            <li class="nav-item">
-
+                        <li class="nav-item">
+                            
                                 <a class="nav-link" href="${path}/login">Sign in/Sign up</a>
-
-                            </li>
+                            
+                        </li>
                         </security:authorize>
                         <security:authorize access="(hasAnyRole('ADMIN','CLIENT', 'EMPLOYEE' , 'TERMINAL'))">
-                            <li class="nav-item">
-
+                        <li class="nav-item">
+                            
                                 <a class="nav-link" href="${path}/logout">Logout</a>
-
-                            </li>
+                            
+                        </li>
                         </security:authorize>
                     </ul>
                 </div>
@@ -101,26 +112,55 @@
 
         <!-- Full Page Image Header with Vertically Centered Content -->
         <header class="masthead">
+            <div class="container container-fluid col-12 text-center banner w-auto">
+        <img src="${pageContext.request.contextPath}/static/images/toll-station.jpg" class="img-fluid "  alt="photo of toll station">
+        
+    </div>
+            
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12 text-center">
-                        <img class="img-fluid " src="${path}/static/images/Tolls.jpg" alt="photo of highway tolls">
-                        <h1 class="font-weight-light">AWESOME TOLL COMPANY
+
+                        <h1 class="font-weight-light">TOLL RATES
                         </h1>
-                        <p class="lead">Make your highway experience easier</p>
+                        <p class="lead">Find out the rates about every Vehicle</p>
+                        <table class="text-center p-3" border="1">
+
+
+                            <tr class="p-3">
+                                <td>Category</td>
+
+                                <c:forEach items="${listOfVehicle}" var="vehicle">
+                                    <td>${vehicle.name}</td>
+                                </c:forEach>
+                            </tr>
+                            <tr>
+                                <td>Description</td>
+                                <c:forEach items="${listOfVehicle}" var="vehicle">
+                                    <td><c:if test="${vehicle.name=='Bus'}"><img src="${pageContext.request.contextPath}/static/images/vehicles/bus.png"></c:if>
+                                    <c:if test="${vehicle.name=='Motorcycle'}"><img src="${pageContext.request.contextPath}/static/images/vehicles/motorcycle.png"></c:if>
+                                    <c:if test="${vehicle.name=='Passenger car'}"><img src="${pageContext.request.contextPath}/static/images/vehicles/passenger-car.png"></c:if>
+                                    <c:if test="${vehicle.name=='Truck'}"><img src="${pageContext.request.contextPath}/static/images/vehicles/truck.png"></c:if>
+                                    
+                                    </td>
+                                    
+                                </c:forEach>
+                            </tr>
+                            <tr>
+                                <td>Price per Km</td>
+                                <c:forEach items="${listOfVehicle}" var="vehicle">
+
+                                    <td>${vehicle.price}</td>
+                                </c:forEach>
+
+                            </tr>
+
+                        </table>
                     </div>
                 </div>
             </div>
         </header>
 
-        <!-- Page Content -->
-        <section class="py-5">
-            <div class="container">
-
-                <h2 class="font-weight-light">Page Content</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus ab nulla dolorum autem nisi officiis blanditiis voluptatem hic, assumenda aspernatur facere ipsam nemo ratione cumque magnam enim fugiat reprehenderit expedita.</p>
-            </div>
-        </section>
         <script>
             let listOfa = document.querySelectorAll(".nav-link");
             listOfa.forEach(function (a) {
