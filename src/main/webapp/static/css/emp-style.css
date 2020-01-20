@@ -126,7 +126,7 @@ form {
     transform: translate3d(-640px, 0, 0);
 }
 
-button {
+.submit-button {
     display: block;
     margin: 0 auto;
     width: 260px;
@@ -135,6 +135,7 @@ button {
     color: #fff;
     font-size: 15px;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .img {
@@ -326,7 +327,7 @@ input {
     transform: translate3d(0, 0, 0);
 }
 
-[type=submit]{
+.button-radius {
     border-radius: 5px !important;
 }
 

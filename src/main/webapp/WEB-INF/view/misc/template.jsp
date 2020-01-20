@@ -33,7 +33,7 @@
                         </label>
                         <div class="form-group">
                             <!--<button type="submit" class="btn btn-primary btn-block">Log in</button>-->
-                            <button type="submit" class="submit">Sign In</button>
+                            <button type="submit" class="submit submit-button">Sign In</button>
                         </div>
                         <c:if test="${param.error !=null}">
                             <div class="alert alert-danger text-center">
