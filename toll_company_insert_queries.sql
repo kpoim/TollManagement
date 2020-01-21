@@ -225,10 +225,10 @@ INSERT INTO ongoing_logs VALUES
 (31,	106,	24,	'2020-01-18 18:53:50');
 
 INSERT INTO ongoing_logs VALUES
--- (26,	101,	18,	'2020-01-18 18:50:48');
+(36,	101,	22,	'2020-01-18 18:50:48');
 -- (27,	101,	18,	'2020-01-18 18:50:52');
 -- (28,	101,	22,	'2020-01-18 18:51:32');
-(29,	101,	20,	'2020-01-18 18:51:42');
+-- (29,	101,	20,	'2020-01-18 18:51:42');
 -- (30,	101,	24,	'2020-01-18 18:53:46');
 -- (31,	101,	24,	'2020-01-18 18:53:50');
 
@@ -245,6 +245,7 @@ DELETE FROM ongoing_logs;
 DELETE FROM history_logs;
 DELETE FROM terminal;
 
+
 -- INSERT INTO client 
 -- (clientid, question, answer)
 -- VALUES 
@@ -254,6 +255,9 @@ DELETE FROM terminal;
 -- (4, 13, 'color', '$2y$12$kAVt/I9nZcWIC7..AzO4d.RxAQb1DYpJeap2dA/wwzToeAgC79MQC'),
 -- (5, 14, 'color', '$2y$12$kAVt/I9nZcWIC7..AzO4d.RxAQb1DYpJeap2dA/wwzToeAgC79MQC'),
 -- (6, 15, 'color', '$2y$12$kAVt/I9nZcWIC7..AzO4d.RxAQb1DYpJeap2dA/wwzToeAgC79MQC');
+
+DELETE FROM history_logs WHERE historyid = 35;
+
 
 SELECT * FROM role;
 SELECT * FROM user;

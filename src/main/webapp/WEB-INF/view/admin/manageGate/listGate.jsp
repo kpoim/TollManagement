@@ -6,6 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
         <title>ERROR 404</title>
         <link rel="stylesheet" href="${path}/static/css/emp-style.css">
         <link rel="stylesheet" href="${path}/static/css/homepage-css.css">
@@ -15,7 +16,7 @@
         <title>List Gates</title>
     </head>
     <body>
-        <%@include file="../../misc/navbars/newjsp.jsp" %>
+        <%@include file="../../misc/navbars/nav-admin.jsp" %>
         <section class="main-container">
             <div class="content">
                 <div class="form sign-in">
@@ -59,6 +60,7 @@
                             </c:forEach>
                         </table>
                     </div>
+
 
                 </div>
             </div>
