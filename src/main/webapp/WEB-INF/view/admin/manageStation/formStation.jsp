@@ -3,7 +3,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -43,8 +43,11 @@
                         <form:errors path="distance" cssClass="error"/>
                         <br/>
                         <label for="distance">Road ID</label> 
-                        <form:input path="road.id" class="form-control"  placeholder="Road id"/>
-                        <form:errors path="road.id" cssClass="error"/>
+                        <form:select path="road.id">
+                            <c:forEach items="${listOfRoad}" var="r">
+                                <form:option value="${r.id}">${r.id} - ${r.roadName}</form:option>
+                            </c:forEach>
+                        </form:select>
                         <br/>
                         <button type="submit" class="submit submit-button">Submit</button>
                     </form:form>

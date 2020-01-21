@@ -29,8 +29,11 @@
                         <form:input path="gate.gateNo" class="form-control" placeholder="Gate Number"/>
                         <form:errors path="gate.gateNo" cssClass="error"/>
                         <label for="stationid">Station ID</label>
-                        <form:input path="gate.station.id" class="form-control" placeholder="Station id"/>
-                        <form:errors path="gate.station.id" cssClass="error"/>
+                        <form:select path="gate.station.id">
+                            <c:forEach items="${listOfStation}" var="s">
+                                <form:option value="${s.id}">${s.id} - ${s.stationName}</form:option>
+                            </c:forEach>
+                        </form:select>
                         <label for="isEntry">Entry/Exit</label>
                         <form:input path="gate.isEntry" class="form-control"/>
                         <form:errors path="gate.isEntry" cssClass="error"/>
