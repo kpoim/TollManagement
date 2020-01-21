@@ -381,4 +381,60 @@ ul{  display: flex;
 
 .emp-container {
     display: none;
+    width: 100%;
+}
+
+.stationGate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stationGate>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2%;
+}
+
+.stationGate>div label {
+    margin: 0;
+}
+
+.emp-container label {
+    margin: 25px auto;
+}
+
+.emp-container label~div{
+    margin: 25px auto;
+}
+
+.payment-details {
+    display: none;
+}
+
+#vehicles-container {
+    display: flex;
+    flex-flow: row nowrap !important;
+    /*justify-content: center;*/
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 24% 0 10%;
+}
+
+#vehicles-container * {
+    font-size: inherit;
+    width: auto;
+    margin: 0;
+}
+
+.radio-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.radio-container input {
+    margin-right: 10px !important;
 }

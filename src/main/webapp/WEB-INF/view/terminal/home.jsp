@@ -1,22 +1,41 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
-        <c:set var="path" value="${pageContext.request.contextPath}" />
-        <script>const contextPath = "${pageContext.request.contextPath}";</script>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Terminal</title>
+        <link rel="stylesheet" href="${path}/static/css/emp-style.css">
+        <link rel="stylesheet" href="${path}/static/css/homepage-css.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.1.1/css/ol.css" type="text/css">
-        <title>Document</title>
     </head>
     <body>
-        <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.1.1/build/ol.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <%@include file="../misc/navbars/newjsp.jsp" %>
+        <section class="main-container">
+            <div class="content" style="justify-content: center; margin: 0;">
+                        <h3>Place your card on the reader</h3>
+                    
+            </div>
+            <div class="sub-content">
+                <div class="side-shadow">
+                    <div class="img-text">
+                        <h2>ATC</h2>
+                        <p>Awesome Toll Company</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            footer
+        </footer>
+
+
+        <!-- bootstrap javascript -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
@@ -29,39 +48,5 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
-            <div class="container">
-                <a class="navbar-brand" href="#">A T W</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/ATR/driversHistory.html">Drivers History</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Statistics</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </nav>  
-        <section style="margin-top: 100px;">
-            <div class="container  pt-3 pb-3 pl-5 pr-5 shadow extra-margin" style="box-sizing: border-box;">
-                <div style="width:100%; height: 50vh;" id="content">
-                    <h3>Please place your card on the reader</h3>
-                </div>
-            </div>
-        </section>
-
     </body>
 </html>

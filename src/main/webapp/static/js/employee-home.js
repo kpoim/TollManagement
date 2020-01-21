@@ -1,15 +1,15 @@
-
 function initialize(e) {
     getVehicles();
     document.querySelector("#pay-button").addEventListener("click", payAndReset);
     const val = e.target.selectedOptions[0].text;
+    document.querySelector(".content h2").remove();
     const gateNo = val.split(" - ")[1];
     document.querySelector("#gate-no").innerText += gateNo;
     const gateId = e.target.value;
     showMainContainer();
     startEmployeeShift(gateId);
     console.log(`--> LISTENING ON GATE ${gateId}`);
-    window.onbeforeunload = (e) => logoutAndRemoveFromGate(e, gateId);
+//    window.onbeforeunload = (e) => logoutAndRemoveFromGate(e, gateId);
 }
 
 function payAndReset(e) {
@@ -45,16 +45,17 @@ function getVehicles() {
                 const vehiclesContainer = document.querySelector("#vehicles");
                 data.forEach(vehicle => {
                     const container = document.createElement("div");
-                    container.classList.add("form-check");
+//                    container.classList.add("form-check");
+                    container.classList.add("radio-container");
                     const input = document.createElement("input");
-                    input.classList.add("form-check-input");
+//                    input.classList.add("form-check-input");
                     input.setAttribute("type", "radio");
                     input.setAttribute("name", "gridRadios");
                     input.setAttribute("id", vehicle);
                     input.setAttribute("required", "true");
                     input.addEventListener("click", getPrice);
                     const label = document.createElement("label");
-                    label.classList.add("form-check-label");
+//                    label.classList.add("form-check-label");
                     label.setAttribute("for", vehicle);
                     label.innerText = vehicle;
                     container.appendChild(input);
@@ -71,102 +72,109 @@ function logoutAndRemoveFromGate(e, gateId) {
     fetch(`${contextPath}/logout`, {method: "post"});
 }
 
-function fetchRoads() {
+function fetchData() {
     const url = `${contextPath}/employee-api/get-roads`;
     fetch(url, {cors: 'no-cors'})
             .then(res => res.json())
             .then(res => {
                 console.log(res);
-                const roadsDiv = document.querySelector(".road-option");
-                const label = document.createElement("label");
-                label.setAttribute("for", "roads");
-                label.innerText = "Choose the road:";
-                const roads = document.createElement("select");
-                roads.setAttribute("id", "roads");
-                roads.setAttribute("name", "roads");
-                roads.addEventListener("change", fetchStations);
-                let option = document.createElement("option");
-                option.setAttribute("value", "");
-                option.innerText = "choose a road...";
-                roads.appendChild(option);
-                res.forEach(road => {
-                    option = document.createElement("option");
-                    option.setAttribute("value", road.id);
-                    option.innerText = `${road.id} - ${road.roadName}`;
-                    roads.appendChild(option);
-                });
-                roadsDiv.appendChild(label);
-                roadsDiv.appendChild(roads);
+                createRoadsSelect(res);
             });
 }
 
-function fetchStations() {
-    const url = `${contextPath}/employee-api/get-stations`;
-    fetch(url, {cors: 'no-cors'})
-            .then(res => res.json())
-            .then(res => {
-                console.log(res);
-                const stationsDiv = document.querySelector(".station-option");
-                const label = document.createElement("label");
-                label.setAttribute("for", "stations");
-                label.innerText = "Choose the station:";
-                const stations = document.createElement("select");
-                stations.setAttribute("id", "stations");
-                stations.setAttribute("name", "stations");
-                stations.addEventListener("change", e => fetchGatesByStationId(e));
-                let option = document.createElement("option");
-                option.setAttribute("value", "");
-                option.innerText = "choose a station...";
-                stations.appendChild(option);
-                res.forEach(station => {
-                    option = document.createElement("option");
-                    option.setAttribute("value", station.id);
-                    option.innerText = `${station.id} - ${station.stationName}`;
-                    stations.appendChild(option);
-                });
-                stationsDiv.appendChild(label);
-                stationsDiv.appendChild(stations);
-            });
+function createRoadsSelect(res) {
+    const roadsDiv = document.querySelector(".road-option");
+    const label = document.createElement("label");
+    label.setAttribute("for", "roads");
+    label.innerText = "Choose the road:";
+    const roads = document.createElement("select");
+    roads.setAttribute("id", "roads");
+    roads.setAttribute("name", "roads");
+    roads.addEventListener("change", e => createStationsSelect(e, res));
+    let option = document.createElement("option");
+    option.setAttribute("value", "");
+    option.innerText = "choose a road...";
+    roads.appendChild(option);
+    res.forEach(road => {
+        option = document.createElement("option");
+        option.setAttribute("value", road.id);
+        option.innerText = `${road.id} - ${road.roadName}`;
+        roads.appendChild(option);
+    });
+    roadsDiv.appendChild(label);
+    roadsDiv.appendChild(roads);
 }
 
-function fetchGatesByStationId(e) {
+function createStationsSelect(e, res) {
+    console.log(e);
+    console.log(res[e.target.value - 1]);
+    const stationsData = res[e.target.value - 1].stations;
+    const stationsDiv = document.querySelector(".station-option");
+    const label = document.createElement("label");
+    label.setAttribute("for", "stations");
+    label.innerText = "Choose the station:";
+    const stations = document.createElement("select");
+    stations.setAttribute("id", "stations");
+    stations.setAttribute("name", "stations");
+    stations.addEventListener("change", e => createGatesSelect(e, stationsData));
+    let option = document.createElement("option");
+    option.setAttribute("value", "");
+    option.innerText = "choose a station...";
+    stations.appendChild(option);
+    stationsData.forEach(station => {
+        option = document.createElement("option");
+        option.setAttribute("value", station.id);
+        option.innerText = `${station.id} - ${station.stationName}`;
+        stations.appendChild(option);
+    });
+    stationsDiv.innerHTML = "";
+    stationsDiv.appendChild(label);
+    stationsDiv.appendChild(stations);
+}
+
+function createGatesSelect(e, res) {
+    console.log(e);
     const val = e.target.selectedOptions[0].text;
     const stationName = val.split(" - ")[1];
-    document.querySelector("#station-name").innerText += stationName;
+    document.querySelector("#station-name").innerText = `Station: ${stationName}`;
     const value = e.target.value;
     if (value === "")
         return;
-    const url = `${contextPath}/employee-api/get-gates/entry/by-station/${value}`;
-    fetch(url, {cors: 'no-cors'})
-            .then(res => res.json())
-            .then(res => {
-                console.log(res);
-                let gates = document.querySelector("#gates");
-                if (!gates) {
-                    const gatesDiv = document.querySelector(".gate-option");
-                    const label = document.createElement("label");
-                    label.setAttribute("for", "gates");
-                    label.innerText = "Choose the gate:";
-                    gates = document.createElement("select");
-                    gates.setAttribute("name", "gates");
-                    gates.setAttribute("id", "gates");
-                    gates.addEventListener("change", initialize);
-                    gatesDiv.appendChild(label);
-                    gatesDiv.appendChild(gates);
-                }
-                while (gates.lastChild)
-                    gates.lastChild.remove();
-                let option = document.createElement("option");
-                option.setAttribute("value", "");
-                option.innerText = "choose a gate...";
-                gates.appendChild(option);
-                res.forEach(gate => {
-                    option = document.createElement("option");
-                    option.setAttribute("value", gate.id);
-                    option.innerText = `${gate.id} - ${gate.gateNo}`;
-                    gates.appendChild(option);
-                });
-            });
+//    const url = `${contextPath}/employee-api/get-gates/entry/by-station/${value}`;
+//    fetch(url, {cors: 'no-cors'})
+//            .then(res => res.json())
+//            .then(res => {
+    console.log(res);
+    console.log(value);
+    let gateData = [];
+    res.some((gate, idx) => gate.id == value && (gateData = gate));
+    console.log(gateData);
+    let gates = document.querySelector("#gates");
+    if (!gates) {
+        const gatesDiv = document.querySelector(".gate-option");
+        const label = document.createElement("label");
+        label.setAttribute("for", "gates");
+        label.innerText = "Choose the gate:";
+        gates = document.createElement("select");
+        gates.setAttribute("name", "gates");
+        gates.setAttribute("id", "gates");
+        gates.addEventListener("change", initialize);
+        gatesDiv.appendChild(label);
+        gatesDiv.appendChild(gates);
+    }
+    while (gates.lastChild)
+        gates.lastChild.remove();
+    let option = document.createElement("option");
+    option.setAttribute("value", "");
+    option.innerText = "choose a gate...";
+    gates.appendChild(option);
+    gateData.gates.forEach(gate => {
+        option = document.createElement("option");
+        option.setAttribute("value", gate.id);
+        option.innerText = `${gate.id} - ${gate.gateNo}`;
+        gates.appendChild(option);
+    });
+//            });
 }
 
 function showMainContainer() {
@@ -209,4 +217,4 @@ function startEmployeeShift(gateId) {
             .then(res => res && listenForSSE(gateId));
 }
 
-window.onload = fetchRoads;
+window.onload = fetchData;
