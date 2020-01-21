@@ -39,7 +39,7 @@
                         <h2>Admin Panel</h2>
                         <p>Admin  Name : ${admin.fname}  ${admin.lname}</p>
 
-                        <a href="${path}/admin/manageAdmin/update/${admin.id}"> Manage your account </a>
+                        <a href="${path}/admin/update/${admin.id}"> Manage your account </a>
                         <a href="${path}/admin/list-admin"> List of Administrators </a>
                         <a href="${path}/admin/manage-employee/list-employee"> List of All employees </a>
                         <a href="${path}/admin/change-password-form/${admin.id}"> Change Password </a>
