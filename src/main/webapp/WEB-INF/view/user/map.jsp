@@ -24,6 +24,23 @@
             <div class="content">
                 <h1>History</h1>
                 <div class="container  pt-3 pb-3 pl-5 pr-5 shadow extra-margin">
+                    <div class="filter-container">
+                        <div class="filter1" >
+                            <select>
+                                <option>all</option>
+                            </select>
+                        </div>
+                        <div class="filter2" >
+                            <select>
+                                <option>all</option>
+                            </select>
+                        </div>
+                        <div class="filter3" >
+                            <select>
+                                <option>all</option>
+                            </select>
+                        </div>
+                    </div>
                     <table id="history-table" class="table">
                         <thead></thead>
                         <tbody></tbody>

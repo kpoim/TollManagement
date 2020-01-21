@@ -84,11 +84,7 @@ function init() {
 }
 
 function drawMap(e, geometry) {
-    document.querySelector("#map").innerHTML = "";
-    if (window.olMap !== null){
-        
-        olMap.removeLayer(olMap.getLayers().getArray()[1]);
-    }
+    
     createMap(geometry);
 }
 

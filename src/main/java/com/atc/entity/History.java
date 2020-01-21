@@ -29,7 +29,6 @@ public class History implements Serializable {
   @OneToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "entrygateid")
   @JsonIgnore
-//  @JsonIgnoreProperties("employee")
   private Gate entrygate;
   private Timestamp exittime;
   @OneToOne(fetch = FetchType.EAGER)

@@ -9,7 +9,7 @@ function initialize(e) {
     showMainContainer();
     startEmployeeShift(gateId);
     console.log(`--> LISTENING ON GATE ${gateId}`);
-//    window.onbeforeunload = (e) => logoutAndRemoveFromGate(e, gateId);
+    window.onbeforeunload = (e) => logoutAndRemoveFromGate(e, gateId);
 }
 
 function payAndReset(e) {
@@ -22,6 +22,7 @@ function payAndReset(e) {
             .then(res => res.text())
             .then(res => {
                 console.log(res);
+                document.querySelector(".payment-details").style.display = "none";
             })
             .catch(err => console.error(err));
 }
@@ -54,10 +55,10 @@ function getVehicles() {
                     input.setAttribute("id", vehicle);
                     input.setAttribute("required", "true");
                     input.addEventListener("click", getPrice);
-                    const label = document.createElement("label");
 //                    label.classList.add("form-check-label");
                     label.setAttribute("for", vehicle);
                     label.innerText = vehicle;
+                    
                     container.appendChild(input);
                     container.appendChild(label);
                     vehiclesContainer.appendChild(container);
@@ -169,10 +170,12 @@ function createGatesSelect(e, res) {
     option.innerText = "choose a gate...";
     gates.appendChild(option);
     gateData.gates.forEach(gate => {
-        option = document.createElement("option");
-        option.setAttribute("value", gate.id);
-        option.innerText = `${gate.id} - ${gate.gateNo}`;
-        gates.appendChild(option);
+        if (!gate.isEntry) {
+            option = document.createElement("option");
+            option.setAttribute("value", gate.id);
+            option.innerText = `${gate.id} - ${gate.gateNo}`;
+            gates.appendChild(option);
+        }
     });
 //            });
 }
@@ -192,10 +195,7 @@ function listenForSSE(gateId) {
         document.querySelector("#idholder").value = history.cardid;
         console.log(history);
         window.historyId = history.id;
-//        const url = `${contextPath}/employee-api/get-distance-from-history-id/${msg.id}/vehicle/`;
-//        fetch(url)
-//                .then(res => res.text())
-//                .then(res => console.log("Distance: " + res));
+        document.querySelector(".payment-details").style.display = "block";
     };
     eventSource.onopen = e => console.log('open');
     eventSource.onerror = e => {

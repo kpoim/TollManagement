@@ -29,12 +29,11 @@
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
         <%@include file="../misc/navbars/nav-client.jsp" %>
-        <h1>RETAIL CLIENT</h1>
-        <section style="margin-top: 100px;">
-            <div class="container  pt-3 pb-3 pl-5 pr-5 shadow extra-margin" style="box-sizing: border-box;">
-                <div class="row">
-                    <div class="col-12 border border-dark bg-light shadow">
-                        <h2>Personal data</h2>
+        <section class="main-container">
+            <div class="content">
+                
+                <div class="form sign-in">
+                    <h2>Personal data</h2>
                         <table class="table  table-bordered">
                             <thead>
                                 <tr>
@@ -63,15 +62,20 @@
                             </tbody>
                         </table>
 
-                    </div>
-                    <div class="mt-3">
-                        <p><a href="/ATR/driversHistory.html">Drivers History</a> | <a href="">Statistics</a></p>
+                                    <a href="${pageContext.request.contextPath}/forgotten-password">Change Password </a>
+                </div>
+            </div>
+            <div class="sub-content">
+                <div class="side-shadow">
+                    <div class="img-text">
+                        <h2>ATC</h2>
+                        <p>Awesome Toll Company</p>
                     </div>
                 </div>
             </div>
         </section>
         <%@include file="./../misc/footer.jsp" %>
-
+        
 
     </body>
 
