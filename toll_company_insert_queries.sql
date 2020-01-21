@@ -285,7 +285,7 @@ DELETE FROM history_logs;
 DELETE FROM pro_clients WHERE id>15;
 DELETE FROM terminal;
 
-SELECT * FROM gate;
+SELECT * FROM gate WHERE stationid=1;
 SELECT * FROM terminal;
 SELECT * FROM user;
 SELECT * FROM station;

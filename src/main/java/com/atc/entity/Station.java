@@ -2,6 +2,7 @@ package com.atc.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -47,8 +48,7 @@ public class Station implements Serializable {
   @JsonBackReference
   private Road road;
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "station")
-  @JsonIgnore
-//  @JsonManagedReference
+  @JsonIgnoreProperties("station")
   private List<Gate> gates;
 
   public Station() {
