@@ -66,6 +66,8 @@ function createTable(data) {
                     td.innerText = history[key].name;
                 else
                     td.innerText = history[key];
+                if(key === "cost")
+                    td.classList.add("cost");
                 td.addEventListener("mouseover", toggleColumnShadow);
                 td.addEventListener("mouseout", toggleColumnShadow);
                 tr.appendChild(td);
@@ -154,55 +156,75 @@ function sortList(e) {
 }
 
 function sortEntry() {
-    const trs = document.querySelectorAll("tr");
-    const tbody = document.querySelectorAll("tbody");
-
+    const tbody = document.querySelector("tbody");
     let changed = true;
     while (changed) {
         changed = false;
+        let trs = document.querySelectorAll("tr");
         for (let i = 0; i < trs.length - 1; i++) {
-            console.log(trs[i]);
             const current = new Date(trs[i].querySelector(".entrytime").dataset.originalDate);
-            console.log(current);
             const next = new Date(trs[i + 1].querySelector(".entrytime").dataset.originalDate);
-            console.log(next);
-            console.log((current < next));
             if (current < next) {
-                trs[i].parentNode.insertBefore(trs[i + 1], trs[i]);
-//                i++;
-                if (i <= 1)
-                    changed = true;
+                const ctr = tbody.removeChild(trs[i]);
+                const ntr = tbody.removeChild(trs[i + 1]);
+                tbody.insertBefore(ctr, tbody.querySelectorAll("tr")[i]);
+                tbody.insertBefore(ntr, ctr);
+                changed = true;
+            }
+        }
+    }
+}
+
+function sortExit() {
+    const tbody = document.querySelector("tbody");
+    let changed = true;
+    while (changed) {
+        changed = false;
+        let trs = document.querySelectorAll("tr");
+        for (let i = 0; i < trs.length - 1; i++) {
+            const current = new Date(trs[i].querySelector(".exittime").dataset.originalDate);
+            const next = new Date(trs[i + 1].querySelector(".exittime").dataset.originalDate);
+            if (current < next) {
+                const ctr = tbody.removeChild(trs[i]);
+                const ntr = tbody.removeChild(trs[i + 1]);
+                tbody.insertBefore(ctr, tbody.querySelectorAll("tr")[i]);
+                tbody.insertBefore(ntr, ctr);
+                changed = true;
+            }
+        }
+    }
+}
+
+function sortPrice(){
+    const tbody = document.querySelector("tbody");
+    let changed = true;
+    while (changed) {
+        changed = false;
+        let trs = document.querySelectorAll("tr");
+        for (let i = 0; i < trs.length - 1; i++) {
+            const current = parseFloat(trs[i].querySelector(".cost").innerText);
+            const next = parseFloat(trs[i + 1].querySelector(".cost").innerText);
+            if (current < next) {
+                const ctr = tbody.removeChild(trs[i]);
+                const ntr = tbody.removeChild(trs[i + 1]);
+                tbody.insertBefore(ctr, tbody.querySelectorAll("tr")[i]);
+                tbody.insertBefore(ntr, ctr);
+                changed = true;
             }
         }
     }
 }
 
 function runFilters(e, data) {
-//    console.log(data[0].historyData.length);
-    let filtered1 = data.filter(filter1);
+    console.log(data);
+    let data1 = JSON.stringify(data);
+    data1 = JSON.parse(data1);
+    let filtered1 = data1.filter(filter1);
     const histories = filterVehicles(filtered1);
-//    console.log(data[0].historyData.length);
     filtered1 = [filtered1[0]];
-//    console.log(filtered1);
-    const filtered = [];
-//    const newData = {
-//        historyData: [...]
-//    };
-    newData.push(histories);
-    filtered.push
-    filtered1["0"].historyData = [...histories];
-//    console.log(data[0].historyData.length);
-//    console.log(filtered.filter(filter2));
-//    console.log(filtered1);
-//    createTable(filtered1);
-//    console.log(data[0].historyData.length);
+    filtered1["0"]["historyData"] = [...histories];
+    createTable(filtered1);
 }
-
-//function filter2(data){
-//    const newData = data.map(card => {
-////        card.histo
-//    })
-//}
 
 function filter1(item) {
     const cardId = (document.querySelector(".filter1 select").value);
@@ -213,8 +235,6 @@ function filter1(item) {
 }
 
 function filterVehicles(cards) {
-//    console.log(cards[0].historyData.length);
-//    return true;
     const vehicleValue = document.querySelector(".filter2 select").value;
 //    console.log(vehicleValue);
     const filtered = [];
@@ -226,8 +246,6 @@ function filterVehicles(cards) {
             }
         });
     });
-//    console.log(filtered);
-//    console.log(cards[0].historyData.length);
     return filtered;
 }
 
