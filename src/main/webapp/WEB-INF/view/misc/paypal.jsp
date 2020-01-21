@@ -1,23 +1,31 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <c:set var="path" value="${pageContext.request.contextPath}"/>
         <script>const contextPath = "${pageContext.request.contextPath}";</script>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Ensures optimal rendering on mobile devices. -->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Optimal Internet Explorer compatibility -->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Donation</title>
+        <link rel="stylesheet" href="${path}/static/css/emp-style.css">
+        <link rel="stylesheet" href="${path}/static/css/homepage-css.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="${path}/static/css/emp-style.css">
-        <title>Document</title>
+        <style>
+            .sub-content {
+                background-image: url(/static/images/donation/charity-banner.jpg);
+            }
+
+        </style>
     </head>
     <body>
         <script
             src="https://www.paypal.com/sdk/js?client-id=AWk0x1CD9HuHlrUjGIlQtoTef_TiVP0WZh9DlPb8EgOh8BBe4gIrH8th7Lv2Batwf1bE-YiPc0Nu_6uD"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
         </script>
-         <!-- bootstrap javascript -->
+        <!-- bootstrap javascript -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
@@ -31,82 +39,68 @@
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-        <security:authorize access="(!hasAnyRole('ADMIN','CLIENT', 'EMPLOYEE' , 'TERMINAL'))">
-            <%@include file="./navbars/nav-template.jsp" %>
-        </security:authorize>
-        
         <security:authorize access="hasRole('CLIENT')">
             <%@include file="./navbars/nav-client.jsp" %>
         </security:authorize>
-        
-        
-        
+        <security:authorize access="(!(hasAnyRole('ADMIN','CLIENT', 'EMPLOYEE' , 'TERMINAL')))">
+            <%@include file="./navbars/nav-general.jsp" %>
+        </security:authorize>
 
-        
-        <img src="${pageContext.request.contextPath}/static/images/donation/hamogelo-tou-paidiou.png" >
-        <img src="${pageContext.request.contextPath}/static/images/donation/charity-banner.jpg" >
-        <h2>Στηρίξτε κι εσείς «Το Χαμόγελο του Παιδιού», από την Ελλάδα και το εξωτερικό</h2>
-        <p>Το Χαμόγελο του παιδιού είναι εθελοντικός, μη κερδοσκοπικός οργανισμός που λειτουργεί 
-            στην Ελλάδα, με στόχο την προάσπιση των δικαιωμάτων των παιδιών και την αντιμετώπιση 
-            καθημερινών προβλημάτων τους. Η δράση του περιλαμβάνει μεταξύ άλλων τη φιλοξενία παιδιών 
-            που βρίσκονται σε κίνδυνο, την τηλεφωνική υποστήριξή τους, προγράμματα συμβουλευτικής και 
-            κοινωνικής ένταξής του, την ενίσχυση οικογενειών που τελούν σε ένδεια, καθώς και τη διοργάνωση 
-            εκστρατειών ενημέρωσης ή πολιτιστικών και αθλητικών εκδηλώσεων.</p>
-        <label for="value" class="col-sm-8 col-form-label">Amount for Donation</label>
-        <div class="col-sm-8 mb-4">
-            <input type="number" class="form-control" id="value" name="amount" value="1" min="1" >
-        </div>
-        
+        <section class="main-container">
+            <div class="content">
+                <!--<h1>Header</h1>--><img src="/static/images/donation/hamogelo-tou-paidiou.png">
+                <div class="form sign-in">
+                    <h4 class="text-center">Στηρίξτε κι εσείς «Το Χαμόγελο του Παιδιού», από την Ελλάδα και το εξωτερικό</h4>
+                    <form:form action="${pageContext.request.contextPath}/authenticate" method="POST">
+                        <p class="text-justify">Το Χαμόγελο του παιδιού είναι εθελοντικός, μη κερδοσκοπικός οργανισμός που λειτουργεί 
+                            στην Ελλάδα, με στόχο την προάσπιση των δικαιωμάτων των παιδιών και την αντιμετώπιση 
+                            καθημερινών προβλημάτων τους. Η δράση του περιλαμβάνει μεταξύ άλλων τη φιλοξενία παιδιών 
+                            που βρίσκονται σε κίνδυνο, την τηλεφωνική υποστήριξή τους, προγράμματα συμβουλευτικής και 
+                            κοινωνικής ένταξής του, την ενίσχυση οικογενειών που τελούν σε ένδεια, καθώς και τη διοργάνωση 
+                            εκστρατειών ενημέρωσης ή πολιτιστικών και αθλητικών εκδηλώσεων.</p>
+                        <label>
+                            <span>Amount for Donation</span>
+                            <input type="number"  name="amount" id="value" required="required" value="1" min="1">
+                        </label>
+                        <!--<label for="value" class="col-sm-8 col-form-label">Amount for Donation</label>-->
+                        <div class="form-group">
+                            <!--<button type="submit" class="btn btn-primary btn-block">Log in</button>-->
+                            <!--                            <button type="submit" class="submit submit-button">Sign In</button>-->
+                            <div  id="paypal-button-container"></div>
+                        </div>
+                        <c:if test="${param.error !=null}">
+                            <div class="alert alert-danger text-center">
+                                <i>Invalid username/password</i>
+                            </div>
+                        </c:if>
+                        <c:if test="${param.logout !=null}">
+                            <div class="alert alert-success">
+                                <i>Logout succesfully</i>
+                            </div>
+                        </c:if>
+                    </form:form >
+                    <spring:hasBindErrors name="proClient">
+                        <h2 style="color:red">Failed to Sign Up</h2>
+                        <ul>
+                            <c:forEach var="error" items="${errors.allErrors}">
+                                <li><b style="color:red" ><spring:message  message="${error}" /></b></li>
+                                <br />
+                            </c:forEach>
+                        </spring:hasBindErrors>
+                    </ul>
+                </div>
+            </div>
+            <div class="sub-content">
+                <div class="side-shadow">
+                    <div class="img-text">
+                        <!--                        <h2>ATC</h2>
+                                                <p>Awesome Toll Company</p>-->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <%@include file="./../misc/footer.jsp" %>
 
-        <div class="col-sm-8" id="paypal-button-container"></div>
-        <span>
-            paypal email <br>
-            sb-eoduz871419@personal.example.com<br>
-            password<br>
-        !h}j_9PL
-        </span>
-
-
-        <!--  <script>
-            paypal.Buttons().render('#paypal-button-container');
-            // This function displays Smart Payment Buttons on your web page.
-          </script>
-          <script>
-          paypal.Buttons({
-            createOrder: function(data, actions) {
-              // This function sets up the details of the transaction, including the amount and line item details.
-              return actions.order.create({
-                purchase_units: [{
-                  amount: {
-                    value: '0.01'
-                  }
-                }]
-              });
-            }
-          }).render('#paypal-button-container');
-        </script>
-        <script>
-          paypal.Buttons({
-            createOrder: function(data, actions) {
-              // This function sets up the details of the transaction, including the amount and line item details.
-              return actions.order.create({
-                purchase_units: [{
-                  amount: {
-                    value: '0.01'
-                  }
-                }]
-              });
-            },
-            onApprove: function(data, actions) {
-              // This function captures the funds from the transaction.
-              return actions.order.capture().then(function(details) {
-                // This function shows a transaction success message to your buyer.
-                alert('Transaction completed by ' + details.payer.name.given_name);
-              });
-            }
-          }).render('#paypal-button-container');
-          //This function displays Smart Payment Buttons on your web page.
-        </script>-->
 
         <script>
             let value = document.querySelector("#value").value;
@@ -144,7 +138,7 @@
                             body: JSON.stringify({
                                 orderID: data.orderID
                             })
-                            
+
                         });
                     });
                 }
