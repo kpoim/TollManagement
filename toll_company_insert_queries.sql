@@ -44,7 +44,7 @@ INSERT INTO client VALUES
 (15, 1, 'color', '$2y$12$kAVt/I9nZcWIC7..AzO4d.RxAQb1DYpJeap2dA/wwzToeAgC79MQC');
 
 insert into card
-values (101, 10),
+values (109, 10),
 (102, 11),
 (103, 12),
 (104, 13),

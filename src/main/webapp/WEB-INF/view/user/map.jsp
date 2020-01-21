@@ -27,17 +27,20 @@
                     <div class="filter-container">
                         <div class="filter1" >
                             <select>
-                                <option>all</option>
+                                <option value="all">all</option>
                             </select>
                         </div>
                         <div class="filter2" >
                             <select>
-                                <option>all</option>
+                                <option value="all">all</option>
                             </select>
                         </div>
                         <div class="filter3" >
                             <select>
-                                <option>all</option>
+                                <option value="0" disabled selected>Sort by</option>
+                                <option value="1">entry time</option>
+                                <option value="2">exit time</option>
+                                <option value="3">cost</option>
                             </select>
                         </div>
                     </div>
