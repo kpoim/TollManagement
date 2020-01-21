@@ -1,6 +1,6 @@
 window.olMap = null;
-const vectorSource = new ol.source.Vector();
-const vectorLayer = new ol.layer.Vector({
+window.vectorSource = new ol.source.Vector();
+window.vectorLayer = new ol.layer.Vector({
     source: vectorSource
 });
 const styles = {
@@ -31,7 +31,7 @@ function createMap(geometry) {
             center: ol.proj.fromLonLat([
                 22.9959129, 39.1162255
             ]),
-            zoom: 8
+            zoom: 7
         })
     });
 
@@ -53,16 +53,25 @@ const osrmJSON = {"routes": [{"geometry": "qddiFk_jmCetA|bMwy@t\\}wC`bEyuBoiB}k@
 
 function createRoute(polyline) {
     console.log(polyline);
-    var route = new ol.format.Polyline({
+    
+    var route = createGeometry(polyline);
+    var feature = createFeature(route);
+    feature.setStyle(styles.route);
+    vectorSource.addFeature(feature);
+}
+
+function createGeometry(polyline){
+    return new ol.format.Polyline({
         factor: 1e5
     }).readGeometry(polyline, {
         dataProjection: 'EPSG:4326',
         featureProjection: 'EPSG:3857'
     });
-    var feature = new ol.Feature({
+}
+
+function createFeature(route){
+    return new ol.Feature({
         type: 'route',
         geometry: route
     });
-    feature.setStyle(styles.route);
-    vectorSource.addFeature(feature);
 }

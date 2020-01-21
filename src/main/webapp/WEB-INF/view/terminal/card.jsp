@@ -95,10 +95,10 @@
                         </c:otherwise>
                     </c:choose>
                     <script>
-//                            const redirectToURL = window.location.origin + "/terminal";
-//                            setTimeout(() => {
-//                                window.location.replace(redirectToURL);
-//                            }, 10000);
+                            const redirectToURL = window.location.origin + "/terminal";
+                            setTimeout(() => {
+                                window.location.replace(redirectToURL);
+                            }, 10000);
                     </script>
                     <div style="width:100%; height: 50vh;" id="map"></div>
                 </div>
