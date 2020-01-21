@@ -55,6 +55,7 @@ function getVehicles() {
                     input.setAttribute("id", vehicle);
                     input.setAttribute("required", "true");
                     input.addEventListener("click", getPrice);
+                    const label = document.createElement("label");
 //                    label.classList.add("form-check-label");
                     label.setAttribute("for", vehicle);
                     label.innerText = vehicle;

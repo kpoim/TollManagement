@@ -51,15 +51,15 @@
                 <!--<h1>Header</h1>--><img src="/static/images/donation/hamogelo-tou-paidiou.png">
                 <div class="form sign-in">
                     <h4 class="text-center">Στηρίξτε κι εσείς «Το Χαμόγελο του Παιδιού», από την Ελλάδα και το εξωτερικό</h4>
-                    <form:form action="${pageContext.request.contextPath}/authenticate" method="POST">
+                    
                         <p class="text-justify">Το Χαμόγελο του παιδιού είναι εθελοντικός, μη κερδοσκοπικός οργανισμός που λειτουργεί 
                             στην Ελλάδα, με στόχο την προάσπιση των δικαιωμάτων των παιδιών και την αντιμετώπιση 
                             καθημερινών προβλημάτων τους. Η δράση του περιλαμβάνει μεταξύ άλλων τη φιλοξενία παιδιών 
                             που βρίσκονται σε κίνδυνο, την τηλεφωνική υποστήριξή τους, προγράμματα συμβουλευτικής και 
                             κοινωνικής ένταξής του, την ενίσχυση οικογενειών που τελούν σε ένδεια, καθώς και τη διοργάνωση 
                             εκστρατειών ενημέρωσης ή πολιτιστικών και αθλητικών εκδηλώσεων.</p>
-                        <label>
-                            <span>Amount for Donation</span>
+                        <label style="width:100%;">
+                            <span >Amount for Donation</span>
                             <input type="number"  name="amount" id="value" required="required" value="1" min="1">
                         </label>
                         <!--<label for="value" class="col-sm-8 col-form-label">Amount for Donation</label>-->
@@ -67,27 +67,12 @@
                             <!--<button type="submit" class="btn btn-primary btn-block">Log in</button>-->
                             <!--                            <button type="submit" class="submit submit-button">Sign In</button>-->
                             <div  id="paypal-button-container"></div>
+                            <div id="successDonation" style="color:green;">
+                                
+                            </div>
                         </div>
-                        <c:if test="${param.error !=null}">
-                            <div class="alert alert-danger text-center">
-                                <i>Invalid username/password</i>
-                            </div>
-                        </c:if>
-                        <c:if test="${param.logout !=null}">
-                            <div class="alert alert-success">
-                                <i>Logout succesfully</i>
-                            </div>
-                        </c:if>
-                    </form:form >
-                    <spring:hasBindErrors name="proClient">
-                        <h2 style="color:red">Failed to Sign Up</h2>
-                        <ul>
-                            <c:forEach var="error" items="${errors.allErrors}">
-                                <li><b style="color:red" ><spring:message  message="${error}" /></b></li>
-                                <br />
-                            </c:forEach>
-                        </spring:hasBindErrors>
-                    </ul>
+                        
+                    
                 </div>
             </div>
             <div class="sub-content">
@@ -103,6 +88,7 @@
 
 
         <script>
+            
             let value = document.querySelector("#value").value;
             console.log(value);
             let payButton = document.querySelector("#paypal-button-container");
@@ -127,19 +113,21 @@
                 },
                 onApprove: function (data, actions) {
                     return actions.order.capture().then(function (details) {
-                        alert('Transaction completed by ' + details.payer.name.given_name);
-                        console.log(details);
+                        
+                        document.querySelector("#successDonation").innerHTML=('Transaction completed by ' + details.payer.name.given_name);
+                        //alert('Transaction completed by ' + details.payer.name.given_name);
+                        //console.log(details);
                         // Call your server to save the transaction
-                        return fetch('/paypal-transaction-complete', {
-                            method: 'post',
-                            headers: {
-                                'content-type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                orderID: data.orderID
-                            })
-
-                        });
+//                        return fetch('/paypal-transaction-complete', {
+//                            method: 'post',
+//                            headers: {
+//                                'content-type': 'application/json'
+//                            },
+//                            body: JSON.stringify({
+//                                orderID: data.orderID
+//                            })
+//
+//                        });
                     });
                 }
             }).render('#paypal-button-container');

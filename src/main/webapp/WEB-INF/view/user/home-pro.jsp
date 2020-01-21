@@ -38,6 +38,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
+                                    <th scope="col">Username</th>
                                     <th scope="col">Company Name</th>
                                     <th scope="col">AFM</th>
                                     <th scope="col">Phone</th>
@@ -49,12 +50,12 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">1</th>
+                                    <td>${puser.username}</td>
                                     <td>${puser.companyName}</td>
                                     <td>${puser.proafm}</td>
                                     <td>${puser.phone}</td>
                                     <td>${puser.email}</td>
-                                    <td>${puser.address}</td>
-                                    <td><a href="">Update</a> </td>
+                                    <td>${puser.address}</td>                                    
                                 </tr>
 
                             </tbody>

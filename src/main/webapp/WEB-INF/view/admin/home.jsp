@@ -4,15 +4,15 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
+     <head>
         <c:set var="path" value="${pageContext.request.contextPath}"/>
         <script>const contextPath = "${pageContext.request.contextPath}";</script>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Admin Page</title>
+        <link rel="stylesheet" href="${path}/static/css/emp-style.css">
+        <link rel="stylesheet" href="${path}/static/css/homepage-css.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Document</title>
     </head>
 
     <body>
@@ -31,33 +31,28 @@
         crossorigin="anonymous"></script>
 
         <%@include file="../misc/navbars/nav-admin.jsp" %>  
-
-        <section style="margin-top: 100px;">
-            <div class="container  pt-3 pb-3 pl-5 pr-5 shadow extra-margin" style="box-sizing: border-box;">
-                <div class="row">
-                    <div class="col-12 border border-dark bg-light shadow">
-                        <h2>Admin Panel</h2>
-                        <p>Admin  Name : ${admin.fname}  ${admin.lname}</p>
-
-                        <a href="${path}/admin/manageAdmin/update/${admin.id}"> Manage your account </a>
-                        <a href="${path}/admin/list-admin"> List of Administrators </a>
-                        <a href="${path}/admin/list-admin"> List of All employees </a>
-                        <a href="${path}/admin/change-password-form/${admin.id}"> Change Password </a>
-                        <div class="mt-3">
-                            <p><a href="${pageContext.request.contextPath}/admin/manage-employee/list-employee">Manage Employee</a> | 
-                                <a href="${pageContext.request.contextPath}/admin/manage-station/list">Manage Station</a> | 
-                                <a href="${pageContext.request.contextPath}/admin/manage-road/list">Manage Road</a> | 
-                                <a href="${pageContext.request.contextPath}/admin/manage-gate/list">Manage Gate</a></p>
-
-                        </div>
-
+        
+        <section class="main-container">
+            <div class="content">
+                
+                <div class="form sign-in">
+                    <h2>Admin Panel</h2>
+                    <p>Admin  Name : ${admin.fname}  ${admin.lname}</p>
+                    <a href="${path}/admin/update/${admin.id}"> Manage your account </a>
+                        
+                    
+                </div>
+            </div>
+            <div class="sub-content">
+                <div class="side-shadow">
+                    <div class="img-text">
+                        <h2>ATC</h2>
+                        <p>Awesome Toll Company</p>
                     </div>
-
                 </div>
             </div>
         </section>
-
-
+         <%@include file="./../misc/footer.jsp" %>           
     </body>
 
 </html>
