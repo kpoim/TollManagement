@@ -34,11 +34,7 @@ public class ManageGateControler {
     @Autowired
     StationService stationService;
     
-    @GetMapping
-    public String adminHome() {
-        return "admin/manageGate/home";
-    }
-
+    
     @GetMapping("/list")
     public String listGate(Model m) {
         List<Terminal> list = terminalService.findAll();

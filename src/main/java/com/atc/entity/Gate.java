@@ -2,6 +2,7 @@ package com.atc.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -32,7 +33,8 @@ public class Gate implements Serializable {
     private Integer gateNo;
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "stationid", referencedColumnName = "stationid")
-//    @JsonBackReference
+    @JsonBackReference
+    @JsonIgnoreProperties("gates")
     private Station station;
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employeeid")

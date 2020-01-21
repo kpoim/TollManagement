@@ -24,11 +24,7 @@ public class ManageEmployeeController {
     @Autowired
     EmployeeService service;
 
-    @GetMapping
-    public String adminHome() {
-        return "admin/manageEmployee/home";
-    }
-
+    
     @GetMapping("/list-employee")
     public String listEmployee(Model m) {
         List<Employee> list = service.findAllEmployees();
