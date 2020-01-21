@@ -55,11 +55,16 @@ function getVehicles() {
                     input.setAttribute("required", "true");
                     input.addEventListener("click", getPrice);
                     const label = document.createElement("label");
+                    const img = document.createElement("img");
+                    img.setAttribute("class","vehicleImg");
+                    img.setAttribute("src","/static/images/vehicles/bus-sm.png");
 //                    label.classList.add("form-check-label");
                     label.setAttribute("for", vehicle);
                     label.innerText = vehicle;
+                    
                     container.appendChild(input);
                     container.appendChild(label);
+                    container.appendChild(img);
                     vehiclesContainer.appendChild(container);
                 });
             })
