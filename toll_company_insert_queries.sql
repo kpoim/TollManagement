@@ -1,5 +1,3 @@
-
-
 INSERT INTO role VALUES
 (1, 'ROLE_ADMIN'),
 (2, 'ROLE_EMPLOYEE'),
@@ -24,17 +22,6 @@ INSERT INTO user(username, password, rid) VALUES
 ('ret2', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 3),
 ('ret3', '$2y$12$IsEt/FjyQw3f9JSQZueodOFlbhviHMh9rIgbCycLXe3.5NUbcyf8W', 3);
 
-
-INSERT INTO retail_clients (id, retailafm, firstname, lastname, phone, email)
-VALUES (13, 0000111123, 'Dimitris', 'Kokoras', 6991234321, 'koko@gmail.gr'),
-(14, 1234111124, 'Vasilis', 'Iakovopoulos', 6988966987, 'iako@gmail.gr'),
-(15, 4321432112, 'Sotiris', 'Kalampokakis', 6976976977, 'kala@email.gr');
-
-INSERT INTO pro_clients (id, proafm, companyname, phone, address, email)
-VALUES (10, 1111222233, 'Coscote', 6999999986, 'Kolokotroni 27', 'email@coscote.gr'),
-(11, 1111222233, 'Xaplopoulos', 6988877766, 'Ath. DIakou 02', 'email@xaplo.gr'),
-(12, 3335557779, 'Byte', 6945678923, 'Kavalas 18', 'email@byte.gr');
-
 INSERT INTO client VALUES
 (10, 0, 'color', '$2y$12$kAVt/I9nZcWIC7..AzO4d.RxAQb1DYpJeap2dA/wwzToeAgC79MQC'),
 (11, 0, 'color', '$2y$12$kAVt/I9nZcWIC7..AzO4d.RxAQb1DYpJeap2dA/wwzToeAgC79MQC'),
@@ -52,15 +39,17 @@ values (109, 10),
 (106, 15);
 
 insert into pro_clients (id, proafm, companyname, phone, address, email)
-values (10, 1111222233, 'Coscote', 6999999986, 'Kolokotroni 27', 'email@coscote.gr'),
-(11, 1111222233, 'Xaplopoulos', 6988877766, 'Ath. DIakou 02', 'email@xaplo.gr'),
-(12, 3335557779, 'Byte', 6945678923, 'Kavalas 18', 'email@byte.gr');
+values (10, 911386618, 'Coscote', 6999999986, 'Kolokotroni 27', 'email@coscote.gr'),
+(11, 126917233, 'Xaplopoulos', 6988877766, 'Ath. DIakou 02', 'email@xaplo.gr'),
+(12, 335557779, 'Byte', 6945678923, 'Kavalas 18', 'email@byte.gr');
 
 insert into retail_clients (id, retailafm, firstname, lastname, phone, email)
-values (13, 0000111123, 'Dimitris', 'Kokoras', 6991234321, 'koko@gmail.gr'),
-(14, 1234111124, 'Vasilis', 'Iakovopoulos', 6988966987, 'iako@gmail.gr'),
-(15, 4321432112, 'Sotiris', 'Kalampokakis', 6976976977, 'kala@email.gr');
+values (13, 113415123, 'Dimitris', 'Kokoras', 6991234321, 'koko@gmail.gr'),
+(14, 123411124, 'Vasilis', 'Iakovopoulos', 6988966987, 'iako@gmail.gr'),
+(15, 432142112, 'Sotiris', 'Kalampokakis', 6976976977, 'kala@email.gr');
 
+SELECT * FROM pro_clients;
+DELETE FROM pro_clients WHERE id = 31;
 
 INSERT INTO road (name) VALUES ('Egnatia'),
 ('P.A.TH.E.'),
@@ -244,7 +233,7 @@ UPDATE gate SET employeeid = null;
 DELETE FROM ongoing_logs;
 DELETE FROM history_logs;
 DELETE FROM terminal;
-
+DELETE FROM history_logs WHERE historyid = 50;
 
 -- INSERT INTO client 
 -- (clientid, question, answer)
