@@ -54,9 +54,11 @@ public class ManageStationController {
     }
     
     @GetMapping("/update")
-    public String showUpdateForm (@RequestParam("stationId") Integer id, Model model){
+    public String showUpdateForm (@RequestParam("stationId") Integer id , Model model){
         Station s = service.findById(id);
         model.addAttribute("station", s);
+        List<Road> list = roadService.findAll();
+        model.addAttribute("listOfRoad", list);
         return "admin/manageStation/formStation";
     }
     

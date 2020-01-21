@@ -33,8 +33,11 @@
                             <form:errors path="gateNo" cssClass="error"/>
                             <br/>
                             <label for="stationid">Station ID</label>
-                            <form:input path="station.id" class="form-control" placeholder="Station id"/>
-                            <form:errors path="station.id" cssClass="error"/>
+                            <form:select path="station.id">
+                            <c:forEach items="${listOfStation}" var="s">
+                                <form:option value="${s.id}">${s.id} - ${s.stationName}</form:option>
+                            </c:forEach>
+                        </form:select>
                             <br/>
                             <label for="isEntry">Entry/Exit</label>
                             <form:input path="isEntry" class="form-control"/>
@@ -42,7 +45,6 @@
                             <br/>
                             <button type="submit" class="submit submit-button">Update</button>
                         </form:form>
-                        <br/>
                         <p class="text-center">
                             <a href ="${pageContext.request.contextPath}/admin/manage-gate/list">Return to list</a>
                         </p>

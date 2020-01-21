@@ -75,6 +75,8 @@ public class ManageGateControler {
     @GetMapping("/update")
     public String showUpdateForm (@RequestParam("gateId") String id, Model model){
         Gate g = gateService.findById(id);
+        List<Station> list = stationService.findAll();
+        model.addAttribute("listOfStation", list);
         model.addAttribute("gate", g);
         return "admin/manageGate/formUpdateGate";
     }
