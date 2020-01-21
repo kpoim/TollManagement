@@ -29,6 +29,7 @@ public class ProClientServiceImpl implements ProClientService {
 	pc.setAnswer(passwordEncoder.encode(pc.getAnswer()));
 	System.out.println("ENCODED ANSWER " + pc.getAnswer());
 	pc.setPassword(passwordEncoder.encode(pc.getPassword()));
+	
 	pc.addCard(cardService.create());
 	return dao.create(pc);
   }

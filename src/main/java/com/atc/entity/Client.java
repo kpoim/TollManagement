@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.AttributeOverride;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
@@ -25,7 +27,7 @@ public class Client extends User implements Serializable {
 
   private String answer;
 
-  @OneToMany(mappedBy = "id")
+  @OneToMany(mappedBy = "id", fetch = FetchType.EAGER)
   private List<Card> cards;
 
   public Client() {

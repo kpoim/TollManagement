@@ -480,7 +480,7 @@
                         <div class="oneRow">
                             <div class="resultDetail proClient">
                                 <label ><span>Company AFM</span>
-                                    <form:input type="number" min="9"   path="proafm" required="required"/>
+                                    <form:input type="number" path="proafm" required="required"/>
                                     <form:errors path="proafm" cssClass="error"/>
                                 </label>
                             </div>

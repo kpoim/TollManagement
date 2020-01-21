@@ -33,7 +33,7 @@
     </head>
     <body>
 
-        <%@include file="../misc/navbars/newjsp.jsp" %>
+        <%@include file="../misc/navbars/nav-terminal.jsp" %>
         <section class="main-container">
             <div class="content" style="justify-content: center; margin: 0;">
                 <div style="width:100%; height: 70vh;" id="content">
@@ -73,7 +73,7 @@
                             },
                             body: JSON.stringify(data.routes[0].geometry)
                         });
-                    });
+                    })
                     .catch(err => console.error(err));
                                             </script>
                                             <h3>Here is your route</h3>
