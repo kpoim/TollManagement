@@ -49,5 +49,11 @@ public class TerminalSerivceImpl implements TerminalService{
     public List<Terminal> findAll() {
         return tdao.findAll();
     }
+
+    @Override
+    public List<Terminal> findByTerminal(String search) {
+        List<Terminal> list = tdao.findByTerminal(search);
+        return list;
+    }
     
 }

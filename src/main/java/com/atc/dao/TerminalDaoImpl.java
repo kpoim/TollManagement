@@ -52,4 +52,12 @@ public class TerminalDaoImpl extends SuperDao implements TerminalDao{
         return list;
     }
 
+    @Override
+    public List<Terminal> findByTerminal(String search) {
+        Query q = getSession().createQuery("SELECT t FROM Terminal t WHERE t.username LIKE :name");
+        q.setParameter("name","%"+ search +"%");
+        List<Terminal> list = q.getResultList();
+        return list;
+    }
+
 }

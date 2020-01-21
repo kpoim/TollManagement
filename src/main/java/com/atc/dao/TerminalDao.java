@@ -18,4 +18,6 @@ public interface TerminalDao {
 
     public List<Terminal> findAll();
 
+    public List<Terminal> findByTerminal(String search);
+
 }

@@ -18,4 +18,6 @@ public interface TerminalService {
 
     public List<Terminal> findAll();
 
+    public List<Terminal> findByTerminal(String search);
+
 }

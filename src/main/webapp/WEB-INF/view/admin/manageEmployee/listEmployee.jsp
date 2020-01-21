@@ -19,29 +19,37 @@
         <section class="main-container">
             <div class="content">
                 <div class="form sign-in">
-        <h1 class="text-center">List of Employee</h1>
-        <p class="text-center">
-          <a href="${pageContext.request.contextPath}/admin/manage-employee/create">Add Employee</a>  
-        </p>
-        <table class="table">
-            <c:forEach items="${listOfEmployee}" var="e">
-                 
-                <tr>
-                    <td>${e.fname}</td>
-                    <td>${e.lname}</td>
-                    <td>${e.phone}</td>
-                    <td>${e.email}</td>
-                    <td>
-                        <a href="${pageContext.request.contextPath}/admin/manage-employee/update/${e.id}">Update</a>
-                    </td>
-                    <td>
-                        <a href="${pageContext.request.contextPath}/admin/manage-employee/delete/${e.id}">Delete</a>
-                    </td>
-                </tr>
-            </c:forEach>
-        </table>
 
-        </div>
+                    <h1 class="text-center">List of Employee</h1>
+                    <p class="text-center">
+                        <a href="${pageContext.request.contextPath}/admin/manage-employee/create">Add Employee</a>  
+                    </p>
+                    <table class="table">
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th colspan="2" class="text-center">Actions</th>
+                        </tr>
+                        <c:forEach items="${listOfEmployee}" var="e">
+
+                            <tr>
+                                <td>${e.fname}</td>
+                                <td>${e.lname}</td>
+                                <td>${e.phone}</td>
+                                <td>${e.email}</td>
+                                <td>
+                                    <a href="${pageContext.request.contextPath}/admin/manage-employee/update/${e.id}">Update</a>
+                                </td>
+                                <td>
+                                    <a href="${pageContext.request.contextPath}/admin/manage-employee/delete/${e.id}">Delete</a>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>
+
             </div>
             <div class="sub-content">
                 <div class="side-shadow">

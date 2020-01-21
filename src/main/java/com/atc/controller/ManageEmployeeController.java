@@ -49,7 +49,7 @@ public class ManageEmployeeController {
             return "admin/manageEmployee/formEmployee";
         }
         service.add(e);
-        return "redirect:/admin/manage-employee/listEmployee";
+        return "redirect:/admin/manage-employee/list-employee";
     }
     
     @GetMapping("/update/{id}")
