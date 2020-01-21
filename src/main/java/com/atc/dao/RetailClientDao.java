@@ -5,5 +5,7 @@ import com.atc.entity.RetailClient;
 public interface RetailClientDao {
   
   RetailClient create(RetailClient c);
+
+    public RetailClient findByUsername(String username);
   
 }

@@ -6,4 +6,6 @@ public interface ProClientService {
 
   ProClient create(ProClient pc);
 
+    public ProClient findByUsername(String username);
+
 }

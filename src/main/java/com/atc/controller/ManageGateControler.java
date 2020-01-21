@@ -2,9 +2,11 @@
 package com.atc.controller;
 
 import com.atc.entity.Gate;
+import com.atc.entity.Station;
 import com.atc.entity.Terminal;
 import com.atc.entity.WrapperGateTerminal;
 import com.atc.service.GateService;
+import com.atc.service.StationService;
 import com.atc.service.TerminalService;
 import java.util.List;
 import javax.validation.Valid;
@@ -29,6 +31,9 @@ public class ManageGateControler {
     @Autowired
     TerminalService terminalService;
     
+    @Autowired
+    StationService stationService;
+    
     @GetMapping
     public String adminHome() {
         return "admin/manageGate/home";
@@ -42,7 +47,9 @@ public class ManageGateControler {
     }
     
     @RequestMapping(value = "/create" , method = RequestMethod.GET)
-    public String showForm(@ModelAttribute("wrapperGateTerminal") WrapperGateTerminal w){
+    public String showForm(@ModelAttribute("wrapperGateTerminal") WrapperGateTerminal w, Model m){
+        List<Station> list = stationService.findAll();
+        m.addAttribute("listOfStation", list);
         return "admin/manageGate/formGate";
     }
     
@@ -68,6 +75,8 @@ public class ManageGateControler {
     @GetMapping("/update")
     public String showUpdateForm (@RequestParam("gateId") String id, Model model){
         Gate g = gateService.findById(id);
+        List<Station> list = stationService.findAll();
+        model.addAttribute("listOfStation", list);
         model.addAttribute("gate", g);
         return "admin/manageGate/formUpdateGate";
     }

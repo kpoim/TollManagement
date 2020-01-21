@@ -6,4 +6,6 @@ public interface RetailClientService {
 
   RetailClient create(RetailClient rc);
 
+    public RetailClient findByUsername(String username);
+
 }

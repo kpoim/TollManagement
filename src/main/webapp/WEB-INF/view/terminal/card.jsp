@@ -38,6 +38,7 @@
             <div class="content" style="justify-content: center; margin: 0;">
                 <div style="width:100%; height: 70vh;" id="content">
 
+
                     <c:choose>
                         <c:when test="${employeePresent == false}">
                             <h2>This Gate is currently closed.</h2>

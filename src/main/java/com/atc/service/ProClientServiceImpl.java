@@ -34,4 +34,9 @@ public class ProClientServiceImpl implements ProClientService {
 	return dao.create(pc);
   }
 
+    @Override
+    public ProClient findByUsername(String username) {
+        return dao.findByUsername(username);
+    }
+
 }
