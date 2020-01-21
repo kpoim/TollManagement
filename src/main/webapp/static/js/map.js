@@ -1,3 +1,4 @@
+window.olMap = null;
 const vectorSource = new ol.source.Vector();
 const vectorLayer = new ol.layer.Vector({
     source: vectorSource
@@ -11,11 +12,14 @@ const styles = {
 };
 
 function createMap(geometry) {
+    console.log(geometry);
+    if (geometry[0] === "\"")
+        geometry = JSON.parse(geometry);
     if (!geometry)
         createRoute(osrmJSON.routes[0].geometry);
     else
         createRoute(geometry);
-    const map = new ol.Map({
+    window.olMap = new ol.Map({
         target: 'map',
         layers: [
             new ol.layer.Tile({
@@ -48,6 +52,7 @@ const osrmJSON = {"routes": [{"geometry": "qddiFk_jmCetA|bMwy@t\\}wC`bEyuBoiB}k@
 
 
 function createRoute(polyline) {
+    console.log(polyline);
     var route = new ol.format.Polyline({
         factor: 1e5
     }).readGeometry(polyline, {

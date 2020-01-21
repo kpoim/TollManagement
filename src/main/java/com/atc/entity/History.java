@@ -1,6 +1,7 @@
 package com.atc.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
