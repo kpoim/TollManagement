@@ -3,10 +3,13 @@ package com.atc.controller;
 import com.atc.entity.Client;
 import com.atc.entity.ProClient;
 import com.atc.entity.RetailClient;
+import com.atc.entity.Vehicle;
 import com.atc.service.ClientService;
 import com.atc.service.ProClientService;
 import com.atc.service.RetailClientService;
+import com.atc.service.VehicleService;
 import java.security.Principal;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -39,6 +42,9 @@ public class HomeController {
 
     @Autowired
     ClientService clientService;
+    
+    @Autowired
+    VehicleService vehicleService;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -99,10 +105,10 @@ public class HomeController {
         return "redirect:/";
     }
 
-    @GetMapping("/paypal")
-    public String paypal() {
+    @GetMapping("/donation")
+    public String paypal(Authentication authentication, Principal principal, Model m) {
 
-        return "paypal";
+        return "misc/paypal";
     }
 
     @GetMapping("/forgotten-password")
@@ -156,6 +162,14 @@ public class HomeController {
 
 //        return "redirect:/user";
         return "misc/change-password/change-password-step4";
+    }
+    
+    @GetMapping("/toll-rates")
+    public String tollRatesPage(Model m) {
+        List<Vehicle> list = vehicleService.findAll();
+        m.addAttribute("listOfVehicle", list);
+     
+        return "misc/toll-rates";
     }
 
 }

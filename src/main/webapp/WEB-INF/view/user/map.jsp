@@ -19,7 +19,7 @@
     </head>
     <body>
 
-        <%@include file="../misc/navbars/newjsp.jsp" %>
+        <%@include file="../misc/navbars/nav-client.jsp" %>
         <section class="main-container">
             <div class="content">
                 <h1>Map</h1>

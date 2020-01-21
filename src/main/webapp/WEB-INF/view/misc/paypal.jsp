@@ -14,7 +14,10 @@
         <title>Document</title>
     </head>
     <body>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script
+            src="https://www.paypal.com/sdk/js?client-id=AWk0x1CD9HuHlrUjGIlQtoTef_TiVP0WZh9DlPb8EgOh8BBe4gIrH8th7Lv2Batwf1bE-YiPc0Nu_6uD"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
+        </script>
+         <!-- bootstrap javascript -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
@@ -28,13 +31,30 @@
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-        <script
-            src="https://www.paypal.com/sdk/js?client-id=AWk0x1CD9HuHlrUjGIlQtoTef_TiVP0WZh9DlPb8EgOh8BBe4gIrH8th7Lv2Batwf1bE-YiPc0Nu_6uD"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
-        </script>
+        <security:authorize access="(!hasAnyRole('ADMIN','CLIENT', 'EMPLOYEE' , 'TERMINAL'))">
+            <%@include file="./navbars/nav-template.jsp" %>
+        </security:authorize>
+        
+        <security:authorize access="hasRole('CLIENT')">
+            <%@include file="./navbars/nav-client.jsp" %>
+        </security:authorize>
+        
+        
+        
 
+        
+        <img src="${pageContext.request.contextPath}/static/images/donation/hamogelo-tou-paidiou.png" >
+        <img src="${pageContext.request.contextPath}/static/images/donation/charity-banner.jpg" >
+        <h2>Στηρίξτε κι εσείς «Το Χαμόγελο του Παιδιού», από την Ελλάδα και το εξωτερικό</h2>
+        <p>Το Χαμόγελο του παιδιού είναι εθελοντικός, μη κερδοσκοπικός οργανισμός που λειτουργεί 
+            στην Ελλάδα, με στόχο την προάσπιση των δικαιωμάτων των παιδιών και την αντιμετώπιση 
+            καθημερινών προβλημάτων τους. Η δράση του περιλαμβάνει μεταξύ άλλων τη φιλοξενία παιδιών 
+            που βρίσκονται σε κίνδυνο, την τηλεφωνική υποστήριξή τους, προγράμματα συμβουλευτικής και 
+            κοινωνικής ένταξής του, την ενίσχυση οικογενειών που τελούν σε ένδεια, καθώς και τη διοργάνωση 
+            εκστρατειών ενημέρωσης ή πολιτιστικών και αθλητικών εκδηλώσεων.</p>
         <label for="value" class="col-sm-8 col-form-label">Amount for Donation</label>
         <div class="col-sm-8 mb-4">
-            <input type="number" class="form-control" id="value" name="amount" value="0.1" min="0.1" >
+            <input type="number" class="form-control" id="value" name="amount" value="1" min="1" >
         </div>
         
 

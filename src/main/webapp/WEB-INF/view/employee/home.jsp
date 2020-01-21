@@ -17,7 +17,7 @@
     </head>
     <body>
 
-        <%@include file="../misc/navbars/newjsp.jsp" %>
+       <%@include file="../misc/navbars/nav-employee.jsp" %>
         <section class="main-container">
             <div class="content">
                 <h2>Welcome ${fullName}</h2>

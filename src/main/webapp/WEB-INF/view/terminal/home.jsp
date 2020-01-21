@@ -15,11 +15,11 @@
     </head>
     <body>
 
-        <%@include file="../misc/navbars/newjsp.jsp" %>
+        <%@include file="../misc/navbars/nav-terminal.jsp" %> 
         <section class="main-container">
             <div class="content" style="justify-content: center; margin: 0;">
-                        <h3>Place your card on the reader</h3>
-                    
+                <h3>Place your card on the reader</h3>
+
             </div>
             <div class="sub-content">
                 <div class="side-shadow">
