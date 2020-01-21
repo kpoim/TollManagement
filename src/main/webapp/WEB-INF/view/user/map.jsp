@@ -23,7 +23,11 @@
         <section class="main-container">
             <div class="content">
                 <h1>History</h1>
-                <div class="container  pt-3 pb-3 pl-5 pr-5 shadow extra-margin" style="background-color: rgba(0,0,0,.3); box-sizing: border-box;">
+                <div class="container  pt-3 pb-3 pl-5 pr-5 shadow extra-margin">
+                    <table id="history-table" class="table">
+                        <thead></thead>
+                        <tbody></tbody>
+                    </table>
                     <div style="width:100%; height: 60vh;" id="map"></div>
                 </div>
             </div>
@@ -56,7 +60,7 @@
         crossorigin="anonymous"></script>
 
         <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.1.1/build/ol.js"></script>
-        <!--<script src="${path}/static/js/map.js"></script>-->
+        <script src="${path}/static/js/map.js"></script>
         <script src="${path}/static/js/history.js"></script>
         <script>
 //            jQuery(createMap());
