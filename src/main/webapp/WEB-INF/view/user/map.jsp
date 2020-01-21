@@ -29,32 +29,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
-            <div class="container">
-                <a class="navbar-brand" href="#">A T W</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/ATR/driversHistory.html">Drivers History</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Statistics</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <%@include file="../misc/navbars/nav-client.jsp" %>
         <h1>RETAIL CLIENT</h1>
         <section style="margin-top: 100px;">
             <div class="container  pt-3 pb-3 pl-5 pr-5 shadow extra-margin" style="box-sizing: border-box;">

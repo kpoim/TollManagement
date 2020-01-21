@@ -29,38 +29,22 @@
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
-            <div class="container">
-                <a class="navbar-brand" href="#">A T W</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="${path}/login">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="${path}/logout">Logout</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <security:authorize access="(!hasAnyRole('ADMIN','CLIENT', 'EMPLOYEE' , 'TERMINAL'))">
+            <%@include file="./navbars/nav-template.jsp" %>
+        </security:authorize>
+        <security:authorize access="hasRole('ADMIN')">
+            <%@include file="./navbars/nav-admin.jsp" %>
+        </security:authorize>
+        <security:authorize access="hasRole('CLIENT')">
+            <%@include file="./navbars/nav-client.jsp" %>
+        </security:authorize>
+        <security:authorize access="hasRole('TERMINAL')">
+            <%@include file="./navbars/nav-terminal.jsp" %>
+        </security:authorize>
+        <security:authorize access="hasRole('EMPLOYEE')">
+            <%@include file="./navbars/nav-employee.jsp" %>
+        </security:authorize>
+        
 
         <!-- Full Page Image Header with Vertically Centered Content -->
         <header class="masthead">
@@ -70,7 +54,6 @@
                         <img class="img-fluid " src="${path}/static/images/Tolls.jpg" alt="photo of highway tolls">
                         <h1 class="font-weight-light">AWESOME TOLL COMPANY
                         </h1>
-
                         <p class="lead">Make your highway experience easier</p>
                     </div>
                 </div>
@@ -85,5 +68,16 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus ab nulla dolorum autem nisi officiis blanditiis voluptatem hic, assumenda aspernatur facere ipsam nemo ratione cumque magnam enim fugiat reprehenderit expedita.</p>
             </div>
         </section>
+        <script>
+            let listOfa = document.querySelectorAll(".nav-link");
+            listOfa.forEach(function (a) {
+                console.log(a.href);
+                console.log("=============================")
+                console.log(window.location.href);
+                if (a.href === window.location.href) {
+                    a.classList.toggle('active');
+                }
+            });
+        </script>
     </body>
 </html>

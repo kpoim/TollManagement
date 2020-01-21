@@ -28,21 +28,8 @@
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
-            <div class="container">
-                <a class="navbar-brand" href="#">A T W</a>
-
-
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Logout
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                </ul>
-
-            </div>
-        </nav>
+       <%@include file="../misc/navbars/nav-employee.jsp" %>
+        
         <div class="stationGate container" style="margin-top: 100px;">
             <div class="road-option"></div>
             <div class="station-option"></div>

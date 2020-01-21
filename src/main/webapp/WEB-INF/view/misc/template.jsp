@@ -6,6 +6,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <c:set var="path" value="${pageContext.request.contextPath}"/>
+        <script>const contextPath = "${pageContext.request.contextPath}";</script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>ERROR 404</title>
         <link rel="stylesheet" href="${path}/static/css/emp-style.css">
@@ -15,7 +17,7 @@
     </head>
     <body>
 
-        <%@include file="./navbars/newjsp.jsp" %>
+        <%@include file="./navbars/nav-template.jsp" %>
         <section class="main-container">
             <div class="content">
                 <h1 style="color:red;">Header</h1>
