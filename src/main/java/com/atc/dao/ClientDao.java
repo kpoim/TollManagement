@@ -1,5 +1,6 @@
 package com.atc.dao;
 
+import com.atc.entity.Card;
 import com.atc.entity.Client;
 import java.util.List;
 
@@ -18,6 +19,8 @@ public interface ClientDao {
     public void addOrUpdate(Client client);
     
     public void changePassword(Client client);
+
+  public List<Card> getCards(Client client);
 
     
   

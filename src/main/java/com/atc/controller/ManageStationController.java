@@ -1,7 +1,9 @@
 
 package com.atc.controller;
 
+import com.atc.entity.Road;
 import com.atc.entity.Station;
+import com.atc.service.RoadService;
 import com.atc.service.StationService;
 import java.util.List;
 import javax.validation.Valid;
@@ -23,6 +25,9 @@ public class ManageStationController {
     @Autowired
     StationService service;
     
+    @Autowired
+    RoadService roadService;
+    
     @GetMapping("/list")
     public String listStation(Model m){
         List<Station> list = service.findAll();
@@ -31,12 +36,16 @@ public class ManageStationController {
     }
     
     @RequestMapping(value = "/create" , method = RequestMethod.GET)
-    public String showForm(@ModelAttribute("station") Station s){
+    public String showForm(@ModelAttribute("station") Station s, Model m){
+        List<Road> list = roadService.findAll();
+        m.addAttribute("listOfRoad", list);
         return "admin/manageStation/formStation";
     }
     
     @PostMapping("/create")
     public String createOrUpdate(@Valid Station s, BindingResult result){
+        System.out.println("INSIDE POST CREATE");
+        System.out.println(s);
         if(result.hasErrors()){
             return "admin/manageStation/formStation";
         }
@@ -45,9 +54,11 @@ public class ManageStationController {
     }
     
     @GetMapping("/update")
-    public String showUpdateForm (@RequestParam("stationId") Integer id, Model model){
+    public String showUpdateForm (@RequestParam("stationId") Integer id , Model model){
         Station s = service.findById(id);
         model.addAttribute("station", s);
+        List<Road> list = roadService.findAll();
+        model.addAttribute("listOfRoad", list);
         return "admin/manageStation/formStation";
     }
     
@@ -56,4 +67,12 @@ public class ManageStationController {
         service.delete(id);
         return "redirect:/admin/manage-station/list";
     }
+    
+    @GetMapping("/search")
+    public String searchStation(@RequestParam("search") String search, Model m){
+        List<Station> list = service.findByName(search);
+        m.addAttribute("listOfStation", list);
+        return "admin/manageStation/listStation";
+    }
+    
 }

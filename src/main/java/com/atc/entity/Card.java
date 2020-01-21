@@ -22,7 +22,7 @@ public class Card implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "cardid")
   private int id;
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "cardid")
+  @OneToMany(mappedBy = "cardid")
   private List<History> historyData;
   @JoinColumn(name = "clientid")
   @ManyToOne
@@ -48,6 +48,7 @@ public class Card implements Serializable {
   }
 
   public void setClient(Client client) {
+//	client.addCard(this);
 	this.client = client;
   }
 
@@ -86,7 +87,7 @@ public class Card implements Serializable {
 
   @Override
   public String toString() {
-	return "Card{" + "cardid=" + id + '}';
+	return "Card{" + "id=" + id + ", client=" + client + '}';
   }
 
 }

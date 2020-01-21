@@ -30,9 +30,9 @@ public class Gate implements Serializable {
     @NotNull (message="This value is required")
     @Min(value=0, message=" This value can only be a positive integer number")
     private Integer gateNo;
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "stationid", referencedColumnName = "stationid")
-    @JsonBackReference
+//    @JsonBackReference
     private Station station;
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employeeid")

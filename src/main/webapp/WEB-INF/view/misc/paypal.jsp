@@ -99,9 +99,7 @@
                 </div>
             </div>
         </section>
-        <footer>
-            footer
-        </footer>
+        <%@include file="./../misc/footer.jsp" %>
 
 
         <script>

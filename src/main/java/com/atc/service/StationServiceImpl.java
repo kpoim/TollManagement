@@ -33,5 +33,11 @@ public class StationServiceImpl implements StationService {
     public void delete(int id) {
         sdao.delete(id);
     }
+
+    @Override
+    public List<Station> findByName(String search) {
+        List<Station> list = sdao.findByName(search);
+        return list;
+    }
     
 }

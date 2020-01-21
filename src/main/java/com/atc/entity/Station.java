@@ -46,9 +46,9 @@ public class Station implements Serializable {
   //@JsonIgnoreProperties("stations")
   @JsonBackReference
   private Road road;
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "station")
   @JsonIgnore
-  @JsonManagedReference
+//  @JsonManagedReference
   private List<Gate> gates;
 
   public Station() {

@@ -2,6 +2,7 @@
 package com.atc.dao;
 
 import com.atc.entity.Card;
+import com.atc.entity.Client;
 import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
@@ -36,5 +37,10 @@ public class CardDaoImpl extends SuperDao implements CardDao{
     public Card findById(Integer id) {
         return (Card)getSession().get(Card.class, id);
     }
+
+  @Override
+  public List<Card> getCardsByClientId(Client c) {
+	return getSession().createQuery("SELECT c FROM Card c WHERE c.client.id = :id").setParameter("id", c.getId()).getResultList();
+  }
     
 }

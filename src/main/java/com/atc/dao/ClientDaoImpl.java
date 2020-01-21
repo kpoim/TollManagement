@@ -1,5 +1,6 @@
 package com.atc.dao;
 
+import com.atc.entity.Card;
 import com.atc.entity.Client;
 import java.util.List;
 import org.hibernate.query.Query;
@@ -66,6 +67,12 @@ public class ClientDaoImpl extends SuperDao implements ClientDao {
     public void changePassword(Client client) {
         getSession().saveOrUpdate(client);
     }
+
+  @Override
+  public List<Card> getCards(Client client) {
+	return ((Client) getSession().createQuery("SELECT c FROM Client c WHERE c.id = :id").setParameter("id", client.getId()).getResultList().get(0)).getCards();
+  }
+
 
     
     

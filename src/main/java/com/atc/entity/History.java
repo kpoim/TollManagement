@@ -25,21 +25,21 @@ public class History implements Serializable {
   private Integer id;
   private Integer cardid;
   private Timestamp entrytime;
-  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @OneToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "entrygateid")
-  @JsonIgnore
+//  @JsonIgnore
   private Gate entrygate;
   private Timestamp exittime;
-  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @OneToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "exitgateid")
-  @JsonIgnore
+//  @JsonIgnore
   private Gate exitgate;
   @Column(name = "geometry")
   private String geometry;
   @Column(name = "cost")
   private Double cost;
   @JoinColumn(name = "vehicle")
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.EAGER)
   private Vehicle vehicle;
   
   

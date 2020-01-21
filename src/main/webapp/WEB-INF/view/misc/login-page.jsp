@@ -397,7 +397,7 @@
                     </c:if>
                     <c:if test="${param.logout !=null}">
                         <div class="alert alert-success">
-                            <i>Logout succesfully</i>
+                            <i>Logout successfully</i>
                         </div>
                     </c:if>
                 </form:form >
@@ -457,6 +457,8 @@
                             <div class="resultDetail proClient">
                                 <label ><span>Username</span>
                                     <form:input type="text"  path="username" required="required"/>
+                                    <form:errors path="username" cssClass="error"/>
+                                    ${proExistsError}
                                 </label>
                             </div>
                             <div class="resultDetail proClient">
@@ -473,7 +475,7 @@
                         <div class="oneRow">
                             <div class="resultDetail proClient">
                                 <label ><span>Company AFM</span>
-                                    <form:input type="number" min="9"   path="proafm" required="required"/>
+                                    <form:input type="number" path="proafm" required="required"/>
                                     <form:errors path="proafm" cssClass="error"/>
                                 </label>
                             </div>
@@ -531,6 +533,8 @@
                             <div class="resultDetail retailClient">
                                 <label ><span>Username</span>
                                     <form:input type="text"  path="username" required="required"/>
+                                    <form:errors path="username" cssClass="error"/>
+                                    ${retailExistsError}
                                 </label>
                             </div>
                             <div class="resultDetail retailClient">
@@ -561,7 +565,7 @@
                         <div class="oneRow">
                             <div class="resultDetail retailClient">
                                 <label ><span>AFM</span>
-                                    <form:input type="number" min="9" max="10" path="retailAfm" required="required"/>
+                                    <form:input type="number" min="9" path="retailAfm" required="required"/>
                                 </label>
                             </div>
                             <div class="resultDetail retailClient">

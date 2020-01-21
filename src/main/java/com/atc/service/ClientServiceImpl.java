@@ -1,6 +1,7 @@
 package com.atc.service;
 
 import com.atc.dao.ClientDao;
+import com.atc.entity.Card;
 import com.atc.entity.Client;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,11 @@ public class ClientServiceImpl implements ClientService {
     public void changePassword(Client client) {
         dao.changePassword(client);
     }
+
+  @Override
+  public List<Card> getCards(Client client) {
+	return dao.getCards(client);
+  }
 
    
 

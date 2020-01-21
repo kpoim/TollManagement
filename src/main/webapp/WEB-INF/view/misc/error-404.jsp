@@ -12,7 +12,7 @@
     </head>
     <body>
 
-        <%@include file="./navbars/newjsp.jsp" %>
+        <%@include file="./navbars/nav-general.jsp" %>
         <section class="main-container">
             <div class="content">
                 <h1 style="color:red;">Error 404</h1>

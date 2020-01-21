@@ -109,9 +109,7 @@
                 </div>
             </div>
         </section>
-        <footer>
-            footer
-        </footer>
+        <%@include file="./../misc/footer.jsp" %>
         <!-- Full Page Image Header with Vertically Centered Content -->
 
 
