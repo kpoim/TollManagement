@@ -55,7 +55,7 @@
                                     <td>${puser.proafm}</td>
                                     <td>${puser.phone}</td>
                                     <td>${puser.email}</td>
-                                    <td>${puser.address}</td>                                    
+                                    <td>${puser.address}</td>                                                                      
                                 </tr>
 
                             </tbody>

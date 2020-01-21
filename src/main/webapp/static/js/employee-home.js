@@ -46,20 +46,16 @@ function getVehicles() {
                 const vehiclesContainer = document.querySelector("#vehicles");
                 data.forEach(vehicle => {
                     const container = document.createElement("div");
-//                    container.classList.add("form-check");
                     container.classList.add("radio-container");
                     const input = document.createElement("input");
-//                    input.classList.add("form-check-input");
                     input.setAttribute("type", "radio");
                     input.setAttribute("name", "gridRadios");
                     input.setAttribute("id", vehicle);
                     input.setAttribute("required", "true");
                     input.addEventListener("click", getPrice);
                     const label = document.createElement("label");
-//                    label.classList.add("form-check-label");
                     label.setAttribute("for", vehicle);
                     label.innerText = vehicle;
-                    
                     container.appendChild(input);
                     container.appendChild(label);
                     vehiclesContainer.appendChild(container);

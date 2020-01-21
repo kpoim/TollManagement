@@ -31,6 +31,7 @@
         crossorigin="anonymous"></script>
 
         <%@include file="../misc/navbars/nav-admin.jsp" %>  
+<<<<<<< HEAD
         
         <section class="main-container">
             <div class="content">

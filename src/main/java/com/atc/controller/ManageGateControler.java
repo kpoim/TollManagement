@@ -95,4 +95,10 @@ public class ManageGateControler {
         return "redirect:/admin/manage-gate/list";
     }
     
+    @GetMapping("/search")
+    public String searchGate(@RequestParam("search") String search ,Model model){
+        List<Terminal> list = terminalService.findByTerminal(search);
+        model.addAttribute("listOfTerminal", list);
+        return "admin/manageGate/listGate";
+    }
 }

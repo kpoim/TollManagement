@@ -21,7 +21,13 @@
                         <p class="text-center">
                          <a href="${pageContext.request.contextPath}/admin/manage-gate/create" >Add Gate</a>   
                         </p>
-                        
+                        <form:form action="${pageContext.request.contextPath}/admin/manage-gate/search" method="GET">
+                            <label for="search" >Search By Terminal name:</label>
+                            <input type="text" class="form-control"  name="search" size="8">
+                            <br/>
+                            <button type="submit" class="submit submit-button">Search</button>
+                            <br/>
+                        </form:form>
                         <table class="table">
                             <tr>
                                 <th>Gate id</th>
@@ -57,6 +63,13 @@
                             </c:forEach>
                         </table>
                     </div>
+            </div>
+            <div class="sub-content">
+                <div class="side-shadow">
+                    <div class="img-text">
+                        <h2>ATC</h2>
+                        <p>Awesome Toll Company</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -74,5 +87,6 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
     </body>
 </html>
