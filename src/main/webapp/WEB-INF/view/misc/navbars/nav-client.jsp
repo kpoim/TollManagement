@@ -15,7 +15,7 @@
                     <a class="nav-link" href="${path}/user">User Page</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${path}/user/map">Map</a>
+                    <a class="nav-link" href="${path}/user/history">History</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${path}/toll-rates">Toll Rates</a>

@@ -33,7 +33,7 @@ function getPrice(e) {
     fetch(`${contextPath}/employee-api/get-price-for-history-id/${window.historyId}/vehicle/${e.target.id}`)
             .then(res => res.text())
             .then(val => {
-                document.querySelector("#amount").value = val;
+                document.querySelector("#amount").value = parseFloat(val).toFixed(2);
             })
             .catch(err => console.log(err));
 

@@ -40,9 +40,9 @@ public class UserController {
         return "redirect:/";
     }
 	
-	@GetMapping("/map")
+	@GetMapping("/history")
 	public String showMap(){
-	  return "user/map";
+	  return "user/history";
 	}
 
 }
