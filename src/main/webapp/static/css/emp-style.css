@@ -65,7 +65,7 @@ footer {
     align-items: center;
     background-color: #093b4d;
     color: white;
-    height: 2rem;
+
 }
 
 
@@ -381,4 +381,23 @@ ul{  display: flex;
 
 .emp-container {
     display: none;
+}
+
+/*footer*/
+.footerRow{
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.column2{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+
+}
+.column1{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-self: flex-end;
 }

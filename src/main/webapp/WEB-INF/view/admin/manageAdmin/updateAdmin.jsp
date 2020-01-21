@@ -9,6 +9,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="${path}/static/css/emp-style.css">
+        <link rel="stylesheet" href="${path}/static/css/homepage-css.css">
         <title>New Employee</title>
     </head>
     <body>
@@ -29,7 +31,7 @@
             <div class="container  pt-3 pb-3 pl-5 pr-5 shadow extra-margin" style="box-sizing: border-box;">
                 <div class="row">
                     <div class="col-12 p-4 border border-dark bg-light shadow">
-                        <h2>New Admin</h2>
+                        <h2>Update Admin</h2>
                         <form:form method='post' action="${path}/admin/update" modelAttribute="persistantAdmin">
                             
                             <div class="form-group ">
@@ -69,5 +71,7 @@
                 </div>
             </div>
         </section>
+        <%@include file="./../../misc/footer.jsp" %>
+
     </body>
 </html>

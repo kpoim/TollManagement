@@ -4,16 +4,20 @@
     Author     : jimmi
 --%>
 
-<%@page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%@page isELIgnored="false" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    <head>
+        <meta http-equiv="Content-Type" content="text/html">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Manage Gate Page</title>
+        <link rel="stylesheet" href="${path}/static/css/emp-style.css">
+        <link rel="stylesheet" href="${path}/static/css/homepage-css.css">
+        <title>Add Gates</title>
+
         <style>
             .error{
                 color: red;
@@ -60,5 +64,7 @@
         </form:form>
         <br/>
         <a href ="${pageContext.request.contextPath}/admin/manage-gate/list">Return to list</a>
+
+        <%@include file="./../../misc/footer.jsp" %>
     </body>
 </html>
