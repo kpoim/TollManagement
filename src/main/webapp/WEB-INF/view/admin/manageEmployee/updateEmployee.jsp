@@ -24,11 +24,12 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+        <%@include file="../../misc/navbars/nav-admin.jsp" %>
         <section style="margin-top: 100px;">
             <div class="container  pt-3 pb-3 pl-5 pr-5 shadow extra-margin" style="box-sizing: border-box;">
                 <div class="row">
                     <div class="col-12 p-4 border border-dark bg-light shadow">
-                        <h2>New Employee</h2>
+                        <h2>Update Employee</h2>
                         <form:form method='post' action="${path}/admin/manage-employee/update" modelAttribute="persistantEmployee">
                             <div class="form-group ">
                                 <label for="username">Username</label>

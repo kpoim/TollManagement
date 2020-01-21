@@ -39,8 +39,25 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+        
+        <security:authorize access="(!hasAnyRole('ADMIN','CLIENT', 'EMPLOYEE' , 'TERMINAL'))">
+            <%@include file="./navbars/nav-template.jsp" %>
+        </security:authorize>
+        <security:authorize access="hasRole('ADMIN')">
+            <%@include file="./navbars/nav-admin.jsp" %>
+        </security:authorize>
+        <security:authorize access="hasRole('CLIENT')">
+            <%@include file="./navbars/nav-client.jsp" %>
+        </security:authorize>
+        <security:authorize access="hasRole('TERMINAL')">
+            <%@include file="./navbars/nav-terminal.jsp" %>
+        </security:authorize>
+        <security:authorize access="hasRole('EMPLOYEE')">
+            <%@include file="./navbars/nav-employee.jsp" %>
+        </security:authorize>
+        
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+<!--        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="#"><img src="${path}/static/images/logo.png" alt="logo" width="80" height="60"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,7 +125,7 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav>-->
 
         <!-- Full Page Image Header with Vertically Centered Content -->
         <header class="masthead">

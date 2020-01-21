@@ -31,76 +31,16 @@
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
-            <div class="container">
-                <a class="navbar-brand" href="#"><img src="${path}/static/images/logo.png" alt="logo" width="80" height="60"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <security:authorize access="hasRole('ADMIN')">
-                        <li class="nav-item">
-                            
-                                <a  class="nav-link" href="${pageContext.request.contextPath}/admin">Admin Page</a>
-                            
-                        </li>
-                        </security:authorize>
-                        <security:authorize access="hasRole('CLIENT')">
-                        <li class="nav-item">
-                            
-                                <a  class="nav-link" href="${pageContext.request.contextPath}/user">Client Page</a>
-                            
-                        </li>
-                        </security:authorize>
-                        <security:authorize access="hasRole('EMPLOYEE')">
-                        <li class="nav-item">
-                            
-                                <a  class="nav-link" href="${pageContext.request.contextPath}/employee">Employee Page</a>
-                            
-                        </li>
-                        </security:authorize>
-                        <security:authorize access="hasRole('TERMINAL')">
-                        <li class="nav-item">
-                            
-                                <a  class="nav-link" href="${pageContext.request.contextPath}/terminal">Terminal Page</a>
-                            
-                        </li>
-                        </security:authorize>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="${path}/toll-rates">Toll Rates</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="${path}/donation">Donation</a>
-                        </li>
-                        
-                        <security:authorize access="(!hasAnyRole('ADMIN','CLIENT', 'EMPLOYEE' , 'TERMINAL'))">
-                        <li class="nav-item">
-                            
-                                <a class="nav-link" href="${path}/login">Sign in/Sign up</a>
-                            
-                        </li>
-                        </security:authorize>
-                        <security:authorize access="(hasAnyRole('ADMIN','CLIENT', 'EMPLOYEE' , 'TERMINAL'))">
-                        <li class="nav-item">
-                            
-                                <a class="nav-link" href="${path}/logout">Logout</a>
-                            
-                        </li>
-                        </security:authorize>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
+        <security:authorize access="(!hasAnyRole('ADMIN','CLIENT', 'EMPLOYEE' , 'TERMINAL'))">
+            <%@include file="./navbars/nav-template.jsp" %>
+        </security:authorize>
+        
+        <security:authorize access="hasRole('CLIENT')">
+            <%@include file="./navbars/nav-client.jsp" %>
+        </security:authorize>
+        
+        
+        
 
         
         <img src="${pageContext.request.contextPath}/static/images/donation/hamogelo-tou-paidiou.png" >
