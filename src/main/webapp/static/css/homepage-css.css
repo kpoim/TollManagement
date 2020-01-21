@@ -7,4 +7,30 @@
     background-repeat: no-repeat;
   }
 
-  
+  /*footer*/
+  footer {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    background-color: #093b4d;
+    color: white;
+
+}
+
+  .footerRow{
+                padding-top: 30px;
+                display: flex;
+                justify-content: space-between;
+            }
+            .column2{
+                display: flex;
+                justify-content: space-around;
+                flex-direction: column;
+
+            }
+            .column1{
+                display: flex;
+                justify-content: space-around;
+                flex-direction: column;
+                align-self: flex-end;
+            }

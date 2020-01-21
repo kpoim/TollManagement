@@ -1,6 +1,7 @@
 package com.atc.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -27,12 +28,13 @@ public class History implements Serializable {
   private Timestamp entrytime;
   @OneToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "entrygateid")
-//  @JsonIgnore
+  @JsonIgnore
+//  @JsonIgnoreProperties("employee")
   private Gate entrygate;
   private Timestamp exittime;
   @OneToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "exitgateid")
-//  @JsonIgnore
+  @JsonIgnore
   private Gate exitgate;
   @Column(name = "geometry")
   private String geometry;

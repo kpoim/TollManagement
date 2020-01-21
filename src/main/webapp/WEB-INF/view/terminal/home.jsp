@@ -30,10 +30,8 @@
                 </div>
             </div>
         </section>
-        <footer>
-            footer
-        </footer>
-
+        <%@include file="./../misc/footer.jsp" %>
+        
 
         <!-- bootstrap javascript -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"

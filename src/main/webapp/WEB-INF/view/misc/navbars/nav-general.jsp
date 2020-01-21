@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
     <div class="container">
         <a class="navbar-brand" href="#"><img src="${path}/static/images/logo.png" alt="logo" width="80" height="60"></a>
@@ -11,12 +12,7 @@
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
-                <!--                <li class="nav-item">
-                                    <a class="nav-link" href="${path}">About</a>
-                                </li>-->
-                <!--                <li class="nav-item">
-                                    <a class="nav-link" href="#">Services</a>
-                                </li>-->
+                
                 <li class="nav-item">
                     <a class="nav-link" href="${path}/toll-rates">Toll Rates</a>
                 </li>
@@ -31,13 +27,7 @@
 
                     </li>
                 </security:authorize>
-                <security:authorize access="(hasAnyRole('ADMIN','CLIENT', 'EMPLOYEE' , 'TERMINAL'))">
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="${path}/logout">Logout</a>
-
-                    </li>
-                </security:authorize>
+                
             </ul>
         </div>
     </div>

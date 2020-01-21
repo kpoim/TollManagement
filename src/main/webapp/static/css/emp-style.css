@@ -65,7 +65,7 @@ footer {
     align-items: center;
     background-color: #093b4d;
     color: white;
-    height: 2rem;
+
 }
 
 
@@ -381,6 +381,25 @@ ul{  display: flex;
 
 .emp-container {
     display: none;
+}
+
+/*footer*/
+.footerRow{
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.column2{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+
+}
+.column1{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-self: flex-end;
     width: 100%;
 }
 
@@ -437,4 +456,13 @@ ul{  display: flex;
 
 .radio-container input {
     margin-right: 10px !important;
+}
+
+table th, table td {
+    width: 100px;
+}
+
+table tr:hover, .marked {
+    background-color: #444;
+    color: #ddd;
 }

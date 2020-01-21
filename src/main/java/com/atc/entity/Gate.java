@@ -33,7 +33,6 @@ public class Gate implements Serializable {
     private Integer gateNo;
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "stationid", referencedColumnName = "stationid")
-    @JsonBackReference
     @JsonIgnoreProperties("gates")
     private Station station;
     @OneToOne(fetch = FetchType.LAZY)

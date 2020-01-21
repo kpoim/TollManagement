@@ -167,6 +167,8 @@
                 </div>
             </div>
         </section>
+        <%@include file="./../misc/footer.jsp" %>
+         
         <script>
             $('.resultDetail.retailClient').hide();
             $('input[type=radio][name=choose-one]').change(function () {
