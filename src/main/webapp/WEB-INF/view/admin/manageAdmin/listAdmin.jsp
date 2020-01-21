@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="${path}/static/css/homepage-css.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        
+
         <title>Employee Page</title>
     </head>
     <body>
@@ -21,32 +21,40 @@
         <section class="main-container">
             <div class="content">
                 <div class="form sign-in">
-        <h1 class="text-center">List of Administrators</h1>
-        <p class="text-center">
-            <a href="${pageContext.request.contextPath}/admin/create">Add Admin</a>
-        </p>
-        
-        <table class="table">
-            <c:forEach items="${listOfAdmin}" var="admin">
-                 
-                <tr>
-                    
-                    <td>${admin.fname}</td>
-                    <td>${admin.lname}</td>
-                    <td>${admin.phone}</td>
-                    <td>${admin.email}</td>
-                    <td>${admin.role.rname}</td>
-                    <td>
-                        <a href="${pageContext.request.contextPath}/admin/update/${admin.id}">Update</a>
-                    </td>
-                    <td>
-                        <a href="${pageContext.request.contextPath}/admin/delete/${admin.id}">Delete</a>
-                    </td>
-                    
-                </tr>
-            </c:forEach>
-        </table>
-         </div>
+                    <h1 class="text-center">List of Administrators</h1>
+                    <p class="text-center">
+                        <a href="${pageContext.request.contextPath}/admin/create">Add Admin</a>
+                    </p>
+
+                    <table class="table">
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th colspan="2" class="text-center">Actions</th>
+                        </tr>
+                        <c:forEach items="${listOfAdmin}" var="admin">
+
+                            <tr>
+
+                                <td>${admin.fname}</td>
+                                <td>${admin.lname}</td>
+                                <td>${admin.phone}</td>
+                                <td>${admin.email}</td>
+                                <td>${admin.role.rname}</td>
+                                <td>
+                                    <a href="${pageContext.request.contextPath}/admin/update/${admin.id}">Update</a>
+                                </td>
+                                <td>
+                                    <a href="${pageContext.request.contextPath}/admin/delete/${admin.id}">Delete</a>
+                                </td>
+
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>
             </div>
             <div class="sub-content">
                 <div class="side-shadow">

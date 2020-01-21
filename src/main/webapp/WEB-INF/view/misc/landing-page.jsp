@@ -65,7 +65,10 @@
             <div class="container">
 
                 <h2 class="font-weight-light">Page Content</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus ab nulla dolorum autem nisi officiis blanditiis voluptatem hic, assumenda aspernatur facere ipsam nemo ratione cumque magnam enim fugiat reprehenderit expedita.</p>
+                <p>We transform mobility through comprehensive tolling systems for road infrastructures, integrating business-specific disciplines with effective solutions, which enables us to offer comprehensive projects with a high added value.</p>
+                <p>The company that makes your highway experience easier is here. By using our <strong>freely</strong> supplied card you can venture Greece’s highways without having to stop all the time and lose time. 
+The company started from our will to offer our customers the best possible service and experience. 
+</p>
             </div>
         </section>
         <script>
